@@ -1,0 +1,31 @@
+<?php
+
+namespace ReactorCMS\Entities;
+
+
+use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends \Reactor\Users\User implements JWTSubject
+{
+    //use CacheQueryBuilder;
+
+    //
+    protected $table = 'users';
+    protected $fillable = ['email', 'password', 'first_name', 'last_name'];
+
+    public function isAdmin()
+    {
+        return $this->hasRole('ADMINISTRATOR') || $this->hasPermission('ADMINISTRATOR');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+}
