@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {!! Html::style('assets/plugins/bootstrap/bootstrap.min.css') !!}
+    {!! Html::style('assets/plugins/bootstrap/bootstrap.min.css') !!}
+
     {!! Html::style('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css') !!}
     {!! Html::style('assets/plugins/iCheck/all.css') !!}
     {!! Html::style('assets/plugins/select2/select2.css') !!}
