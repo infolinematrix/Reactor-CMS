@@ -1,10 +1,10 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => __('Node Fields'),'breadcrumb => []'])
+    @include('partials.content_header',['title' => __('Node Fields'),'breadcrumb => []'])
 
     <section class="content">
 

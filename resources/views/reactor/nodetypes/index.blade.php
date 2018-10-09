@@ -4,7 +4,7 @@
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Node Type','breadcrumb => []'])
+    @include('partials.content_header',['title' => 'Node Type','breadcrumb => []'])
 
     <section class="content">
 
@@ -70,7 +70,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                @include('backend.partials.contents.pagination', ['paginator' => $nodetypes])
+                @include('partials.contents.pagination', ['paginator' => $nodetypes])
             </div>
         </div>
         <!-- /.box -->

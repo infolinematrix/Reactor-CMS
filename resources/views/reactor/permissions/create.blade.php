@@ -1,9 +1,9 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -19,7 +19,7 @@
             </div>
             <!-- /.box-header -->
 
-            @include('backend.partials.contents.form')
+            @include('partials.contents.form')
 
         </div>
         <!-- /.box -->

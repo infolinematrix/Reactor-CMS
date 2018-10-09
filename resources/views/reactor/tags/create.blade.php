@@ -1,10 +1,10 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 
 @section('content')
 
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Tags','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Tags','breadcrumb' => (!empty($node) ? $node : null) ])
 
 
     <section class="content">
@@ -21,7 +21,7 @@
 
             <div class="box-body">
 
-            @include('backend.partials.contents.form')
+            @include('partials.contents.form')
             <!-- /.row -->
             </div>
 

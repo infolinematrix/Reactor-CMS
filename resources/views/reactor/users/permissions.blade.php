@@ -1,10 +1,10 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 <?php $_withForm = false; ?>
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -20,7 +20,7 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-            @include('backend.permissions.sublist', [
+            @include('permissions.sublist', [
                     'route' => route('reactor.users.permissions.revoke', $user->getKey())
                 ])
             <!-- /.row -->
@@ -35,6 +35,6 @@
 
 @endsection
 
-@include('backend.partials.modals.delete_specific', ['message' => trans('roles.confirm_dissociate')])
+@include('partials.modals.delete_specific', ['message' => trans('roles.confirm_dissociate')])
 
 

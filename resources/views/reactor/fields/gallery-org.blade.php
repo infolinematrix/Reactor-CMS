@@ -45,6 +45,6 @@
 @section('modules')
     @parent
 
-    @include('backend.documents.library')
-    @include('backend.partials.modals.editor')
+    @include('documents.library')
+    @include('partials.modals.editor')
 @endsection

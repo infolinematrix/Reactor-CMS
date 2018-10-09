@@ -1,4 +1,4 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 @section('pageSubtitle', uppercase(trans('mailings.title')))
 
@@ -7,7 +7,7 @@
 @section('content')
 
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Mailings','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Mailings','breadcrumb' => (!empty($node) ? $node : null) ])
 
 
     @if($mailings->count())

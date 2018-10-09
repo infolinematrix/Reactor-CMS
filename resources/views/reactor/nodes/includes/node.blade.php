@@ -8,6 +8,6 @@
 
     <hr>
     @if($node->isTaggable())
-        @include('backend.partials.nodes.tags', ['tags' => $node->tags])
+        @include('partials.nodes.tags', ['tags' => $node->tags])
     @endif
 </div>

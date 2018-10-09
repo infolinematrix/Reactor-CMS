@@ -14,7 +14,7 @@
 
             <ul class="list list-unstyled">
                 @foreach($activities as $activity)
-                    @include('backend.activities.' . $activity->name)
+                    @include('activities.' . $activity->name)
                 @endforeach
             </ul>
     @else

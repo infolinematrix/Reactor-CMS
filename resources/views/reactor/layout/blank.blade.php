@@ -42,7 +42,7 @@
 {!! Html::script('assets/plugins/iCheck/icheck.min.js') !!}
 {!! Html::script('assets/plugins/fastclick/fastclick.js') !!}
 {!! Html::script('assets/backend/js/app.min.js') !!}
-{!! Html::script('assets/backend/js/backend.js') !!}
+{!! Html::script('assets/backend/js/js') !!}
 
 
 @yield('scripts')

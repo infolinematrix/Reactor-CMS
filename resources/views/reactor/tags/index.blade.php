@@ -1,9 +1,9 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Tags','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Tags','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -20,19 +20,19 @@
                 </div>
             </div>
 
-        @include('backend.partials.contents.search', ['key' => 'tags'])
+        @include('partials.contents.search', ['key' => 'tags'])
         <!-- /.box-header -->
             <div class="box-body">
                 <div class="pt10">
 
-                    @include('backend.tags.list')
+                    @include('tags.list')
                 </div>
 
                 <!-- /.row -->
             </div>
 
             <div class="box-footer">
-                @include('backend.partials.contents.pagination', ['paginator' => $tags, 'paginationModifier' => 'pagination--inpage'])
+                @include('partials.contents.pagination', ['paginator' => $tags, 'paginationModifier' => 'pagination--inpage'])
             </div>
         </div>
         <!-- /.box -->

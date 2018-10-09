@@ -6,7 +6,7 @@
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Nodes','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Nodes','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -22,7 +22,7 @@
             <!-- /.box-header -->
 
 
-        @include('backend.partials.contents.form')
+        @include('partials.contents.form')
         <!-- /.row -->
 
 

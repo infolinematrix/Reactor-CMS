@@ -10,16 +10,16 @@ return [
     'select' => 'fields.select',
 
     'custom_fields' => [
-        'password' => 'Reactor\Html\Fields\PasswordField',
-        'color' => 'Reactor\Html\Fields\ColorField',
-        'slug' => 'Reactor\Html\Fields\SlugField',
-        'hidden' => 'Reactor\Html\Fields\HiddenField',
-        'relation' => 'Reactor\Html\Fields\RelationField',
-        'markdown' => 'Reactor\Html\Fields\MarkdownField',
-        'gallery' => 'Reactor\Html\Fields\GalleryField',
-        'document' => 'Reactor\Html\Fields\DocumentField',
-        'node_collection' => 'Reactor\Html\Fields\NodeCollectionField',
-        'node' => 'Reactor\Html\Fields\NodeField',
-        'date' => 'Reactor\Html\Fields\DatetimeField',
+        'password' => 'ReactorCMS\Html\Fields\PasswordField',
+        'color' => 'ReactorCMS\Html\Fields\ColorField',
+        'slug' => 'ReactorCMS\Html\Fields\SlugField',
+        'hidden' => 'ReactorCMS\Html\Fields\HiddenField',
+        'relation' => 'ReactorCMS\Html\Fields\RelationField',
+        'markdown' => 'ReactorCMS\Html\Fields\MarkdownField',
+        'gallery' => 'ReactorCMS\Html\Fields\GalleryField',
+        'document' => 'ReactorCMS\Html\Fields\DocumentField',
+        'node_collection' => 'ReactorCMS\Html\Fields\NodeCollectionField',
+        'node' => 'ReactorCMS\Html\Fields\NodeField',
+        'date' => 'ReactorCMS\Html\Fields\DatetimeField',
     ]
 ];

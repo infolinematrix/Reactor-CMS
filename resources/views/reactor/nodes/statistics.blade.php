@@ -4,7 +4,7 @@
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => __('Nodes'),'breadcrumb => []'])
+    @include('partials.content_header',['title' => __('Nodes'),'breadcrumb => []'])
 
 
     <section class="content">
@@ -71,7 +71,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        @include('backend.nodes.includes.options', ['_edit' => true])
+                        @include('nodes.includes.options', ['_edit' => true])
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -85,7 +85,7 @@
                     <!-- /.box-header -->
 
                     <div class="box-body">
-                        @include('backend.nodes.includes.options', ['_edit' => true])
+                        @include('nodes.includes.options', ['_edit' => true])
                     </div>
                 </div>
 

@@ -1,9 +1,9 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -22,7 +22,7 @@
 
                 <div class="row">
                     <div class="col-md-6 border-right">
-                        @include('backend.partials.contents.form')
+                        @include('partials.contents.form')
                     </div>
 
                     <div class="col-md-6">

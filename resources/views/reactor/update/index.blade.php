@@ -1,11 +1,11 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 @section('pageSubtitle', uppercase(trans('maintenance.title')))
 
 @section('content')
 
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Maintanence','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Maintanence','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 

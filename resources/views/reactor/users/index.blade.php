@@ -1,9 +1,9 @@
-@extends('backend.layout.base')
+@extends('layout.base')
 
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
+    @include('partials.content_header',['title' => 'Users','breadcrumb' => (!empty($node) ? $node : null) ])
 
     <section class="content">
 
@@ -19,11 +19,11 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-                @include('backend.partials.contents.search', ['key' => 'users'])
+                @include('partials.contents.search', ['key' => 'users'])
 
                 <div class="pt10">
 
-                    @include('backend.users.list')
+                    @include('users.list')
 
                 </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="box-footer">
-                @include('backend.partials.contents.pagination', ['paginator' => $users])
+                @include('partials.contents.pagination', ['paginator' => $users])
             </div>
         </div>
         <!-- /.box -->

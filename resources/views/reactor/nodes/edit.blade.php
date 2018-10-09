@@ -4,7 +4,7 @@
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('backend.partials.content_header',['title' => __('Nodes'),'breadcrumb => []'])
+    @include('partials.content_header',['title' => __('Nodes'),'breadcrumb => []'])
 
     <section class="content">
         <div class="row">
@@ -42,11 +42,11 @@
                     <div class="tab-content no-padding">
 
                         <div class="tab-pane active" id="node">
-                            @include('backend.nodes.includes.node')
+                            @include('nodes.includes.node')
                         </div>
 
                         <div class="tab-pane" id="seo">
-                            @include('backend.nodes.includes.seo')
+                            @include('nodes.includes.seo')
                         </div>
 
                         <!-- Morris chart - Sales -->
@@ -74,7 +74,7 @@
                     <!-- /.box-header -->
 
                     <div class="box-body">
-                        @include('backend.nodes.options', ['_edit' => true])
+                        @include('nodes.options', ['_edit' => true])
                     </div>
                 </div>
             </div>

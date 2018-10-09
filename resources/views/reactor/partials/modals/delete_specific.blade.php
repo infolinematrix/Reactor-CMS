@@ -1,7 +1,7 @@
 @section('modules')
     @parent
 
-    @include('backend.partials.modals.confirm', [
+    @include('partials.modals.confirm', [
         'modalTitle' => trans('general.warning'),
         'modalContent' => isset($message) ? $message : trans('general.confirm_delete'),
         'containerClass' => 'modal--specific'
