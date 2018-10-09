@@ -10,3 +10,4 @@ Homestead.json
 *.DS_Store
 /.idea
 .nuxt
+composer.lock
