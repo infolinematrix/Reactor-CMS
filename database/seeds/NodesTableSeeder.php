@@ -26,7 +26,7 @@ class NodesTableSeeder extends Seeder
                 'node_name' => 'home',
                 'content' => 'Here is your **content**!
 
-You can do great things with the [Nuclear CMS](https://github.com/NuclearCMS/Nuclear){blank}!
+You can do great things with the [Reactor CMS](https://github.com/NuclearCMS/Nuclear){blank}!
 
 And it supports [markdown](https://daringfireball.net/projects/markdown/){blank}!'
             ],
@@ -35,7 +35,7 @@ And it supports [markdown](https://daringfireball.net/projects/markdown/){blank}
                 'node_name' => 'anasayfa',
                 'content' => '**İçeriğiniz** burada!
 
-[Nuclear CMS](https://github.com/NuclearCMS/Nuclear){blank} ile büyük şeyler yapabilirsiniz!
+[Nuclear CMS](https://github.com/Reactor/Reactor-CMS){blank} ile büyük şeyler yapabilirsiniz!
 
 Ayrıca Nuclear [markdown](https://daringfireball.net/projects/markdown/){blank} destekler!'
             ],

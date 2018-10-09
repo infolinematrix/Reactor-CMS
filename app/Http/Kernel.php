@@ -31,14 +31,15 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \ReactorCMS\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \ReactorCMS\Http\Middleware\EncryptCookies::class,
             \ReactorCMS\Http\Middleware\VerifyCsrfToken::class,
-            // \Reactor\Http\Middleware\RedirectIfNotInstalled::class,
             \ReactorCMS\Http\Middleware\DetermineLocale::class
+            // \Reactor\Http\Middleware\RedirectIfNotInstalled::class,
+
         ],
 
         'api' => [

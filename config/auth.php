@@ -71,7 +71,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \Reactor\Entities\User::class,
+            'model' => \ReactorCMS\Entities\User::class,
         ],
 
         // 'users' => [

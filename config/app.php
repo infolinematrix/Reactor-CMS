@@ -165,32 +165,32 @@ return [
         /*
          * Application Service Providers...
          */
-        //ReactorCMS\Providers\ReactorServiceProvider::class,
-        //ReactorCMS\Providers\AuthServiceProvider::class,
-        //ReactorCMS\Providers\EventServiceProvider::class,
-        //ReactorCMS\Providers\HtmlBuildersServiceProvider::class,
-        //ReactorCMS\Providers\RouteServiceProvider::class,
+        ReactorCMS\Providers\ReactorServiceProvider::class,
+        ReactorCMS\Providers\AuthServiceProvider::class,
+        ReactorCMS\Providers\EventServiceProvider::class,
+        ReactorCMS\Providers\HtmlBuildersServiceProvider::class,
+        ReactorCMS\Providers\RouteServiceProvider::class,
 
         /*
          * Hierarchy Service Providers...
          */
-        //Reactor\Hierarchy\Providers\HierarchyServiceProvider::class,
-        //Reactor\Hierarchy\Providers\BuilderServiceProvider::class,
+        Reactor\Hierarchy\Providers\HierarchyServiceProvider::class,
+        Reactor\Hierarchy\Providers\BuilderServiceProvider::class,
         //Reactor\Synthesizer\SynthesizerServiceProvider::class,
-        //Kenarkose\Chronicle\ChronicleServiceProvider::class,
-        //Kenarkose\Sortable\SortableServiceProvider::class,
-        //Kenarkose\Tracker\TrackerServiceProvider::class,
-        //Dimsav\Translatable\TranslatableServiceProvider::class,
-        //Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Kenarkose\Chronicle\ChronicleServiceProvider::class,
+        Kenarkose\Sortable\SortableServiceProvider::class,
+        Kenarkose\Tracker\TrackerServiceProvider::class,
+        Dimsav\Translatable\TranslatableServiceProvider::class,
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
 
         /*
          * Documents Service Providers...
          */
-        // Reactor\Documents\Providers\DocumentsServiceProvider::class,
-        //Kenarkose\Files\Provider\FilesServiceProvider::class,
-        //Kenarkose\Transit\Provider\TransitServiceProvider::class,
-        //Simexis\Oembed\OembedServiceProvider::class,
-        //Intervention\Image\ImageServiceProvider::class,
+        Reactor\Documents\Providers\DocumentsServiceProvider::class,
+        Kenarkose\Files\Provider\FilesServiceProvider::class,
+        Kenarkose\Transit\Provider\TransitServiceProvider::class,
+        Simexis\Oembed\OembedServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Other Vendor Service Providers...

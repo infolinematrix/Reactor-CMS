@@ -3,14 +3,9 @@
 namespace ReactorCMS\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Reactor\User;
 use Validator;
 use ReactorCMS\Http\Controllers\Controller;
 
-use Illuminate\Foundation\Validation\ValidatesRequests;
-
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Auth;
 
 
