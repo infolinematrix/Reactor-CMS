@@ -164,6 +164,7 @@ class NodesController extends ReactorController
         // Recording paused for this, otherwise two records are registered
         chronicle()->pauseRecording();
 
+
         $node->update([
                $locale => array_except($request->all(), ['_token','_method'])
         ]);

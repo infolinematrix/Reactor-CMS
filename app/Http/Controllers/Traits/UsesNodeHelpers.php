@@ -43,6 +43,7 @@ trait UsesNodeHelpers {
 
         $node = $this->locateNodeInTree($id, $node);
 
+        
         $node->save();
 
         return [$node, $locale];

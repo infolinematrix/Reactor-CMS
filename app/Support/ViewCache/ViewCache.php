@@ -139,6 +139,7 @@ class ViewCache
     {
         $cache = $this->cache->keywords($keywords);
 
+        dd($cache);
         if ($time) {
             $cache->put($key, $view, $time);
         } else {

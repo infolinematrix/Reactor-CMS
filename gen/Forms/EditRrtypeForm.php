@@ -17,7 +17,7 @@ class EditRrtypeForm extends Form {
 
     public function buildForm()
     {
-        $this->compose('Nuclear\Hierarchy\Http\Forms\NodeSourceForm');
+        $this->compose('Reactor\Hierarchy\Http\Forms\NodeSourceForm');
                         $this->add('price', 'text', [
             'label' => 'Price',
             'help_block' => ['text' => ''],

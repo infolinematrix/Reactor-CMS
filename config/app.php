@@ -187,8 +187,8 @@ return [
          * Documents Service Providers...
          */
         Reactor\Documents\Providers\DocumentsServiceProvider::class,
-        Kenarkose\Files\Provider\FilesServiceProvider::class,
-        Kenarkose\Transit\Provider\TransitServiceProvider::class,
+        Reactor\Files\Provider\FilesServiceProvider::class,
+        Reactor\Transit\Provider\TransitServiceProvider::class,
         Simexis\Oembed\OembedServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
@@ -199,7 +199,8 @@ return [
         Igaster\LaravelTheme\themeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
-        Propaganistas\LaravelCacheKeywords\CacheKeywordsServiceProvider::class,
+        Reactor\Cache\CacheKeywordsServiceProvider::class,
+        Fideloper\Proxy\TrustedProxyServiceProvider::class,
 
         /*
          * Site Service Providers...
@@ -258,8 +259,8 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Chronicle' => Kenarkose\Chronicle\ChronicleFacade::class,
-        'Downloader' => Kenarkose\Transit\Facade\Downloader::class,
-        'Uploader' => Kenarkose\Transit\Facade\Uploader::class,
+        'Downloader' => Reactor\Transit\Facade\Downloader::class,
+        'Uploader' => Reactor\Transit\Facade\Uploader::class,
         'Tracker' => Kenarkose\Tracker\TrackerFacade::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
