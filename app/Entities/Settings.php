@@ -8,13 +8,10 @@
 
 namespace ReactorCMS\Entities;
 
-use ReactorCMS\Support\Database\CacheQueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 
 class Settings extends Model
 {
-    use CacheQueryBuilder;
-
     protected $table = 'settings';
     protected $fillable = ['variable', 'value'];
 }

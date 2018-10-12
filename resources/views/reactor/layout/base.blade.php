@@ -61,8 +61,7 @@
 
 
 
-{!! Html::script('assets/reactor/js/js') !!}
-{!! Html::script('assets/reactor/js/app.js') !!}
+{!! Html::script('assets/reactor/js/adminlte.js') !!}
 {!! Html::script('assets/reactor/js/parent_search.js') !!}
 {!! Html::script('assets/reactor/js/nodesforms.js') !!}
 {!! Html::script('assets/reactor/js/forms.js') !!}

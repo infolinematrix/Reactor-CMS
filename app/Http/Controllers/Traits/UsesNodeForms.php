@@ -162,7 +162,7 @@ trait UsesNodeForms {
      */
     protected function getCreateTranslationForm($id, array $locales)
     {
-        $form = $this->form('ReactorCMS\Hierarchy\Http\Forms\NodeSourceForm', [
+        $form = $this->form('Reactor\Hierarchy\Http\Forms\NodeSourceForm', [
             'url' => route('reactor.nodes.translation.store', $id),
             'method' => 'POST'
         ]);
@@ -180,7 +180,7 @@ trait UsesNodeForms {
      */
     protected function validateCreateTranslationForm(Request $request)
     {
-        $this->validateForm('ReactorCMS\Hierarchy\Http\Forms\NodeSourceForm', $request);
+        $this->validateForm('Reactor\Hierarchy\Http\Forms\NodeSourceForm', $request);
     }
 
     /**
