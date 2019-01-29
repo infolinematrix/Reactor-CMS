@@ -7,16 +7,13 @@ Reactor is a polymorphic and multilingual content management system powered by [
 **Important:** Reactor is still in alpha versions of the V3 family and is still being developed, use it at your own risk!
 
 ## Features (very briefly)
-<<<<<<< HEAD
 * Responsive and easy to use UI (AdminLTE)
 * Node structured content management
 * Different content types with customizable fields
-=======
 * Responsive and easy to use UI
 * Node structured content management
 * Different content types with customizable fields
 * Documents library that supports multiple media types, image editing and embedding external media
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 * Built-in multilingual content tags
 * Mailings with customizable content and templating, mailing lists and subscribers (with default PHP driver or Mailchimp integration)
 * Extensible ACL with users, roles and permissions
