@@ -48,11 +48,7 @@ class NodesController extends ReactorController
             ->groupBy('id')
             // Search should be the last
             ->search($request->input('q'), 20, true)
-<<<<<<< HEAD
             ->paginate(20);
-=======
-            ->get();
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         return $this->compileView('nodes.search', compact('nodes'));
     }
@@ -65,10 +61,7 @@ class NodesController extends ReactorController
      */
     public function searchJson(Request $request)
     {
-<<<<<<< HEAD
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         // Because of the searchable trait we are adding the global scopes from scratch
         $nodes = Node::withoutGlobalScopes()
             ->typeMailing()
@@ -100,11 +93,7 @@ class NodesController extends ReactorController
      */
     public function create($id = null)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $parent = !is_null($id) ? Node::findOrFail($id) : null;
 
@@ -126,14 +115,10 @@ class NodesController extends ReactorController
      */
     public function store(Request $request, $id = null)
     {
-<<<<<<< HEAD
 
 
        
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $this->validateCreateForm($request);
 
@@ -157,7 +142,6 @@ class NodesController extends ReactorController
     public function edit($id, $source = null)
     {
 
-<<<<<<< HEAD
 
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
 
@@ -166,13 +150,6 @@ class NodesController extends ReactorController
 
 
 
-=======
-        list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
-
-        $form = $this->getEditForm($id, $node, $source);
-
-
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         return $this->compileView('nodes.edit', compact('form', 'node', 'locale', 'source'));
     }
 
@@ -217,10 +194,7 @@ class NodesController extends ReactorController
 
         $form = $this->getEditParametersForm($id, $node);
 
-<<<<<<< HEAD
         dd($form);
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         return $this->compileView('nodes.parameters', compact('form', 'node', 'source'));
     }
 
@@ -257,11 +231,7 @@ class NodesController extends ReactorController
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $node = Node::findOrFail($id);
 
@@ -282,11 +252,7 @@ class NodesController extends ReactorController
      */
     public function bulkDestroy(Request $request)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $ids = json_decode($request->input('_bulkSelected', '[]'));
 
@@ -360,11 +326,7 @@ class NodesController extends ReactorController
      */
     public function storeTranslation(Request $request, $id)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $node = Node::findOrFail($id);
 
@@ -398,11 +360,7 @@ class NodesController extends ReactorController
      */
     public function destroyTranslation($id)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_NODES');
-=======
-        $this->authorize('EDIT_NODES');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $source = NodeSource::findOrFail($id);
         $node = $source->node;
@@ -673,11 +631,7 @@ class NodesController extends ReactorController
      */
     public function storeTag(Request $request, $id)
     {
-<<<<<<< HEAD
         //$this->authorize('EDIT_TAGS');
-=======
-        $this->authorize('EDIT_TAGS');
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $node = $this->authorizeAndFindNode($id, null, 'EDIT_NODES', false);
 
         if ($node->isLocked()) {

@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RolesTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
-<<<<<<< HEAD
-        $this->call(NodeTypesTableSeeder::class);
-        $this->call(NodesTableSeeder::class);
 
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        Model::reguard();
+
+       
         $this->call(UsersTableSeeder::class);
         $this->call(RoleUserTableSeeder::class);
         $this->call(NodeFieldsTableSeeder::class);
@@ -34,21 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingsTableSeeder::class);
         $this->call(NsBasicpagesTableSeeder::class);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        Model::reguard();
-
-       
-        
 
 
-
-=======
-
-        $this->call(NodeTypesTableSeeder::class);
-        $this->call(NodesTableSeeder::class);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        Model::reguard();
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     }
 }

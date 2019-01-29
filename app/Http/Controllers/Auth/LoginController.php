@@ -20,11 +20,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-<<<<<<< HEAD
     public function index()
-=======
-    public function test()
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     {
         return "HELLO";
     }

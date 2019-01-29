@@ -3,7 +3,6 @@
 
 @section('scripts')
     @parent
-<<<<<<< HEAD
 <script>
 
     <?php
@@ -24,10 +23,6 @@
 
 
 
-=======
-@endsection
-
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 <!-- Main content -->
 @section('content')
     <!-- Content Header (Page header) -->
@@ -171,7 +166,6 @@
                                 {!! form_row($form->google_analytics_api) !!}
                                 {!! form_row($form->google_ad_pubid) !!}
                             </fieldset>
-<<<<<<< HEAD
 
                             <fieldset class="scheduler-border">
                                 <legend class="scheduler-border">Site Logo</legend>
@@ -179,8 +173,6 @@
 
                             </fieldset>
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                         </div>
                     </div>
 

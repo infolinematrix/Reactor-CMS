@@ -37,41 +37,19 @@
                             <tr>
                                 <td>#{!! $node->getKey() !!}</td>
                                 <td>
-<<<<<<< HEAD
                                     {!! link_to($node->getDefaultEditUrl(), str_limit($node->getTitle(),50)) !!}
                                </td>
-=======
-                                    {!! link_to_route('reactor.nodes.children.all', str_limit($node->title,25), [$node->getKey()]) !!}
-                                </td>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                                 <td>{!! str_limit($node->node_name,25) !!}</td>
                                 <td>{!! (is_null($node->parent_id) ? 0 : $node->parent_id) !!}</td>
                                 <td>{!! $node->getNodeType()->label !!}</td>
                                 <td>{!! $node->created_at->formatLocalized('%b %e, %Y') !!}</td>
 
                                 <td class="text-right">
-<<<<<<< HEAD
                                     @if($node->isMailing())
                                         {!! content_options('mailings', $node->getKey()) !!}
                                     @else
                                         {!! node_options($node) !!}
                                     @endif
-=======
-                                    <div class="btn-group">
-                                        <button type="button"
-                                                class="btn btn-xs btn-success btn-flat">{!! __('Options') !!}</button>
-                                        <button type="button" class="btn btn-xs btn-success btn-flat dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-
-
-                                        <ul class="dropdown-menu pull-right" role="menu">
-                                            {!! node_options($node) !!}
-                                        </ul>
-                                    </div>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                                 </td>
 
                             </tr>

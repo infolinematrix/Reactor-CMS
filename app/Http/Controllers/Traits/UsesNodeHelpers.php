@@ -68,66 +68,6 @@ trait UsesNodeHelpers {
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * @param int $id
-     * @param int $source
-     * @param string $permission
-     * @param bool $withSource
-     * @return array
-     */
-    protected function authorizeAndFindNode($id, $source = null, $permission = null, $withSource = true)
-    {
-        if ( ! is_null($permission))
-        {
-            $this->authorize($permission);
-        }
-
-
-        $node = Node::findOrFail($id);
-
-        if ( ! $withSource)
-        {
-            return $node;
-        }
-
-        list($locale, $source) = $this->determineLocaleAndSource($source, $node);
-
-        return [$node, $locale, $source];
-    }
-
-    /**
-     * Determines the current editing locale
-     *
-     * @param int|null $source
-     * @param Node $node
-     * @return string
-     */
-    protected function determineLocaleAndSource($source, Node $node)
-    {
-        if ($source)
-        {
-            $source = $node->translations->find($source);
-
-            if (is_null($source))
-            {
-                abort(404);
-            }
-        } else
-        {
-            $source = $node->translate();
-
-            if (is_null($source))
-            {
-                $source = $node->translations->first();
-            }
-        }
-
-        return [$source->locale, $source];
-    }
-
-    /**
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
      * Determines the node publishing
      *
      * @param Request $request
@@ -197,7 +137,6 @@ trait UsesNodeHelpers {
     }
 
     /**
-<<<<<<< HEAD
      * @param int $id
      * @param int $source
      * @param string $permission
@@ -258,8 +197,6 @@ trait UsesNodeHelpers {
     }
 
     /**
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
      * Attaches or detaches a tag
      *
      * @param Request $request

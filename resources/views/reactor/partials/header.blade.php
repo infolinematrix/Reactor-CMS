@@ -53,11 +53,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('assets/avatar.png') }}" class="user-image" alt="User Image">
-<<<<<<< HEAD
                         <span class="hidden-xs">{!! Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name !!}</span>
-=======
-                        <span class="hidden-xs">{!! $currentUser->first_name.' '.$currentUser->last_name !!}</span>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -65,13 +61,8 @@
                             <img src="{{ asset('assets/avatar.png') }}" class="img-circle" alt="User Image">
 
                             <p>
-<<<<<<< HEAD
                                 {!! Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name !!}
                                 <small>Member since {!! date('d,M,Y',strtotime(Auth::guard('admin')->user()->created_at)) !!}</small>
-=======
-                                {!! $currentUser->first_name.' '.$currentUser->last_name !!}
-                                <small>Member since {!! date('d,M,Y',strtotime($currentUser->created_at)) !!}</small>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                             </p>
                         </li>
 

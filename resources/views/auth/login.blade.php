@@ -31,11 +31,7 @@
         </div>
 
         <div class="modal-buttons modal-buttons--separated text--center">
-<<<<<<< HEAD
             <a href="#" class="button">{{ uppercase(trans('auth.forgot')) }}</a>
-=======
-            <a href="{{ route('auth.password.email') }}" class="button">{{ uppercase(trans('auth.forgot')) }}</a>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         </div>
     </form>
 @endsection

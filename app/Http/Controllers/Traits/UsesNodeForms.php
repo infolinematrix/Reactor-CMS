@@ -14,11 +14,7 @@ use Reactor\Hierarchy\NodeType;
 trait UsesNodeForms {
 
 
-<<<<<<< HEAD
     
-=======
-    use FormBuilderTrait;
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     /**
      * @param int|null $id
      * @param Node $parent
@@ -31,27 +27,17 @@ trait UsesNodeForms {
         ]);
 
 
-<<<<<<< HEAD
         $form->modify('type', 'select', [
             'choices' => $this->compileAllowedNodeTypes($parent)
         ]);
         
-=======
-
-        $form->modify('type', 'select', [
-            'choices' => $this->compileAllowedNodeTypes($parent)
-        ]);
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         $this->determineLocaleField($form);
 
         return $form;
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     /**
      * @param Node $parent
      * @return array
@@ -109,10 +95,7 @@ trait UsesNodeForms {
      */
     protected function validateCreateForm(Request $request)
     {
-<<<<<<< HEAD
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $this->validateForm('ReactorCMS\Html\Forms\Nodes\CreateForm', $request);
     }
 
@@ -139,7 +122,6 @@ trait UsesNodeForms {
     }
 
     /**
-<<<<<<< HEAD
      * @param $id
      * @param Node $node
      * @param $source_name
@@ -168,8 +150,6 @@ trait UsesNodeForms {
     }
 
     /**
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
      * @param Request $request
      * @param Node $node
      * @param NodeSource $source
@@ -180,10 +160,7 @@ trait UsesNodeForms {
         $this->validateForm(
             source_form_name($node->getNodeTypeName(), true),
             $request, [
-<<<<<<< HEAD
             'title' => 'required|max:255|unique:node_sources,title,'. $source->getKey(),
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
             'node_name' => 'max:255|alpha_dash|unique:node_sources,node_name,' . $source->getKey()
         ]);
     }

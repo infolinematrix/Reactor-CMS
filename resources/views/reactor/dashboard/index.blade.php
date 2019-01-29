@@ -16,11 +16,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-<<<<<<< HEAD
                         <h3>{!! $nodes !!}</h3>
-=======
-                        <h3>0</h3>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                         <p>Nodes</p>
                     </div>
                     <div class="icon">
@@ -33,11 +29,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-<<<<<<< HEAD
                         <h3>{!! $media !!}</h3>
-=======
-                        <h3>{!! 0 !!}</h3>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                         <p>Media</p>
                     </div>
                     <div class="icon">
@@ -50,11 +42,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-<<<<<<< HEAD
                         <h3>{!! $users !!}</h3>
-=======
-                        <h3>0</h3>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
@@ -67,11 +55,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-<<<<<<< HEAD
                         <h3>{!! $db_size !!}<sup style="font-size: 20px">MB</sup></h3>
-=======
-                        <h3>0<sup style="font-size: 20px">MB</sup></h3>
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                         <p>Database</p>
                     </div>
                     <div class="icon">
@@ -134,7 +118,6 @@
 
 
         <!-- Activity -->
-<<<<<<< HEAD
         <div class="row">
             <div class="col-lg-6">
                 <!-- PRODUCT LIST -->
@@ -207,9 +190,6 @@
                 <!-- /.box -->
             </div>
         </div>
-=======
-
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
     </section>
 

@@ -78,11 +78,8 @@ class NodeFieldsController extends ReactorController
      */
     public function update(BuilderService $builderService, Request $request, $id)
     {
-<<<<<<< HEAD
 
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $this->authorize('EDIT_NODETYPES');
 
         $nodeField = NodeField::findOrFail($id);

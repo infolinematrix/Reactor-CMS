@@ -27,10 +27,7 @@ return [
     'type_map' => [
         'text' => 'string',
         'textarea' => 'text',
-<<<<<<< HEAD
         'wysiwyg' => 'text',
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         'markdown' => 'longtext',
         'document' => 'unsignedInteger',
         'gallery' => 'text',

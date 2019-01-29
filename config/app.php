@@ -195,12 +195,8 @@ return [
         /*
          * Other Vendor Service Providers...
          */
-<<<<<<< HEAD
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         //Laracasts\Flash\FlashServiceProvider::class,
-=======
-        Laracasts\Flash\FlashServiceProvider::class,
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         Igaster\LaravelTheme\themeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
@@ -210,12 +206,7 @@ return [
         /*
          * Site Service Providers...
          */
-<<<<<<< HEAD
         
-=======
-        Extension\Site\Providers\SiteExtensionServiceProvider::class,
-
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     ],
 
     /*
@@ -229,11 +220,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'aliases' => array(
-=======
-    'aliases' => [
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -278,21 +265,12 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-<<<<<<< HEAD
         'Theme' => Igaster\LaravelTheme\Facades\Theme::class,
-=======
-        'Theme' => igaster\laravelTheme\Facades\Theme::class,
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         //'Theme'       => Igaster\LaravelTheme\Facades\Theme::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Oembed' => Simexis\Oembed\OembedFacade::class,
         'Zipper' => Chumper\Zipper\Zipper::class,
-<<<<<<< HEAD
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ),
-=======
-
-    ],
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
 ];

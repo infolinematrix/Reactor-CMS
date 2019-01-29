@@ -4,23 +4,16 @@
 namespace ReactorCMS\Http\Controllers;
 
 
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Reactor\Documents\Media\Media;
 use Reactor\Hierarchy\Node;
 use Reactor\Users\User;
-=======
-use Reactor\Hierarchy\Node;
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 use ReactorCMS\Statistics\DashboardStatisticsCompiler;
 
 class DashboardController extends ReactorController
 {
 
-<<<<<<< HEAD
     
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     /**
      * Shows the dashboard
      * @param DashboardStatisticsCompiler $compiler
@@ -40,7 +33,6 @@ class DashboardController extends ReactorController
             $params['recentlyVisited'] = Node::recentlyVisited(10)->get();
         }
 
-<<<<<<< HEAD
         $params['nodes'] = Node::count();
         $params['media'] = Media::count();
         $params['users'] = User::count();
@@ -56,8 +48,6 @@ class DashboardController extends ReactorController
         /*$nodes = User::count();
         dd($nodes);*/
 
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         return $this->compileView('dashboard.index', $params, trans('general.dashboard'));
     }
 

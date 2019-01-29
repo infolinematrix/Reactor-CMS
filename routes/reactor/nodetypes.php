@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 Route::group([], function () {
-=======
-Route::group(['middleware' => 'can:ACCESS_NODETYPES'], function () {
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
     Route::resource('nodetypes', 'NodeTypesController', ['except' => ['show'], 'names' => [
         'index' => 'reactor.nodetypes.index',

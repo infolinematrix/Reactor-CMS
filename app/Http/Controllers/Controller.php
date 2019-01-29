@@ -11,7 +11,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-<<<<<<< HEAD
 
     /**
      * Compiles view for display
@@ -27,6 +26,4 @@ class Controller extends BaseController
 
        return view('index');
     }
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 }

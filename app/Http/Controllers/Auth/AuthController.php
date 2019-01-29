@@ -36,28 +36,21 @@ class AuthController extends Controller
         $this->redirectTo = route('reactor.dashboard');
     }
 
-<<<<<<< HEAD
     public function index()
     {
       # code...
       return "ERRORRRR";
     }
-=======
-
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     protected function guard()
     {
         return Auth::guard('admin');
     }
 
-<<<<<<< HEAD
     protected function refresh()
       {
         return response([
           'status' => 'success'
         ]);
       }
-=======
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     
 }

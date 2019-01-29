@@ -13,7 +13,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-<<<<<<< HEAD
       
         'App\Events\RegisterEvent' => [
             'App\Listeners\RegisterListener',
@@ -21,10 +20,6 @@ class EventServiceProvider extends ServiceProvider
 
         'App\Events\ForgotPasswordEvent' => [
             'App\Listeners\ForgotPasswordListener',
-=======
-        'ReactorCMS\Events\SomeEvent' => [
-            'ReactorCMS\Listeners\EventListener',
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         ],
     ];
 

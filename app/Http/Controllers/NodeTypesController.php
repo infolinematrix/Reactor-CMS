@@ -11,10 +11,6 @@ use Reactor\Hierarchy\NodeType;
 use Reactor\Hierarchy\Repositories\NodeTypeRepository;
 use ReactorCMS\Http\Controllers\Traits\UsesNodeTypeForms;
 use ReactorCMS\Http\Controllers\Traits\BasicResource;
-<<<<<<< HEAD
-=======
-use ReactorCMS\Hierarchy\Builders\BuilderService;
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
 class NodeTypesController extends ReactorController {
 

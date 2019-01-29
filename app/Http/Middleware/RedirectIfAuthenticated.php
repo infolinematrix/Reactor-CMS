@@ -19,7 +19,6 @@ class RedirectIfAuthenticated
     {
 
 
-<<<<<<< HEAD
         switch ($guard) {
             case 'api':
                 //dd("NO GUARD FOUND api");
@@ -44,11 +43,6 @@ class RedirectIfAuthenticated
             dd($guard);
             return redirect()->route('reactor.dashboard');
         }*/
-=======
-        if (Auth::guard($guard)->check()) {
-            return redirect()->route('reactor.dashboard');
-        }
->>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
         return $next($request);
     }
