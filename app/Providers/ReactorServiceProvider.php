@@ -3,7 +3,10 @@
 namespace ReactorCMS\Providers;
 
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Reactor\Hierarchy\Node;
@@ -67,6 +70,7 @@ class ReactorServiceProvider extends ServiceProvider
     }
 
     /**
+<<<<<<< HEAD
      * Registers the view cache
      */
     protected function registerViewCache()
@@ -77,6 +81,8 @@ class ReactorServiceProvider extends ServiceProvider
     }
 
     /**
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
      * Bootstrap any application services.
      *
      * @param NodeRepository $nodeRepository
@@ -123,7 +129,11 @@ class ReactorServiceProvider extends ServiceProvider
         }
 
         view()->composer('*', function ($view) {
+<<<<<<< HEAD
             $view->with('currentUser', Auth::guard()->user());
+=======
+            $view->with('currentUser', auth()->user());
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         });
 
         if (is_request_reactor()) {
@@ -139,6 +149,19 @@ class ReactorServiceProvider extends ServiceProvider
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Registers the view cache
+     */
+    protected function registerViewCache()
+    {
+        $this->app->singleton('reactor.viewcache', function ($app) {
+            return $this->app->make('ReactorCMS\Support\ViewCache\ReactorViewCache');
+        });
+    }
+
+    /**
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
      * Registers event listeners
      * (mostly for view cache model events)
      */

@@ -2,6 +2,10 @@
 
 Route::group([
     'prefix' => 'nodes',
+<<<<<<< HEAD
+=======
+    'middleware' => 'can:ACCESS_NODES'
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 ], function () {
     Route::get('/', [
         'uses' => 'NodesController@index',

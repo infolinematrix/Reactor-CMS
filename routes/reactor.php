@@ -5,11 +5,19 @@ Route::group([
     'middleware' => ['setTheme:' . config('themes.active_reactor')]
 ], function () {
 
+<<<<<<< HEAD
     // Authenticated reactor
     require 'reactor/auth.php';
 
     Route::group(['middleware' => ['auth:admin', 'can:ACCESS_REACTOR']], function () {
 
+=======
+    require 'reactor/auth.php';
+
+
+    // Authenticated reactor
+    Route::group(['middleware' => ['auth:admin', 'can:ACCESS_REACTOR']], function () {
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         require 'reactor/dashboard.php';
         require 'reactor/documents.php';
         require 'reactor/mailings.php';
@@ -25,6 +33,9 @@ Route::group([
         require 'reactor/settings.php';
     });
 
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 });

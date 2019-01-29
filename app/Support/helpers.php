@@ -4,6 +4,7 @@ use Reactor\Documents\Media\Media;
 use ReactorCMS\Entities\Node;
 use Reactor\Hierarchy\NodeType;
 
+<<<<<<< HEAD
 function formatSize($bytes){ 
     $kb = 1024;
     $mb = $kb * 1024;
@@ -42,6 +43,8 @@ function folderSize($dir){
     return $total_size;
 }
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 if (!function_exists('getCustomField')) {
 
     function getCustomField($array)
@@ -64,6 +67,7 @@ if (!function_exists('getCustomField')) {
     }
 }
 
+<<<<<<< HEAD
 if (!function_exists('get_package_version')) {
     /**
      * @param string $packageName
@@ -113,6 +117,8 @@ function time_elapsed_string($datetime, $full = false)
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 if (!function_exists('validate_init_package')) {
 
     function validate_init_package($package_name)
@@ -134,7 +140,12 @@ if (!function_exists('get_node_type')) {
         if ($type_name || $type_name == '') {
 
             $type = \Reactor\Hierarchy\NodeType::where('name', trim($type_name))->first();
+<<<<<<< HEAD
             if (count([$type]) == 0) {
+=======
+
+            if (count($type) == 0) {
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                 flash('Opps! Node Type not found.. ' . $type_name);
                 return redirect()->back();
             } else {
@@ -156,6 +167,27 @@ if (!function_exists('plainText')) {
     }
 }
 
+<<<<<<< HEAD
+=======
+/*Get Media*/
+
+if (!function_exists('getMedia')) {
+    /**
+     * Get Sites layouts list with name
+     * Developed by : Subha Sundar Das (10-june-2017)
+     */
+    function getMedia($node_id = 0)
+    {
+        $image = Media::where('node_id', $node_id)->first();
+        if ($image) {
+            return $image->path;
+        } else {
+            return false;
+        }
+    }
+}
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 if (!function_exists('getSiteLayouts')) {
     /**
      * Get Sites layouts list with name
@@ -192,10 +224,16 @@ if (!function_exists('locale')) {
     function locale()
     {
         $loc = 'en';
+<<<<<<< HEAD
         /*if (session()->get('_locale')) {
             $loc = session()->get('_locale');
         }*/
         $loc = App::getLocale();
+=======
+        if (session()->get('_locale')) {
+            $loc = session()->get('_locale');
+        }
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         return $loc;
     }
 }
@@ -217,15 +255,25 @@ if (!function_exists('date_format')) {
      *
      * @return bool
      */
+<<<<<<< HEAD
     function date_format($date, $style = 'd M, Y')
     {
         $dt = '00:00:0000 00:00:00';
+=======
+    function date_format($date, $style = 'd-M-Y')
+    {
+        $dt = '00:00:0000 00:00:00';
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $dt = date(strtotime($date), $style);
         return $dt;
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 if (!function_exists('node_status')) {
     /**
      * Node Status text

@@ -113,7 +113,11 @@ class FormsHtmlBuilder {
         if ($showLabel && !(isset($options['label']) && $options['label'] === false))
         {
             $class = isset($options['label_attr']['class']) ? $options['label_attr']['class'] : '';
+<<<<<<< HEAD
             $options['label_attr']['class'] = '' . ($errors->has($name) ? ' ' : '') . $class;
+=======
+            $options['label_attr']['class'] = 'form-group__label ' . ($errors->has($name) ? ' form-group__label--error ' : '') . $class;
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
             return \Form::label($name,
                 trans()->has('validation.attributes.' . $name) ?
@@ -197,6 +201,7 @@ class FormsHtmlBuilder {
         );
     }
 
+<<<<<<< HEAD
 
     function deleteFormLink($action, $text, $input = '', $specific = false, $icon = 'fa fa-home')
     {
@@ -208,4 +213,6 @@ class FormsHtmlBuilder {
             $action, trans($text)
         );
     }
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 }

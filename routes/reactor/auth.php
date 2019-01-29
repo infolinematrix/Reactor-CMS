@@ -1,19 +1,30 @@
 <?php
 
+<<<<<<< HEAD
 Route::group(['middleware' => 'guest'], function () {
 
     // Authentication
     Route::get('auth/login', [
         'uses' => 'Auth\AuthController@showLoginForm',
         'as' => 'reactor.auth.login']);
+=======
+Route::group(['middleware' => 'guest:api'], function () {
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
     Route::post('auth/login', [
         'uses' => 'Auth\AuthController@login',
         'as' => 'reactor.auth.login.post']);
 });
 
+<<<<<<< HEAD
 
 
+=======
+// Authentication
+Route::get('auth/login', [
+    'uses' => 'Auth\AuthController@showLoginForm',
+    'as' => 'reactor.auth.login']);
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 /*Route::post('auth/login', [
     'uses' => 'Auth\AuthController@login',
     'as'   => 'reactor.auth.login.post']);*/

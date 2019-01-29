@@ -60,8 +60,11 @@ class Authenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
+<<<<<<< HEAD
         //dd($guards);
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $this->authenticate($guards);
 
 
@@ -82,7 +85,10 @@ class Authenticate
             return $this->auth->authenticate();
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         foreach ($guards as $guard) {
             if ($this->auth->guard($guard)->check()) {
                 return $this->auth->shouldUse($guard);

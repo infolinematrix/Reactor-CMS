@@ -44,7 +44,11 @@ class CustomForm extends Form
     {
         $nodeTypes = NodeType::whereVisible(1)
             ->forNodes()
+<<<<<<< HEAD
             ->pluck('label', 'name')
+=======
+            ->lists('label', 'name')
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
             ->toArray();
 
         return $nodeTypes;

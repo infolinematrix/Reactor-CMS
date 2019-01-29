@@ -11,7 +11,11 @@
 |
 */
 
+<<<<<<< HEAD
 $factory->define(ReactorCMS\User::class, function (Faker\Generator $faker) {
+=======
+$factory->define(Reactor\User::class, function (Faker\Generator $faker) {
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,

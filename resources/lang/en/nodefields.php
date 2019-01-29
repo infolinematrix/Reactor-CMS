@@ -15,7 +15,10 @@ return [
 
     'type_text' => 'Text',
     'type_textarea' => 'Textarea',
+<<<<<<< HEAD
     'type_wysiwyg' => 'HTML Editor',
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     'type_markdown' => 'Markdown',
     'type_document' => 'Document',
     'type_gallery' => 'Gallery',

@@ -7,7 +7,11 @@
                 <img src="{{ asset('assets/avatar.png') }}" class="img-bordered-sm" alt="User Image">
             </div>
             <div class="pull-left info">
+<<<<<<< HEAD
                 <p>{!! Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name !!}</p>
+=======
+                <p>{!! $currentUser->first_name.' '.$currentUser->last_name !!}</p>
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
                 <span class="text-danger"> Online</span>
             </div>
         </div>
@@ -37,7 +41,16 @@
 
         <!-- sidebar menu: : Packages -->
         <hr class="divider">
+<<<<<<< HEAD
 
+=======
+        <ul class="sidebar-menu" data-widget="tree">
+            {!!  (isset($admin_package_menu) ? $admin_package_menu : '')  !!}
+        </ul>
+
+
+        <hr class="divider">
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">REACTOR MANAGEMENT</li>
             <li class="treeview">

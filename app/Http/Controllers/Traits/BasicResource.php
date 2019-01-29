@@ -15,7 +15,10 @@ trait BasicResource {
      */
     public function index()
     {
+<<<<<<< HEAD
         
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         extract($this->getResourceNames());
 
         $items = $modelPath::sortable()->paginate();

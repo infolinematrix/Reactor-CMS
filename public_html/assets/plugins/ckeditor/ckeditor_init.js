@@ -29,6 +29,7 @@ var initSample = ( function() {
 
 		// Depending on the wysiwygare plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
+<<<<<<< HEAD
 			//CKEDITOR.replace( 'editor' );
 			CKEDITOR.replace( 'editor', {
 				toolbar: [
@@ -50,6 +51,13 @@ var initSample = ( function() {
 			CKEDITOR.inline( 'editor' );
 			FCKConfig.EnterMode = 'br' ;         // p | div | br
 			FCKConfig.ShiftEnterMode = 'p' ;   // p | div | br
+=======
+			CKEDITOR.replace( 'editor' );
+		} else {
+			editorElement.setAttribute( 'contenteditable', 'true' );
+			CKEDITOR.inline( 'editor' );
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 			// TODO we can consider displaying some info box that
 			// without wysiwygarea the classic editor may not work.
 		}

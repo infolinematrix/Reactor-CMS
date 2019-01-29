@@ -22,10 +22,15 @@ abstract class ReactorController extends Controller
      */
     public function validateForm($form, Request $request, array $overrideRules = [])
     {
+<<<<<<< HEAD
         
         $form = $this->form($form);
 
 
+=======
+        $form = $this->form($form);
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         // We set the flash message here because there is nowhere else to do it
         flash()->error(trans('general.error_saving'));
 

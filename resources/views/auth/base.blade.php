@@ -9,8 +9,12 @@
 
     <title>@yield('pageTitle') &mdash; Nuclear</title>
 
+<<<<<<< HEAD
     {!! Theme::css('css/app.css') !!}
 
+=======
+    {!! \Igaster\LaravelTheme\Theme::css('css1/app.css') !!}
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300|Lato:400,700&subset=latin,latin-ext'
           rel='stylesheet' type='text/css'>
 

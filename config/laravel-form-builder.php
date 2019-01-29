@@ -14,7 +14,10 @@ return [
         'color' => 'ReactorCMS\Html\Fields\ColorField',
         'slug' => 'ReactorCMS\Html\Fields\SlugField',
         'hidden' => 'ReactorCMS\Html\Fields\HiddenField',
+<<<<<<< HEAD
         'wysiwyg' => 'ReactorCMS\Html\Fields\WysiwygField',
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         'relation' => 'ReactorCMS\Html\Fields\RelationField',
         'markdown' => 'ReactorCMS\Html\Fields\MarkdownField',
         'gallery' => 'ReactorCMS\Html\Fields\GalleryField',

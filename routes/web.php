@@ -12,6 +12,7 @@
 */
 
 
+<<<<<<< HEAD
 
 require 'common.php';
 require 'auth.php';
@@ -36,4 +37,30 @@ Route::group(['namespace' => '\ReactorCMS\Http\Controllers'], function () {
 
 
 });
+=======
+Route::group([
+    'middleware' => []
+], function () {
+
+});
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+require 'common.php';
+
+// Reactor routes
+require routes_path(config('themes.active_reactor') . '.php');
+
+// Install routes
+if (!is_installed()) require routes_path('install.php');
+
+
+Route::get('{path}', function () {
+    return file_get_contents(public_path('_nuxt/index.html'));
+})->where('path', '(.*)');
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 

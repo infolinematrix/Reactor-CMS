@@ -311,6 +311,7 @@ if ( ! function_exists('delete_form'))
     }
 }
 
+<<<<<<< HEAD
 if ( ! function_exists('delete_form_link'))
 {
     function delete_form_link($action, $text, $input = '', $specific = false, $icon = 'fa-trash')
@@ -319,6 +320,8 @@ if ( ! function_exists('delete_form_link'))
     }
 }
 
+=======
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 if ( ! function_exists('ancestor_links'))
 {
     /**

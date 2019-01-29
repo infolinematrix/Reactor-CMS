@@ -13,7 +13,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use ReactorCMS\Entities\Settings;
 use ReactorCMS\Http\Controllers\Traits\UseSettingsForm;
+<<<<<<< HEAD
 use Intervention\Image\Facades\Image as ImageFacade;
+=======
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 class SettingsController extends ReactorController
 {
 
@@ -22,11 +26,17 @@ class SettingsController extends ReactorController
     public function index()
     {
 
+<<<<<<< HEAD
 
         $form = $this->getCreateForm();
         $site_logo = getSettings('site_logo');
 
         return $this->compileView('settings.index', compact('form','site_logo'), 'Application Settings');
+=======
+        $form = $this->getCreateForm();
+
+        return $this->compileView('settings.index', compact('form'), 'Application Settings');
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
     }
 
     public function store(Request $request)
@@ -37,6 +47,7 @@ class SettingsController extends ReactorController
         $values = array_except($request->all(), ['_token']);
 
 
+<<<<<<< HEAD
 
         $file = $request->file('site_logo');
 
@@ -67,6 +78,23 @@ class SettingsController extends ReactorController
             }
 
         }
+=======
+        $tblSettings = new Settings;
+        $tblSettings->truncate();
+
+        //---Crear Caches if exest ---//
+
+        foreach ($values as $key => $value) {
+
+            $tblSettings->create([
+                'variable' => $key,
+                'value' => $value
+            ]);
+
+            Cache::forget('settings_' . $key);
+        }
+
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
         $this->notify('Sattings Updated...', 'settings_update');
 
         return redirect()->back();

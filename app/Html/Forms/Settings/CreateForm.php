@@ -151,6 +151,10 @@ class CreateForm extends Form
 
         $this->add('site_logo', 'file', [
             'label' => false,
+<<<<<<< HEAD
+=======
+            
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
             'attr' => ['class' => 'img','accept' => 'image/png, image/jpeg']
 
         ]);

@@ -57,7 +57,11 @@
 {!! Html::script('assets/plugins/fastclick/fastclick.js') !!}
 {!! Html::script('assets/reactor/js/adminlte.js') !!}
 {!! Html::script('assets/plugins/slimScroll/jquery.slimscroll.min.js') !!}
+<<<<<<< HEAD
 {!! Html::script('assets/plugins/dropzone/jquery.ezdz.js') !!}
+=======
+{!! Html::script('assets/plugins/dropzone/jquery.ezdz.min1.js') !!}
+>>>>>>> a55e7fb566919476f1352d59a4554173b8a1ae6c
 
 
 
