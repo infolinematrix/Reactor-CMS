@@ -121,7 +121,7 @@ class ContentsHtmlBuilder {
                         </button>
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li>
-                                <a href="' . route('reactor.' . $key . '.edit', $id) . '"><i class="fa fa-ellipsis-v "></i>' . trans($key .'.edit') .'</a>;
+                                <a href="' . route('reactor.' . $key . '.edit', $id) . '"><i class="fa fa-ellipsis-v "></i>' . trans($key .'.edit') .'</a>
                             </li>
                             <li>' .
                                 delete_form(

@@ -24,9 +24,6 @@
                         @include('partials.contents.form')
                     </div>
 
-                    <div class="col-md-6">
-                        dfd
-                    </div>
 
                 </div>
 

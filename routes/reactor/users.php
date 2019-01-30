@@ -39,9 +39,11 @@ Route::group(['middleware' => 'can:ACCESS_USERS'], function () {
     Route::get('users/{id}/permissions', [
         'uses' => 'UsersController@permissions',
         'as' => 'reactor.users.permissions']);
+
     Route::put('users/{id}/permissions', [
         'uses' => 'UsersController@addPermission',
         'as' => 'reactor.users.permissions.add']);
+
     Route::delete('users/{id}/permissions', [
         'uses' => 'UsersController@revokePermission',
         'as' => 'reactor.users.permissions.revoke']);
