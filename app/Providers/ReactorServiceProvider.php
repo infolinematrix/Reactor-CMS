@@ -46,6 +46,9 @@ class ReactorServiceProvider extends ServiceProvider
         require_once __DIR__ . '/../Support/helpers.php';
 
         require_once __DIR__ . '/../Html/Builders/snippets.php';
+
+        require_once __DIR__ . '/../Helpers/Application.php';
+
     }
 
     /**
