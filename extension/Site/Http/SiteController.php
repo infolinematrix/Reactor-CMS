@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
-use Reactor\Entities\Node;
-use Reactor\Http\Controllers\Controller;
+use ReactorCMS\Entities\Node;
+use ReactorCMS\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
@@ -22,29 +22,12 @@ class SiteController extends Controller
      */
     public function getHome(NodeRepository $nodeRepository)
     {
-        $home = $nodeRepository->getHome();
 
-        return $home;
+
+        return $this->compileView('index', null, trans('general.dashboard'));
     }
 
-    public function getLatest(NodeRepository $nodeRepository)
-    {
-        $nodes = Node::recentlyCreated(10)->get();
 
-        $data = [];
-        foreach ($nodes as $key) {
-
-            $media = $key->media()->first();
-
-            $data[] = [
-                'title' => $key->getTitle(),
-                'img' => 'http://localhost:8000/uploads/' . $media->path
-            ];
-
-        }
-
-        return response()->json($data);
-    }
 
     /**
      * Shows a page

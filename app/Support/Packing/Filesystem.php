@@ -17,7 +17,8 @@ class Filesystem extends IlluminateFilesystem
      * @param string $directory
      * @return array
      */
-    public function files($directory)
+
+    public function files($directory, $hidden = false)
     {
         // ONLY THE LINE BELOW IS CHANGED
         $glob = glob($directory . '/{,.}*', GLOB_BRACE);

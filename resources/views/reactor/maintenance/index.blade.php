@@ -26,10 +26,6 @@
                             <h4 class="content-inner__heading">{{ __('Optimization') }}</h4>
                             <p class="text-muted">{{ __('Actions necessary to optimize Reactor performance. Please wait as some actions may take a while.') }}</p>
 
-                            <button class="btn btn-default button--emphasis button--maintenance"
-                                    data-action="{{ route('reactor.maintenance.optimize') }}" type="button">
-                                {{ uppercase(__('Optimize Reactor')) }}
-                            </button>
 
                             <button class="btn btn-default button--maintenance"
                                     data-action="{{ route('reactor.maintenance.cache.routes') }}" type="button">
