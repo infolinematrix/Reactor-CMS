@@ -62,6 +62,10 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .m-t-md {
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -75,12 +79,12 @@
     @endif
 
     <div class="content">
-        <div class="title m-b-md">
-            DORII
+        <div class="title">
+            REACTOR
         </div>
-        <span>Ethenic Fashion platform for Womans</span>
-        <div class="links">
-            <a href="https://laravel.com/docs">Documentation</a>
+        <span class="m-b-md">A Polimorphic Content Management System for Laravel Developer</span>
+        <div class="links m-t-md">
+            <a href="https://laravel.com/docs">Laravel</a>
             <a href="https://laracasts.com">Laracasts</a>
             <a href="https://laravel-news.com">News</a>
             <a href="https://forge.laravel.com">Forge</a>

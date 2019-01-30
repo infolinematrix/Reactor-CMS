@@ -32,10 +32,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::pattern('id', '[0-9]+');
         Route::pattern('slug', '[\pL\pM\pN_-]+');
 
-        /* $this->app['reactor.routing.filtermaker']
-             ->registerPatternFilters(Route $router);
-         */
-
         parent::boot();
     }
 
@@ -49,6 +45,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapWebRoutes();
+        $this->mapApiRoutes();
+        $this->mapExtensionRoutes();
         //
     }
 
@@ -73,6 +71,29 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "extension" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @param  \Illuminate\Routing\Router $router
+     * @return void
+     */
+    protected function mapExtensionRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
 
 
 }

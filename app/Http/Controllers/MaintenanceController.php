@@ -5,6 +5,9 @@ namespace ReactorCMS\Http\Controllers;
 
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
+use Kalnoy\Nestedset\NodeTrait;
+use Reactor\Hierarchy\Node;
 
 class MaintenanceController extends ReactorController
 {
@@ -29,21 +32,11 @@ class MaintenanceController extends ReactorController
      */
     protected function action($action, $message, array $options = [])
     {
-        \Artisan::call($action, $options);
 
+        Artisan::call($action, $options);
         $this->notify('maintenance.' . $message);
 
         return redirect()->back();
-    }
-
-    /**
-     * Optimizes app
-     *
-     * @return Redirect
-     */
-    public function optimizeApp()
-    {
-        return $this->action('optimize', 'optimized_app', ['--force' => true]);
     }
 
     /**
@@ -63,8 +56,7 @@ class MaintenanceController extends ReactorController
      */
     public function fixNodesTree()
     {
-        \Kalnoy\Nestedset\Node::fixTree();
-
+        Node::fixTree();
         $this->notify('maintenance.fixed_nodes_tree');
 
         return redirect()->back();

@@ -204,7 +204,7 @@ if (!function_exists('locale')) {
 
 if (!function_exists('currency_format')) {
     /**
-     * Checks if Nuclear is installed
+     * Checks if Reactor is installed
      *
      * @return bool
      */
@@ -215,7 +215,7 @@ if (!function_exists('currency_format')) {
 }
 if (!function_exists('date_format')) {
     /**
-     * Checks if Nuclear is installed
+     * Checks if Reactor is installed
      *
      * @return bool
      */
@@ -249,7 +249,7 @@ if (!function_exists('node_status')) {
 
 if (!function_exists('is_installed')) {
     /**
-     * Checks if Nuclear is installed
+     * Checks if Reactor is installed
      *
      * @return bool
      */
@@ -286,7 +286,7 @@ if (!function_exists('is_request_install')) {
 
 if (!function_exists('nuclear_version')) {
     /**
-     * Returns the current nuclear version
+     * Returns the current Reactor version
      *
      * @return int
      */
