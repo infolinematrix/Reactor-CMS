@@ -91,6 +91,11 @@ trait ModifiesPermissions {
      */
     public function revokePermission(Request $request, $id)
     {
+
+
+
+        
+
         extract($this->getResourceNames());
 
         $this->authorize('EDIT_' . $permissionKey);
@@ -98,6 +103,7 @@ trait ModifiesPermissions {
         $model = $modelPath::findOrFail($id);
 
         $model->revokePermission($request->input('permission'));
+
 
         app('reactor.viewcache')->flushReactor();
 

@@ -68,6 +68,15 @@ class EditParametersForm extends Form {
             'inline'  => true,
             'rules'   => 'in:list,tree'
         ]);
+
+        $this->add('layout', 'select', [
+            'choices' => [
+                'layout.default' => __('Default'),
+                'layout.page' => __('Page'),
+                'layout.blank' => __('Blank')
+            ],
+            'inline'  => true
+        ]);
     }
 
 }

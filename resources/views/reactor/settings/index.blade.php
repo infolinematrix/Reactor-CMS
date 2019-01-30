@@ -44,18 +44,6 @@
                     </a>
                 </li>
 
-                <li class="">
-                    <a href="#weekly" data-toggle="tab" aria-expanded="false" data-mode="weekly">
-                        {!! __('Weekly') !!}
-                    </a>
-                </li>
-
-                <li class="">
-                    <a href="#monthly" data-toggle="tab" aria-expanded="false" data-mode="monthly">
-                        {!! __('Monthly') !!}
-                    </a>
-                </li>
-
                 <li class="pull-left header"><i class="fa fa-cogs"></i> {!! __($pageTitle) !!}</li>
             </ul>
 
@@ -63,11 +51,7 @@
             <div class="tab-content">
 
 
-                <div class="callout callout-default">
-                    <p>Form builder for Laravel 5 inspired by Symfony’s form builder. With help of Laravels FormBuilder
-                        class creates forms that can be easy modified and reused. By default it supports Bootstrap
-                        3.</p>
-                </div>
+
 
 
                 <div class="tab-pane active" id="daily">

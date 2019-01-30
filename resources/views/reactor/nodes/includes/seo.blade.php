@@ -4,6 +4,4 @@
     {!! form_row($form->meta_title) !!}
     {!! form_row($form->meta_keywords) !!}
     {!! form_row($form->meta_description) !!}
-    {!! form_row($form->meta_image) !!}
-    {!! form_row($form->meta_author) !!}
 </div>

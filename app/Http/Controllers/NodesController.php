@@ -194,7 +194,7 @@ class NodesController extends ReactorController
 
         $form = $this->getEditParametersForm($id, $node);
 
-        dd($form);
+
         return $this->compileView('nodes.parameters', compact('form', 'node', 'source'));
     }
 
@@ -207,6 +207,8 @@ class NodesController extends ReactorController
      */
     public function updateParameters(Request $request, $id)
     {
+
+
         $node = $this->authorizeAndFindNode($id, null, 'EDIT_NODES', false);
 
         $this->validateEditParametersForm($request);

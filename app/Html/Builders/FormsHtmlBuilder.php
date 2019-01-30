@@ -57,6 +57,8 @@ class FormsHtmlBuilder {
     public function actionButton($link, $icon, $text = '', $class = '', $iconSide = 'l')
     {
 
+
+
         $iconType = empty($text) ? '<i class="fa ' . $icon . '></i>' :
             ($iconSide === 'r' ?
                 uppercase($text) . ' <i class="fa ' . $icon . '"></i>' :
@@ -188,12 +190,13 @@ class FormsHtmlBuilder {
 
     function deleteForm($action, $text, $input = '', $specific = false, $icon = 'fa fa-home')
     {
+
         return sprintf('<form action="%s" method="POST">' .
             method_field('DELETE') . csrf_field() .
             '<button type="submit" class="btn btn-link" type="submit">
                 <i class="fa fa-trash"></i>%s
             </button></form>',
-            $action, trans($text)
+            $action, $input,trans($text)
         );
     }
 

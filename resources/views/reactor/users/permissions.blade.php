@@ -11,11 +11,8 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">{!! __("User List") !!}</h3>
+                <h3 class="box-title">{!! __("User Permission List") !!}</h3>
 
-                <div class="box-tools pull-right">
-                    <a href="{!! route('reactor.users.create') !!}" class="btn btn-flat btn-danger">Create</a>
-                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -24,6 +21,10 @@
                     'route' => route('reactor.users.permissions.revoke', $user->getKey())
                 ])
             <!-- /.row -->
+
+                @if($count > 0)
+                    @include('permissions.add')
+                @endif
             </div>
 
 

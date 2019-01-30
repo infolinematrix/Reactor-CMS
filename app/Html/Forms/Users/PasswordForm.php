@@ -19,11 +19,11 @@ class PasswordForm extends Form {
     public function buildForm()
     {
         $this->add('password', 'password', [
-            'rules' => 'required|min:8',
+            'rules' => 'required|min:6',
             'meter' => true
         ]);
         $this->add('password_confirmation', 'password', [
-            'rules' => 'required|min:8|same:password'
+            'rules' => 'required|min:6|same:password'
         ]);
     }
 }
