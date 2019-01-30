@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Extension\Site\Http;
+namespace Extension\Site\Http\Controllers;
 
 
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class SiteController extends Controller
      * @param NodeRepository $nodeRepository
      * @return View
      */
-    public function getHome(NodeRepository $nodeRepository)
+    public function getHome()
     {
 
         die("HELLO SITE");
