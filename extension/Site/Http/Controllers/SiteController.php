@@ -23,7 +23,7 @@ class SiteController extends Controller
     public function getHome(NodeRepository $nodeRepository)
     {
 
-
+        die("HELLO SITE");
         return $this->compileView('index', null, trans('general.dashboard'));
     }
 

@@ -26,10 +26,5 @@ Route::group([
 
 Route::group(['namespace' => '\ReactorCMS\Http\Controllers'], function () {
     // Web Route
-    Route::get('/', ['as' => 'site.home', 'uses' => 'Controller@getHome']);
-});
-
-Route::group(['namespace' => '\ReactorCMS\Http\Controllers'], function () {
-    // Web Route
-    Route::get('/', ['as' => 'site.home', 'uses' => 'Controller@getHome']);
+    //Route::get('/', ['as' => 'site.home', 'uses' => 'Controller@getHome']);
 });

@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'ReactorCMS\Http\Controllers';
+    protected $extension_namespace = '\Extension\Site\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -89,10 +90,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapExtensionRoutes()
     {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+        Route::middleware('web')
+            ->namespace($this->extension_namespace)
+            ->group(base_path('extension/Routes/site.php'));
     }
 
 
