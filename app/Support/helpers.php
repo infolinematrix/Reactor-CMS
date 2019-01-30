@@ -3,6 +3,7 @@
 use Reactor\Documents\Media\Media;
 use ReactorCMS\Entities\Node;
 use Reactor\Hierarchy\NodeType;
+use Illuminate\Support\Facades\Session;
 
 function formatSize($bytes){ 
     $kb = 1024;
@@ -192,10 +193,9 @@ if (!function_exists('locale')) {
     function locale()
     {
         $loc = 'en';
-        /*if (session()->get('_locale')) {
-            $loc = session()->get('_locale');
-        }*/
-        $loc = App::getLocale();
+        if (Session::get('_locale')) {
+            $loc = Session::get('_locale');
+        }
         return $loc;
     }
 }

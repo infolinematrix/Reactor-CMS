@@ -4,6 +4,8 @@
 namespace ReactorCMS\Http\Controllers;
 
 
+use Illuminate\Support\Facades\Session;
+
 class LocaleController extends Controller
 {
 
@@ -41,7 +43,7 @@ class LocaleController extends Controller
     protected function setLocaleSession($locale)
     {
         if (in_array($locale, locales())) {
-            session()->set('_locale', $locale);
+            Session::put('_locale', $locale);
         }
     }
 

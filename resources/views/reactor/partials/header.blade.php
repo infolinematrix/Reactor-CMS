@@ -32,7 +32,6 @@
                             <ul class="menu">
 
                                 @if(count(locales()) > 1 )
-
                                     @foreach(locales() as $value => $key)
                                         <li>
                                             <a href="{!! route('locale.set',$key) !!}">

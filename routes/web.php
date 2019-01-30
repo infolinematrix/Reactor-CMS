@@ -12,7 +12,6 @@
 */
 
 
-
 require 'common.php';
 require 'auth.php';
 
@@ -23,8 +22,6 @@ Route::group([
     require routes_path('reactor.php');
 
 });
-
-
 
 
 Route::group(['namespace' => '\ReactorCMS\Http\Controllers'], function () {
