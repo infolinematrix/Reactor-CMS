@@ -23,7 +23,7 @@
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-language"></i>&nbsp;
-                        <span class="hidden-xs">{!! trans('language.'.locale()) !!}</span>
+                        <span class="hidden-xs">{!! trans('general.'.locale()) !!}</span>
                     </a>
                     <ul class="dropdown-menu">
 
@@ -37,7 +37,7 @@
                                         <li>
                                             <a href="{!! route('locale.set',$key) !!}">
                                                 <i class="fa fa-language text-aqua"></i>
-                                                {!! trans('language.'.$key) !!}
+                                                {!! trans('general.'.$key) !!}
                                             </a>
                                         </li>
                                     @endforeach
