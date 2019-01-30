@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(RoleUserTableSeeder::class);
+        $this->call(NodeTypesTableSeeder::class);
         $this->call(NodeFieldsTableSeeder::class);
         $this->call(NodesTableSeeder::class);
         $this->call(NodeSourcesTableSeeder::class);
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionUserTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
         $this->call(NsBasicpagesTableSeeder::class);
+
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();

@@ -195,7 +195,7 @@ return [
         /*
          * Other Vendor Service Providers...
          */
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+
         //Laracasts\Flash\FlashServiceProvider::class,
         Igaster\LaravelTheme\themeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -269,8 +269,8 @@ return [
         //'Theme'       => Igaster\LaravelTheme\Facades\Theme::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Oembed' => Simexis\Oembed\OembedFacade::class,
-        'Zipper' => Chumper\Zipper\Zipper::class,
-        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Zipper' => Chumper\Zipper\Zipper::class
+
     ),
 
 ];
