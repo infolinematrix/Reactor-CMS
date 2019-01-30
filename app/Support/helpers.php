@@ -195,7 +195,9 @@ if (!function_exists('locale')) {
         $loc = 'en';
         if (Session::get('_locale')) {
             $loc = Session::get('_locale');
+            App::setLocale($loc);
         }
+        //$loc = App::getLocale();
         return $loc;
     }
 }

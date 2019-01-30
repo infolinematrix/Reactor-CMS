@@ -21,10 +21,7 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
                 <a href="{!! route('reactor.dashboard') !!}">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+                    <i class="fa fa-dashboard"></i> <span>{!! trans('sidemenu.dashboard') !!}</span>
                 </a>
 
             </li>
@@ -96,23 +93,6 @@
         </ul>
 
 
-        <!-- Maintenance Module -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-cogs"></i> <span>Maintanence</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu" style="display: none;">
-                    <li><a href="{!! route('reactor.maintenance.index') !!}"><i class="fa fa-circle-o"></i> Maintain
-                            Reactor</a></li>
-
-                </ul>
-            </li>
-        </ul>
-
         <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
                 <a href="#">
@@ -129,18 +109,22 @@
             </li>
         </ul>
 
+        <!-- Maintenance Module -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-cogs"></i> <span>Utility</span>
+                    <i class="fa fa-cogs"></i> <span>Maintanence</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li><a href="{!! route('reactor.maintenance.index') !!}"><i class="fa fa-circle-o"></i> Maintain
+                            Reactor</a></li>
 
+                </ul>
             </li>
         </ul>
-
 
     </section>
     <!-- /.sidebar -->
