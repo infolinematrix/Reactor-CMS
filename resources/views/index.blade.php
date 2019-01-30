@@ -82,7 +82,7 @@
         <div class="title">
             REACTOR
         </div>
-        <span class="m-b-md">A Polimorphic Content Management System</span>
+        <span class="m-b-md">A Polimorphic Content Management System for Laravel Developer</span>
         <div class="links m-t-md">
             <a href="https://laravel.com/docs">Laravel</a>
             <a href="https://laracasts.com">Laracasts</a>
