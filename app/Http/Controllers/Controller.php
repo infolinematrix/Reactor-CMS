@@ -26,4 +26,11 @@ class Controller extends BaseController
 
        return view('index');
     }
+
+    protected function compileView($view, array $parameters = [], $title = null)
+    {
+        $parameters['pageTitle'] = ($title ?: trans($view));
+
+        return view($view, $parameters);
+    }
 }

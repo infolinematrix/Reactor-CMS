@@ -8,7 +8,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @include('partials.seo.metadata')
+    @include('Site::partials.seo.metadata')
     @yield('metadata')
 
     <title>@yield('pageTitle') &mdash; {{ $home->getTranslationAttribute('meta_title') }}</title>

@@ -23,8 +23,8 @@ class SiteController extends Controller
     public function getHome()
     {
 
-        die("HELLO SITE");
-        return $this->compileView('index', null, trans('general.dashboard'));
+
+        return $this->compileView('Site::welcome', [], trans('general.dashboard'));
     }
 
 

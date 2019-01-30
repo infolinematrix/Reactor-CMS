@@ -140,8 +140,8 @@ class SiteExtensionServiceProvider extends ServiceProvider
         View::addNamespace('Site', dirname(__DIR__) . '/Resources/Views');
         $sourcePath = dirname(__DIR__) . '/Resources/Views';
         $viewPath = base_path('resources/views/site/resource/views');
-        $this->loadViewsFrom([$viewPath, $sourcePath], 'Site');
 
+        $this->loadViewsFrom([$viewPath, $sourcePath], 'Site');
     }
 
 
