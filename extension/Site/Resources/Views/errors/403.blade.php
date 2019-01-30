@@ -1,4 +1,4 @@
-@extends('errors.base')
+@extends('Site::errors.base')
 
 @section('title', trans('errors.not_authorized'))
 @section('code', '403')

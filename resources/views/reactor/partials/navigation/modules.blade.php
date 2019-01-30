@@ -36,8 +36,6 @@
             {!! Theme::img('img/nuclear-logo.svg') !!}
             <span>v{{ nuclear_version() }}</span>
         </a>
-        <a href="http://kenarkose.com" target="_blank" class="exclude-ui-events navigation-brand__kk">
-            <i class="icon-kk"></i>
-        </a>
+
     </div>
 </div>
