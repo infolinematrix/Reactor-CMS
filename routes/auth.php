@@ -25,6 +25,7 @@ Route::group([
         'as' => 'login',
         'uses' => 'UserController@index']);
 
+
     Route::get('forgot-password', [
         'as' => 'auth.forgot.password',
         'uses' => 'UserController@getForgot']);
@@ -76,7 +77,7 @@ Route::group([
 
 Route::group([
     'namespace' => '\ReactorCMS\Http\Controllers\Auth',
-    'middleware' => 'guest'
+    'middleware' => 'web'
 ], function () {
 
     Route::post('login', [

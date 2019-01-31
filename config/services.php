@@ -39,4 +39,16 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1182087955211459',
+        'client_secret' => 'ad9117700653b59afee28f89a5834600',
+        'redirect' => 'http://localhost:8000/social/login/facebook',
+    ],
+
+    'google' => [
+        'client_id' => '985665939050-6pt5l9sgcpoa9cumlb9ebie0h47ri47l.apps.googleusercontent.com',
+        'client_secret' => 'Lx1uFJIksolffk74bIB0bvFz',
+        'redirect' => 'http://localhost:8000/social/login/google',
+    ],
+
 ];

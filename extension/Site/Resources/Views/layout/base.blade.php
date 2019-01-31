@@ -27,7 +27,7 @@
 {!! Theme::css('css/vendors.css') !!}
 {!! Theme::css('css/icon_fonts/css/all_icons_min.css') !!}
 {!! Theme::css('css/blog.css') !!}
-
+{!! Theme::css('vendors/sweetalert2/dist/sweetalert2.min.css') !!}
 {!! Html::style('public/assets/plugins/select2/select2.css') !!}
 
 <!-- YOUR CUSTOM CSS -->
@@ -66,8 +66,10 @@
 {!! Theme::js('js/functions.js') !!}
 {!! Html::script('public/assets/plugins/select2/select2.js') !!}
 {!! Theme::js('js/search.js') !!}
+{!! Theme::js('js/app.js') !!}
 <!-- SPECIFIC SCRIPTS -->
 {!! Theme::js('js/jquery.cookiebar.js') !!}
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 <script>
     $(document).ready(function () {
         'use strict';

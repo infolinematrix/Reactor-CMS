@@ -16,7 +16,7 @@
                     </ul>
                 @else
                     <ul id="top_access" class="main-menu">
-                        <li><a href="{!! route('profile') !!}"><i class="pe-7s-add-user"></i></a></li>
+                        <li><a href=""><i class="pe-7s-add-user"></i></a></li>
                     </ul>
                 @endif
                 <div class="main-menu">
@@ -51,7 +51,7 @@
                                 <ul>
 
                                     <li><a href="#">Add Profile</a></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="{!! route('logout') !!}">Logout</a></li>
                                 </ul>
                             </li>
                         @endif

@@ -10,7 +10,8 @@ use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use ReactorCMS\Entities\Node;
 use ReactorCMS\Http\Controllers\Controller;
-
+use Mail;
+use UxWeb\SweetAlert\SweetAlert;
 class SiteController extends Controller
 {
 
@@ -22,7 +23,12 @@ class SiteController extends Controller
      */
     public function getHome()
     {
-        return $this->compileView('Site::welcome', [], 'Home Page');
+
+        $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->take(10)->get();
+        $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->take(10)->get();
+
+
+        return $this->compileView('Site::welcome', compact('categories','locations'), 'Home Page');
     }
 
     public function browse()
@@ -86,6 +92,37 @@ class SiteController extends Controller
      */
     public function getContact()
     {
+
         return $this->compileView('Site::contact', [], 'Contact Us');
     }
+
+    public function postContact(Request $request){
+
+        $data = [
+
+            'name' => $request->name_contact,
+            'last_name' => $request->lastname_contact,
+            'email' => $request->email_contact,
+            'phone' => $request->phone_contact,
+            'content' => $request->message_contact,
+
+        ];
+
+        \Config::set('mail', getMailconfig());
+
+        Mail::send('mail.contact', $data, function ($message) use ($data) {
+            $message->from($data['email'], getSettings('site_title'));
+            $message->subject('Contact Us');
+            $message->to(getSettings('email_from_email'));
+            $message->replyTo($data['email'], $data['name']);
+        });
+
+
+        SweetAlert::message('Thank you. We receive your message.')->autoclose(4000);
+
+        return redirect()->back();
+    }
+
+
+
 }

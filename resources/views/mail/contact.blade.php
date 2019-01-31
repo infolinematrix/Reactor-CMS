@@ -6,7 +6,7 @@
 <div style='padding: 15px'>
     <div style='padding: 10px 0px; font-size: 14px; color: #3b3b3b'>
 
-        <br><b>Full Name : </b>{!! $name !!}
+        <br><b>Full Name : </b>{!! $name.' '.$last_name !!}
         <br><b>Email : </b>{!! $email !!}
         <br><b>Phone No : </b>{!! $phone !!}
 
