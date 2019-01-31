@@ -22,13 +22,18 @@ class SiteController extends Controller
      */
     public function getHome()
     {
-
-
-        return $this->compileView('Site::welcome', [], trans('general.dashboard'));
+        return $this->compileView('Site::welcome', [], 'Home Page');
     }
 
+    public function browse()
+    {
+        return $this->compileView('Site::list', [], 'Browse Page');
+    }
 
-
+    public function single()
+    {
+        return $this->compileView('Site::single', [], 'Browse Page');
+    }
     /**
      * Shows a page
      *
@@ -76,4 +81,11 @@ class SiteController extends Controller
         return view('tag', compact('tag'));
     }
 
+    /**
+     * Site Contact
+     */
+    public function getContact()
+    {
+        return $this->compileView('Site::contact', [], 'Contact Us');
+    }
 }

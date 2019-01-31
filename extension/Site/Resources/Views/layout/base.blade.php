@@ -26,6 +26,7 @@
 {!! Theme::css('css/menu.css') !!}
 {!! Theme::css('css/vendors.css') !!}
 {!! Theme::css('css/icon_fonts/css/all_icons_min.css') !!}
+{!! Theme::css('css/blog.css') !!}
 
 {!! Html::style('public/assets/plugins/select2/select2.css') !!}
 
@@ -65,7 +66,16 @@
 {!! Theme::js('js/functions.js') !!}
 {!! Html::script('public/assets/plugins/select2/select2.js') !!}
 {!! Theme::js('js/search.js') !!}
-
+<!-- SPECIFIC SCRIPTS -->
+{!! Theme::js('js/jquery.cookiebar.js') !!}
+<script>
+    $(document).ready(function () {
+        'use strict';
+        $.cookieBar({
+            fixed: true
+        });
+    });
+</script>
 
 @yield('scripts')
 <!--Carousel-JS-->

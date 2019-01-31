@@ -7,11 +7,11 @@ Route::group([
 ], function () {
 
     Route::get('register', [
-        'as' => 'auth.register',
+        'as' => 'register',
         'uses' => 'UserController@getRegister']);
 
     Route::post('register', [
-        'as' => 'auth.register',
+        'as' => 'register',
         'uses' => 'UserController@postRegister']);
 
 

@@ -11,17 +11,16 @@
             <nav class="col-lg-9 col-6">
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0"><span>Menu mobile</span></a>
                 @if(!Auth::user())
-                    <ul id="top_access">
-
-                        <li><a href="#"><i class="pe-7s-user"></i></a></li>
-                        <li><a href="#"><i class="pe-7s-add-user"></i></a></li>
-
+                    <ul id="top_access" class="main-menu">
+                        <li><a href="{!! route('login') !!}"><i class="pe-7s-add-user"></i></a></li>
+                    </ul>
+                @else
+                    <ul id="top_access" class="main-menu">
+                        <li><a href="{!! route('profile') !!}"><i class="pe-7s-add-user"></i></a></li>
                     </ul>
                 @endif
                 <div class="main-menu">
                     <ul>
-
-
                         <li class="submenu">
                             <a href="#0" class="show-submenu">Language<i class="icon-down-open-mini"></i></a>
                             <ul>
@@ -33,23 +32,13 @@
                         <li class="submenu">
                             <a href="#0" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
                             <ul>
-                                <li><a href="#">Browse (All)</a></li>
-                                <li><a href="#">Browse (Category)</a></li>
-                                <li><a href="#">Browse (Location)</a></li>
-                                <li><a href="#">Browse (Location + Category)</a></li>
+                                <li><a href="{!! route('site.browse') !!}">Browse (All)</a></li>
+                                <li><a href="{!! route('site.single') !!}">Single</a></li>
+                                <li><a href="{!! route('site.contact') !!}">Contact</a></li>
+                                <li><a href="{!! route('register') !!}">Register</a></li>
+                                <li><a href="{!! route('login') !!}">Login</a></li>
                             </ul>
                         </li>
-                        <!--
-                        <li class="submenu">
-                            <a href="#0" class="show-submenu">Elements<i class="icon-down-open-mini"></i></a>
-                            <ul>
-                                <li><a href="./icon-pack-1.html">Icon pack 1</a></li>
-                                <li><a href="./icon-pack-2.html">Icon pack 2</a></li>
-                                <li><a href="./icon-pack-3.html">Icon pack 3</a></li>
-                                <li><a href="404.html">404 page</a></li>
-                            </ul>
-                        </li>
-                        -->
 
                         @if(Auth::user())
                             <li class="submenu">
