@@ -1,0 +1,14 @@
+/tests
+/trash
+/vendor
+/node_modules
+/extension/site
+/resources/assets
+/public/storage
+Homestead.yaml
+Homestead.json
+*.DS_Store
+/.idea
+/.env
+.nuxt
+composer.lock
