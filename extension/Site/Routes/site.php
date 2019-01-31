@@ -17,4 +17,10 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     Route::get('/single', ['as' => 'site.single', 'uses' => 'SiteController@single']);
 
 
+    /**
+     * Include All routes
+     * from Routes Folder
+     */
+    require 'member.php';
+
 });
