@@ -14,6 +14,7 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     // Testing Routes
     Route::get('/browse', ['as' => 'site.browse', 'uses' => 'SiteController@browse']);
     Route::get('/single', ['as' => 'site.single', 'uses' => 'SiteController@single']);
+    Route::get('/single', ['as' => 'site.single', 'uses' => 'SiteController@single']);
 
 
 });
