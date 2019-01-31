@@ -45,32 +45,33 @@
                     </p>
                     <div>
                         <div id="message-contact"></div>
-                        <form method="post" action="assets/contact.php" id="contactform"/>
+                        <div id="contactform">
+                        {!! Form::open(['url' => route('site.contact')]) !!}
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control styled" id="name_contact" name="name_contact"
-                                           placeholder="Name"/>
+                                    <input type="text" class="form-control styled" id="name_contact" name="name_contact" required
+                                           placeholder="Name" autocomplete="off"/>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control styled" id="lastname_contact"
-                                           name="lastname_contact" placeholder="Last name"/>
+                                           name="lastname_contact" placeholder="Last name" autocomplete="off"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="email" id="email_contact" name="email_contact"
-                                           class="form-control styled" placeholder="Email"/>
+                                    <input type="email" id="email_contact" name="email_contact" required
+                                           class="form-control styled" placeholder="Email" autocomplete="off"/>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" id="phone_contact" name="phone_contact"
-                                           class="form-control styled" placeholder="Phone number"/>
+                                    <input type="text" id="phone_contact" name="phone_contact" required
+                                           class="form-control styled" placeholder="Phone number" autocomplete="off"/>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +85,9 @@
                             </div>
                         </div>
                         <input type="submit" value="Submit" class="btn_1 add_top_20" id="submit-contact"/>
-                        </form>
+                         <span id="contactMsz"></span>
+                        {!! Form::close() !!}
+                        </div>
                     </div>
                     <!-- /col -->
                 </div>

@@ -66,13 +66,8 @@ class UserController extends Controller
 
     public function dashboard(){
 
-        $isProfile = $this->check_business_exist();
 
-
-
-        $node_count = Auth::user()->nodes()->withType('producttype')->count();
-
-        return $this->compileView('Site::auth.dashboard', compact('node_count','isProfile'), 'USER PANEL');
+        return $this->compileView('Site::member.dashboard', compact('node_count','isProfile'), 'USER PANEL');
     }
 
     public function profile(){
@@ -162,11 +157,11 @@ class UserController extends Controller
             /*Event Running*/
             Event::fire(new RegisterEvent($user));
 
-            SweetAlert::message('Please check your email, we have send you a activation code');
+            SweetAlert::message('Please check your email, we have send you a activation code')->autoclose(4000);;
             return redirect()->back();
         }else{
 
-            SweetAlert::message('Email Already Exist!');
+            SweetAlert::message('Email Already Exist!')->autoclose(4000);
             return redirect()->back();
 
         }
@@ -178,10 +173,8 @@ class UserController extends Controller
 
         User::where('email',trim($email))->update(['status' => 51]);
 
-        SweetAlert::message('Account activated! Please login...');
+        SweetAlert::message('Account activated! Please login...')->autoclose(4000);
         return redirect()->route('login');
-
-
 
     }
 

@@ -121,6 +121,7 @@
                 movet cetero at.</p>
         </div>
         <div class="row justify-content-center">
+            @if(count($locations) > 0)
             <div class="col-xl-4 col-lg-5 col-md-6">
                 <div class="list_home">
                     <div class="list_title">
@@ -128,19 +129,15 @@
                         <h3>Search by City or Zone</h3>
                     </div>
                     <ul>
-                        <li><a href="#0"><strong>23</strong>Albany</a></li>
-                        <li><a href="#0"><strong>23</strong>Albuquerque</a></li>
-                        <li><a href="#0"><strong>23</strong>Atlanta</a></li>
-                        <li><a href="#0"><strong>23</strong>Baltimore</a></li>
-                        <li><a href="#0"><strong>23</strong>Baton Rouge</a></li>
-                        <li><a href="#0"><strong>23</strong>Birmingham</a></li>
-                        <li><a href="#0"><strong>23</strong>Boston</a></li>
-                        <li><a href="#0"><strong>23</strong>Buffalo</a></li>
-                        <li><a href="#0"><strong>23</strong>Charleston</a></li>
+                        @foreach($locations as $location)
+                        <li><a href="#0"><strong>23</strong>{!! $location->getTitle() !!}</a></li>
+                        @endforeach
                         <li><a href="#0">More...</a></li>
                     </ul>
                 </div>
             </div>
+            @endif
+            @if(count($categories) > 0)
             <div class="col-xl-4 col-lg-5 col-md-6">
                 <div class="list_home">
                     <div class="list_title">
@@ -148,19 +145,14 @@
                         <h3>Search by type</h3>
                     </div>
                     <ul>
-                        <li><a href="#0"><strong>23</strong>Allergist</a></li>
-                        <li><a href="#0"><strong>23</strong>Cardiologist</a></li>
-                        <li><a href="#0"><strong>23</strong>Chiropractor</a></li>
-                        <li><a href="#0"><strong>23</strong>Dentist</a></li>
-                        <li><a href="#0"><strong>23</strong>Dermatologist</a></li>
-                        <li><a href="#0"><strong>23</strong>Gastroenterologist</a></li>
-                        <li><a href="#0"><strong>23</strong>Ophthalmologist</a></li>
-                        <li><a href="#0"><strong>23</strong>Optometrist</a></li>
-                        <li><a href="#0"><strong>23</strong>Pediatrician</a></li>
+                        @foreach($categories as $category)
+                        <li><a href="#0"><strong>23</strong>{!! $category->getTitle() !!}</a></li>
+                        @endforeach
                         <li><a href="#0">More....</a></li>
                     </ul>
                 </div>
             </div>
+            @endif
         </div>
         <!-- /row -->
     </div>
