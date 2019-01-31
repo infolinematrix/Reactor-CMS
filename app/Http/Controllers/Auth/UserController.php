@@ -28,7 +28,8 @@ use App\Events\RegisterEvent;
 use App\Events\ForgotPasswordEvent;
 use UxWeb\SweetAlert\SweetAlert;
 use extension\Site\Helpers\UseAppHelper;
-class UserController extends PublicController
+
+class UserController extends Controller
 {
 
     use AuthenticatesUsers;
