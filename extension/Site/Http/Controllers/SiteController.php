@@ -51,7 +51,7 @@ class SiteController extends Controller
     {
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
-        return view('page', compact('node'));
+        return $this->compileView('Site::page', compact('node'), 'Page');
     }
 
     /**
@@ -88,24 +88,47 @@ class SiteController extends Controller
     }
 
     /**
+     * BROWSE BY CATEGORY / LOCATION
+     */
+    public function getBrowse($name, NodeRepository $nodeRepository)
+    {
+        // get Node
+        //$node = $nodeRepository->getNodeAndSetLocale($name);
+        //dd($node);
+        //Get Node Type
+        //$node_type = $node->getNodeType();
+
+        //--Temp
+        //$node->setMeta('location', ['a', 'b', 'c']);
+        //$node->setMeta('category', 6);
+        //$node = $node->fresh();
+
+        $node = $nodeRepository->getNode($name);
+
+        $lo = $node->getMeta('location');
+        dd($lo);
+        //dd($node->getKey());
+        //$models = $node->whereMeta('category', 6)->get();
+        //$models = $node->whereHasMeta('location', ['x  '])->first();
+        //dd($models->getKey());
+        //dd($node_type->getKey());
+    }
+
+    /**
      * Site Contact
      */
     public function getContact()
     {
-
         return $this->compileView('Site::contact', [], 'Contact Us');
     }
 
     public function postContact(Request $request){
-
         $data = [
-
             'name' => $request->name_contact,
             'last_name' => $request->lastname_contact,
             'email' => $request->email_contact,
             'phone' => $request->phone_contact,
             'content' => $request->message_contact,
-
         ];
 
         \Config::set('mail', getMailconfig());

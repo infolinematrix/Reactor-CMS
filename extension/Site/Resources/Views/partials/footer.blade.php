@@ -10,23 +10,21 @@
                 </p>
             </div>
             <div class="col-lg-3 col-md-4">
-                <h5>About</h5>
+                <h5>Company</h5>
                 <ul class="links">
-                    <li><a href="#0">About us</a></li>
-                    <li><a href="./blog-1.html">Blog</a></li>
-                    <li><a href="#0">FAQ</a></li>
-                    <li><a href="./login.html">Login</a></li>
-                    <li><a href="./register.html">Register</a></li>
+                    <li><a href="{!! route('page','about-us') !!}">About us</a></li>
+                    <li><a href="{!! route('page','privacy-policy') !!}">Privacy Policy</a></li>
+                    <li><a href="{!! route('page','terms-conditions') !!}">Terms &amp; Conditions</a></li>
+                    <li><a href="{!! route('login') !!}">Login</a></li>
+                    <li><a href="{!! route('register') !!}">Register</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-4">
                 <h5>Useful links</h5>
                 <ul class="links">
-                    <li><a href="#0">Doctors</a></li>
-                    <li><a href="#0">Clinics</a></li>
-                    <li><a href="#0">Specialization</a></li>
-                    <li><a href="#0">Join as a Doctor</a></li>
-                    <li><a href="#0">Download App</a></li>
+                    <li><a href="#0">FAQ</a></li>
+                    <li><a href="#0">Blog</a></li>
+                    <li><a href="{!! route('register') !!}">Join as a Doctor</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-4">
@@ -37,10 +35,13 @@
                 <div class="follow_us">
                     <h5>Follow us</h5>
                     <ul>
-                        <li><a href="#0"><i class="social_facebook"></i></a></li>
-                        <li><a href="#0"><i class="social_twitter"></i></a></li>
-                        <li><a href="#0"><i class="social_linkedin"></i></a></li>
-                        <li><a href="#0"><i class="social_instagram"></i></a></li>
+                        <li><a href="{!! getSettings('social_facebook') !!}"><i class="social_facebook"></i></a></li>
+                        <li><a href="{!! getSettings('social_twitter') !!}"><i class="social_twitter"></i></a></li>
+                        <li><a href="{!! getSettings('social_youtube') !!}"><i class="social_youtube_square"></i></a>
+                        </li>
+                        <li><a href="{!! getSettings('social_instagram') !!}"><i class="social_instagram"></i></a></li>
+                        <li><a href="{!! getSettings('social_google') !!}"><i class="social_googleplus_square"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,12 +51,12 @@
         <div class="row">
             <div class="col-md-8">
                 <ul id="additional_links">
-                    <li><a href="#0">Terms and conditions</a></li>
-                    <li><a href="#0">Privacy</a></li>
+                    <li><a href="{!! route('page','about-us') !!}">Terms and conditions</a></li>
+                    <li><a href="{!! route('page','about-us') !!}">Privacy</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <div id="copy">© 2017 Findoctor</div>
+                <div id="copy">© {!! date("Y") !!} {!! getSettings('site_title') !!}</div>
             </div>
         </div>
     </div>
