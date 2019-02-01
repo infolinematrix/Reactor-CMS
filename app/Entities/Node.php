@@ -16,10 +16,7 @@ class Node extends \Reactor\Hierarchy\Node
     //use CacheQueryBuilder;
 
 
-    public function meta()
-    {
-        return $this->hasMany('ReactorCMS\Entities\NodeMeta', 'node_id');
-    }
+   
 
     public function media()
     {

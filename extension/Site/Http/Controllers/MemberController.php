@@ -120,45 +120,11 @@ class MemberController extends Controller
         list($node, $locale) = $this->createNode($request, null);
 
         /*Insert Location in Node Meta*/
-        $location = $request->input('location');
-        if ($location[0] != '') {
-
-            //--Delete existing node_meta if exist
-            NodeMeta::where('node_id', $node->getkey())->where('type', 'profile')->where('key', 'location')->delete();
-
-            for ($i = 0; $i < count($location); $i++) {
-
-                $locID = $location[$i];
-                if ($locID != null) {
-                    if ($locID != '') {
-
-                        $c = new NodeMeta();
-                        $c->type = 'profile';
-                        $c->key = 'location';
-                        $c->value = $locID;
-                        $c->node_id = $node->getKey();
-                        $c->save();
-
-                    }
-                }
-            }
-        }
+        $locations = $request->location;
+        $node->setMeta('location',$locations);
 
         /*Insert Category in Node Meta*/
-        $speciality = $request->input('speciality');
-        if ($speciality != '') {
-
-            //--Delete existing node_meta if exist
-            NodeMeta::where('node_id', $node->getkey())->where('type', 'profile')->where('key', 'category')->delete();
-
-            $c = new NodeMeta();
-            $c->type = 'profile';
-            $c->key = 'category';
-            $c->value = $speciality;
-            $c->node_id = $node->getKey();
-            $c->save();
-
-           }
+        $node->setMeta('category',$request->speciality);
 
 
         SweetAlert::message('Profile Created')->autoclose(4000);
@@ -168,13 +134,15 @@ class MemberController extends Controller
     public function editProfile($id, $source = null){
 
 
+        list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
+
 
         /*Get Location*/
-        $location_meta = NodeMeta::where('node_id',$id)->where('key','location')->get();
+        $location_meta = $node->getMeta('location');
         if ($location_meta) {
             $loc = '';
             foreach ($location_meta as $meta) {
-                $loca = Node::findOrFail($meta->value);
+                $loca = Node::findOrFail($meta);
                 if ($loca->parent_id == null) {
 
                     $loc .= $loca->getKey();
@@ -185,11 +153,10 @@ class MemberController extends Controller
         $locations = Node::withType('locations')->where('parent_id',null)->get();
 
         /*Get Specialities*/
-        $category_meta = NodeMeta::where('node_id',$id)->where('key','category')->first();
-        
+        $category_meta = $node->getMeta('category');
         $specialities = Node::withType('categories')->get();
 
-        list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
+
 
         $form = $this->getEditForm($id, $node, $source);
         $form->setUrl(route('member.profile.update', [$node->getKey(), $source->getKey()]));
