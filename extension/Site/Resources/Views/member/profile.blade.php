@@ -147,7 +147,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Search Keywords</label>
-                                            <input type="text" class="form-control" placeholder="Keywords"/>
+                                            <select class="form-control" required name="keywords[]" id="keywords" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option value="{!! $tag->getKey() !!}">{!! $tag->title !!} </option>
+                                                @endforeach
+
+
+                                            </select>
                                         </div>
                                     </div>
 
@@ -444,7 +450,7 @@
 
                             <div class="tab-footer-action">
                                 <div class="form-group">
-                                    <input class="btn_1" type="submit" value="Login"/>
+                                    <input class="btn_1" type="submit" value="Save"/>
                                 </div>
                             </div>
                         {!! form_end($form,$renderRest = false)  !!}

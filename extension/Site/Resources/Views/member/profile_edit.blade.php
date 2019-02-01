@@ -112,23 +112,19 @@
                                                                     <option value="{!! $location->getKey() !!}" @if($location_meta == $location->getKey()) selected @endif>{!! $location->getTitle() !!}</option>
                                                                 @endforeach
                                                             </select>
+
+
                                                             <?php
 
                                                             $sub1 = $node->getMeta('location');
                                                             if($sub1){?>
                                                             @foreach($sub1 as $loc)
+
                                                                 <?php
                                                                 if($loc != $location_meta){
                                                                 ?>
                                                                 <?php
-                                                                $rr1 = $loc;
-                                                                $rr1 = \ReactorCMS\Entities\Node::findOrFail($rr1);
-                                                                if ($rr1->parent_id == $location_meta) {
-                                                                    $subc1 = $rr1->getKey();
-                                                                }
-
                                                                 $locationtype = get_node_type('locations');
-                                                                $subc1 = $subc1;
                                                                 ?>
                                                                 <select class="loc form-control" name="location[]"
                                                                         required>
@@ -141,8 +137,10 @@
                                                                     @foreach($ll as $l)
                                                                         <option value="{!! $l->getKey() !!}" {!! (($p1->getKey() == $l->getkey()) ? "Selected": '') !!}>{!! $l->getTitle() !!}</option>
                                                                     @endforeach
+
                                                                 </select>
                                                                 <?php }?>
+
                                                             @endforeach
                                                             <?php }?>
 
@@ -189,7 +187,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Search Keywords</label>
-                                            <input type="text" class="form-control" placeholder="Keywords"/>
+                                           <select class="form-control" required name="keywords[]" id="keywords" multiple>
+                                               @foreach($tags as $tag)
+                                            <option value="{!! $tag->getKey() !!}" {!! ($tagsMeta != null ? (in_array($tag->getKey(), $tagsMeta) ? 'selected' : "" ) : '') !!}>{!! $tag->title !!} </option>
+                                              @endforeach
+
+
+                                           </select>
                                         </div>
                                     </div>
 
@@ -486,7 +490,7 @@
 
                             <div class="tab-footer-action">
                                 <div class="form-group">
-                                    <input class="btn_1" type="submit" value="Login"/>
+                                    <input class="btn_1" type="submit" value="Update"/>
                                 </div>
                             </div>
                         {!! form_end($form,$renderRest = false)  !!}
