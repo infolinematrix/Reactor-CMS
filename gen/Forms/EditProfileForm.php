@@ -48,16 +48,6 @@ class EditProfileForm extends Form {
             
 
         ]);
-                                $this->add('profile_about', 'text', [
-            'label' => 'About',
-            'help_block' => ['text' => ''],
-
-                        'rules' => 'required',
-            
-            
-            
-
-        ]);
                                 $this->add('profile_email', 'text', [
             'label' => 'Email',
             'help_block' => ['text' => ''],
@@ -89,6 +79,35 @@ class EditProfileForm extends Form {
         ]);
                                 $this->add('profile_longitude', 'text', [
             'label' => 'Longitude',
+            'help_block' => ['text' => ''],
+
+            
+            
+            
+
+        ]);
+                                $this->add('profile_firstname', 'text', [
+            'label' => 'First Name',
+            'help_block' => ['text' => ''],
+
+                        'rules' => 'required',
+            
+            
+            
+
+        ]);
+                                $this->add('profile_lastname', 'text', [
+            'label' => 'Last Name',
+            'help_block' => ['text' => ''],
+
+                        'rules' => 'required',
+            
+            
+            
+
+        ]);
+                                $this->add('profile_about', 'textarea', [
+            'label' => 'About',
             'help_block' => ['text' => ''],
 
             

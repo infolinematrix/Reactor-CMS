@@ -54,8 +54,6 @@
                     <!--/nav-tabs -->
                     <div class="box clearfix">
                         {!! form_start($form) !!}
-                        {!! form_row($form->locale) !!}
-                        {!! form_row($form->type) !!}
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="book" role="tabpanel"
                                      aria-labelledby="book-tab">
@@ -107,12 +105,53 @@
                                                 <div class="form-group">
                                                     <label>Location</label>
                                                     <div id="show_sub_locations">
-                                                    <select class="form-control loc" required name="location[]" id="location">
+                                                        @if($location_meta)
+                                                            <select class="form-control loc" required name="location[]" id="location">
+                                                                <option value="">--Select--</option>
+                                                                @foreach($locations as $location)
+                                                                    <option value="{!! $location->getKey() !!}" @if($location_meta == $location->getKey()) selected @endif>{!! $location->getTitle() !!}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <?php
+                                                            $sub1 = \ReactorCMS\Entities\NodeMeta::where('node_id', $node->getKey())
+                                                                    ->where('type', 'profile')->where('key', 'location')
+                                                                    ->where('value', '!=', $location_meta)->get();
+                                                            if($sub1){?>
+                                                            @foreach($sub1 as $loc)
+                                                                <?php
+                                                                $rr1 = $loc->value;
+                                                                $rr1 = \ReactorCMS\Entities\Node::findOrFail($rr1);
+                                                                if ($rr1->parent_id == $location_meta) {
+                                                                    $subc1 = $rr1->getKey();
+                                                                }
+                                                                $locationtype = get_node_type('locations');
+                                                                $suLocation = $locationtype->nodes()->where('parent_id', null)->translatedIn(locale())->get();
+                                                                $subc1 = $subc1;
+                                                                ?>
+                                                                <select class="loc form-control" name="location[]"
+                                                                        required>
+                                                                    <?php
+                                                                    $p1 = \ReactorCMS\Entities\Node::findOrFail($loc->value);
+
+                                                                    $ll = $locationtype->nodes()->where('parent_id', $p1->parent_id)->translatedIn(locale())->get();
+
+                                                                    ?>
+                                                                    @foreach($ll as $l)
+                                                                        <option value="{!! $l->getKey() !!}" {!! (($p1->getKey() == $l->getkey()) ? "Selected": '') !!}>{!! $l->getTitle() !!}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @endforeach
+                                                            <?php }?>
+
+                                                        @else
+
+                                                        <select class="form-control loc" required name="location[]" id="location">
                                                         <option value="">--Select--</option>
                                                         @foreach($locations as $location)
                                                             <option value="{!! $location->getKey() !!}">{!! $location->getTitle() !!}</option>
                                                         @endforeach
                                                     </select>
+                                                            @endif
                                                 </div>
                                                 </div>
                                             </div>
@@ -141,7 +180,7 @@
                                             <select class="form-control" required name="speciality" id="speciality">
                                                 <option value="">--Select--</option>
                                                 @foreach($specialities as $speciality)
-                                                    <option value="{!! $speciality->getKey() !!}">{!! $speciality->getTitle() !!}</option>
+                                                    <option value="{!! $speciality->getKey() !!}" @if($category_meta->value == $speciality->getKey()) selected @endif>{!! $speciality->getTitle() !!}</option>
                                                 @endforeach
                                             </select>
                                         </div>

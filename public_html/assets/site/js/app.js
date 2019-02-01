@@ -129,26 +129,7 @@ function slugify(text) {
 $(document).ready(function () {
 
 
-
-    /* $("#slider-range").noUiSlider({
-     start: [100, 1000],
-     step: 100,
-     connect: true,
-     range: {
-     'min': 100,
-     'max': 1000
-     }
-     });
-
-     $("#slider-range").on('slide', function(event, values) {
-     alert("asd");
-     $("input.unibox-price-min").val(values[0]);
-     $("input.unibox-price-max").val(values[1]);
-     });
-
-     */
-
-    var base_url = $('body').data('baseurl');
+  var base_url = $('body').data('baseurl');
 
     $('.cat').livequery('change', function () {
 

@@ -17,7 +17,7 @@ class HierarchyCreateProfile_aboutFieldForProfileSourceTable extends Migration i
     {
         \Schema::table('ns_profiles', function (Blueprint $table)
         {
-            $table->string('profile_about')->nullable();
+            $table->text('profile_about')->nullable();
 
                     });
     }

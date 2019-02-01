@@ -11,14 +11,14 @@ class NsProfile extends NodeSourceExtension {
     /**
      * The fillable fields for the model.
      */
-    protected $fillable = ['profile_address', 'profile_zipcode', 'profile_phone', 'profile_about', 'profile_email', 'profile_landline', 'profile_latitude', 'profile_longitude'];
+    protected $fillable = ['profile_address', 'profile_zipcode', 'profile_phone', 'profile_email', 'profile_landline', 'profile_latitude', 'profile_longitude', 'profile_firstname', 'profile_lastname', 'profile_about'];
 
     /**
      * Returns the fields for the model
      */
     public static function getSourceFields()
     {
-        return ['profile_address', 'profile_zipcode', 'profile_phone', 'profile_about', 'profile_email', 'profile_landline', 'profile_latitude', 'profile_longitude'];
+        return ['profile_address', 'profile_zipcode', 'profile_phone', 'profile_email', 'profile_landline', 'profile_latitude', 'profile_longitude', 'profile_firstname', 'profile_lastname', 'profile_about'];
     }
 
     /**

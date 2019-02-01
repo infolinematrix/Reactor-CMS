@@ -17,6 +17,7 @@ class LocationsServiceProvider extends ServiceProvider
 
         require __DIR__ . '/helpers.php';
         require __DIR__ . '/routes.php';
+        require __DIR__ . '/api.php';
     }
 
     /**

@@ -34,12 +34,12 @@
                             <div class="form-group">
 
                                 <label class="radio-inline">
-                                    <input type="radio" name="type" value="0" id="radio-one" class="form-radio"
+                                    <input type="radio" name="type" value="1" id="radio-one" class="form-radio"
                                            checked><label for="radio-one">I am Patient</label>
                                 </label>
 
                                 <label class="radio-inline">
-                                    <input type="radio" name="type" value="1" id="radio-one" class="form-radio"><label
+                                    <input type="radio" name="type" value="2" id="radio-one" class="form-radio"><label
                                             for="radio-one">I am Doctor</label>
                                 </label>
 
