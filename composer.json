@@ -40,6 +40,7 @@
     "laravel/framework": "5.6.*",
     "laravel/socialite": "3.0",
     "laravel/tinker": "^1.0",
+    "plank/laravel-metable": "^1.1",
     "reactor/documents": "dev-master",
     "reactor/files": "dev-master",
     "reactor/hierarchy": "dev-master",

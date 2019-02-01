@@ -16,6 +16,10 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     Route::get('/single', ['as' => 'site.single', 'uses' => 'SiteController@single']);
     Route::get('/single', ['as' => 'site.single', 'uses' => 'SiteController@single']);
 
+    // Browse by Location and Category
+    Route::get('/browse/{slug}', ['as' => 'browse', 'uses' => 'SiteController@getBrowse']);
+    // Page (Static)
+    Route::get('/page/{slug}', ['as' => 'page', 'uses' => 'SiteController@getPage']);
 
     /**
      * Include All routes

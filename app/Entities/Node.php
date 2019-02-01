@@ -9,6 +9,7 @@
 namespace ReactorCMS\Entities;
 
 use Illuminate\Database\Eloquent\Builder;
+use Plank\Metable\Metable;
 
 class Node extends \Reactor\Hierarchy\Node
 {

@@ -130,7 +130,8 @@
                     </div>
                     <ul>
                         @foreach($locations as $location)
-                        <li><a href="#0"><strong>23</strong>{!! $location->getTitle() !!}</a></li>
+                            <li><a href="{!! route('browse',$location->getName()) !!}">{!! $location->getTitle() !!}</a>
+                            </li>
                         @endforeach
                         <li><a href="#0">More...</a></li>
                     </ul>
@@ -146,7 +147,7 @@
                     </div>
                     <ul>
                         @foreach($categories as $category)
-                        <li><a href="#0"><strong>23</strong>{!! $category->getTitle() !!}</a></li>
+                            <li><a href="#0">{!! $category->getTitle() !!}</a></li>
                         @endforeach
                         <li><a href="#0">More....</a></li>
                     </ul>
