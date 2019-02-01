@@ -21,6 +21,13 @@
 
         <div class="menu-item">
             <a href="#">
+                <h6>Reviews</h6>
+                <span>Public Reviews</span>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="#">
                 <h6>Change Password</h6>
                 <span>Change your password?</span>
             </a>
