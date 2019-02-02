@@ -17,6 +17,8 @@ use ReactorCMS\Http\Controllers\Traits\UsesTranslations;
 use ReactorCMS\Http\Controllers\Controller;
 use ReactorCMS\Entities\NodeMeta;
 use UxWeb\SweetAlert\SweetAlert;
+use Reactor\Hierarchy\Tags;
+use ReactorCMS\Entities\NodeTag;
 
 class MemberController extends Controller
 {
@@ -58,6 +60,8 @@ class MemberController extends Controller
 
         /*Get Specialities*/
         $specialities = Node::withType('categories')->get();
+
+        $tags = Tag::sortable()->translatedIn(locale())->get();
 
         $form = $this->getCreateSourceForm($nodeType);
         $form->setUrl(route('member.profile'));
@@ -103,11 +107,12 @@ class MemberController extends Controller
         ]);
 
 
-        return $this->compileView('Site::member.profile', compact('form','locations','specialities'), 'Profile');
+        return $this->compileView('Site::member.profile', compact('form','locations','tags','specialities'), 'Profile');
     }
 
 
     public function postProfile(Request $request){
+
 
 
 
@@ -126,27 +131,52 @@ class MemberController extends Controller
         /*Insert Category in Node Meta*/
         $node->setMeta('category',$request->speciality);
 
+        /*Insert Keywords in Node Meta*/
+        $keywords = $request->keywords;
+        if($keywords[0] != '') {
+            NodeTag::where('node_id', $node->getKey())->delete();
+            for ($i = 0; $i < count($keywords); $i++) {
+
+                $tagID = $keywords[$i];
+                if ($tagID != null) {
+                    if ($tagID != '') {
+                        $c = new NodeTag();
+                        $c->node_id = $node->getKey();
+                        $c->tag_id = $tagID;
+                        $c->save();
+
+                    }
+                }
+            }
+        }
 
         SweetAlert::message('Profile Created')->autoclose(4000);
+
         return redirect()->back();
     }
 
     public function editProfile($id, $source = null){
 
 
+
+
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
+
 
 
         /*Get Location*/
         $location_meta = $node->getMeta('location');
+        
         if ($location_meta) {
             $loc = '';
             foreach ($location_meta as $meta) {
+                
                 $loca = Node::findOrFail($meta);
                 if ($loca->parent_id == null) {
 
                     $loc .= $loca->getKey();
                 }
+                
             }
             $location_meta = $loc;
         }
@@ -157,6 +187,21 @@ class MemberController extends Controller
         $specialities = Node::withType('categories')->get();
 
 
+        /*Get Keywords*/
+        $tags = Tag::sortable()->translatedIn(locale())->get();
+        $tagsMeta = NodeTag::where('node_id',$node->getKey())->get();
+        if(count($tagsMeta) > 0) {
+            foreach ($tagsMeta as $tag){
+
+                $t[] = $tag->tag_id;
+            }
+
+         $tagsMeta = $t;
+
+        }else{
+
+            $tagsMeta = null;
+        }
 
         $form = $this->getEditForm($id, $node, $source);
         $form->setUrl(route('member.profile.update', [$node->getKey(), $source->getKey()]));
@@ -201,12 +246,48 @@ class MemberController extends Controller
             'rules' => 'require'
         ]);
 
-        return $this->compileView('Site::member.profile_edit', compact('form','node','source','locations','specialities','category_meta','location_meta'), 'Profile');
+        return $this->compileView('Site::member.profile_edit', compact('form','node','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
 
     }
 
-    public function updateProfile(){
+    public function updateProfile(Request $request, $id, $source){
 
+        list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
+
+        $node->update([
+            $locale => array_except($request->all(), ['_token', '_method'])
+        ]);
+
+        /*Insert Location in Node Meta*/
+        $locations = $request->location;
+        $node->setMeta('location',$locations);
+
+        /*Insert Category in Node Meta*/
+        $node->setMeta('category',$request->speciality);
+
+        /*Insert Keywords in Node Meta*/
+        $keywords = $request->keywords;
+        if($keywords[0] != '') {
+            NodeTag::where('node_id', $node->getKey())->delete();
+            for ($i = 0; $i < count($keywords); $i++) {
+
+                $tagID = $keywords[$i];
+                if ($tagID != null) {
+                    if ($tagID != '') {
+                        $c = new NodeTag();
+                        $c->node_id = $node->getKey();
+                        $c->tag_id = $tagID;
+                        $c->save();
+
+                    }
+                }
+            }
+        }
+
+
+
+        SweetAlert::message('Profile Updated')->autoclose(4000);
+        return redirect()->back();
 
     }
 }

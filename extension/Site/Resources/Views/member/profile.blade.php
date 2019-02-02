@@ -81,6 +81,8 @@
                                             </div>
                                         </div>
 
+
+
                                         <div class="row">
                                             <div class="col-lg-6 col-xs-12">
                                                 <div class="form-group">
@@ -143,20 +145,15 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-
                                         <div class="form-group">
-
-
                                             <label>Search Keywords</label>
-                                            <select multiple="" class="form-control select-checkbox" size="5">
-                                                <option>Dog</option>
-                                                <option>Cat</option>
-                                                <option>Hippo</option>
-                                                <option>Dinosaur</option>
-                                                <option>Another Dog</option>
-                                            </select>
+                                            <select class="form-control" required name="keywords[]" id="keywords" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option value="{!! $tag->getKey() !!}">{!! $tag->title !!} </option>
+                                                @endforeach
 
+
+                                            </select>
                                         </div>
                                     </div>
 
@@ -453,7 +450,7 @@
 
                             <div class="tab-footer-action">
                                 <div class="form-group">
-                                    <input class="btn_1" type="submit" value="Login"/>
+                                    <input class="btn_1" type="submit" value="Save"/>
                                 </div>
                             </div>
                         {!! form_end($form,$renderRest = false)  !!}
