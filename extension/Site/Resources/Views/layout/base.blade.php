@@ -28,7 +28,7 @@
 {!! Theme::css('css/icon_fonts/css/all_icons_min.css') !!}
 {!! Theme::css('css/blog.css') !!}
 {!! Theme::css('vendors/sweetalert2/dist/sweetalert2.min.css') !!}
-{!! Html::style('public/assets/plugins/select2/select2.css') !!}
+{!! Html::style('assets/plugins/select2/select2.css') !!}
 
 <!-- YOUR CUSTOM CSS -->
     {!! Theme::css('css/custom.css') !!}
@@ -64,7 +64,7 @@
 {!! Theme::js('js/jquery-2.2.4.min.js') !!}
 {!! Theme::js('js/common_scripts.min.js') !!}
 {!! Theme::js('js/functions.js') !!}
-{!! Html::script('public/assets/plugins/select2/select2.js') !!}
+{!! Html::script('assets/plugins/select2/select2.js') !!}
 {!! Theme::js('js/search.js') !!}
 {!! Theme::js('js/app.js') !!}
 <!-- SPECIFIC SCRIPTS -->
