@@ -361,4 +361,17 @@ class MemberController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteEducation($id){
+
+
+        $node = Node::findOrFail($id);
+
+        if ($response = $this->validateNodeIsNotLocked($node)) return $response;
+
+        $node->delete();
+        SweetAlert::message('Deleted')->autoclose(4000);
+
+        return redirect()->back();
+    }
 }

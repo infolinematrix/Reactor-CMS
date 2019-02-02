@@ -15,6 +15,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['setTheme:' . config('theme
     Route::put('profile/{id}/edit/{source?}', ['as' => 'member.profile.update', 'uses' => 'MemberController@updateProfile']);
 
     Route::post('/profile/education/{id}', ['as' => 'member.profile.education', 'uses' => 'MemberController@updateEducation']);
+    Route::get('/profile/education/delete/{id}', ['as' => 'member.profile.delete.education', 'uses' => 'MemberController@deleteEducation']);
 
 
     Route::get('profile/booking/confirm/{id}', ['as' => 'member.profile.booking.confirm', 'uses' => 'MemberController@bookingConfirm']);

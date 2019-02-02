@@ -115,9 +115,16 @@ class SiteController extends Controller
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
-        $location = $this->getProfileLocation($node->getKey());
+        $location = getProfileLocation($node->getKey());
 
-        return $this->compileView('Site::profile', compact('node','location'), 'Browse');
+        /*Education*/
+        $educations = $node->children()
+            ->sortable()
+            ->translatedIn(locale())
+            ->get();
+
+
+        return $this->compileView('Site::profile', compact('node','educations','location'), 'Browse');
     }
 
     public function booking(Request $request){

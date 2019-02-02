@@ -98,6 +98,7 @@
 
                         <hr/>
 
+                        @if(count($educations) > 0)
                         <div class="indent_title_in">
                             <i class="pe-7s-news-paper"></i>
                             <h3>Education</h3>
@@ -109,11 +110,13 @@
                                 nibh nec urna. In nisi neque, aliquet vel, dapi.</p>
                             <h6>Curriculum</h6>
                             <ul class="list_edu">
-                                <li><strong>New York Medical College</strong> - Doctor of Medicine</li>
-                                <li><strong>Montefiore Medical Center</strong> - Residency in Internal Medicine</li>
-                                <li><strong>New York Medical College</strong> - Master Internal Medicine</li>
+                                @foreach($educations as $education)
+                                <li><strong>{!! $education->getTitle() !!}</strong> - {!! $education->description !!}</li>
+                                @endforeach
                             </ul>
                         </div>
+                        @endif
+
                         <!--  End wrapper indent -->
                     </div>
                     <!-- /section_1 -->

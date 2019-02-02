@@ -276,7 +276,7 @@
 
                                                 @foreach($educations as $education)
                                             <li><strong>{!! $education->getTitle() !!}</strong> - {!! $education->description !!}
-                                            <a href=""><i class="icon-trash"></i> </a>
+                                            <a href="{!! route('member.profile.delete.education',$education->getKey()) !!}"><i class="icon-trash"></i> </a>
                                             </li>
                                                 @endforeach
 

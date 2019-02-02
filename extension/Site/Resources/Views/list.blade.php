@@ -48,8 +48,7 @@
                     <h3>{!! $node->getTitle() !!}</h3>
                     <p>{!! str_limit($node->profile_about,150) !!}</p>
                     <ul>
-                        <li>West Bengal</li>
-                        <li>Siliguri</li>
+                       <li>{!! getProfileLocation($node->getKey()) !!}</li>
 
                         <li><a href="{!! route('profile',$node->getName()) !!}">View Profile</a></li>
                     </ul>
