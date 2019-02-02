@@ -1,14 +1,5 @@
 @extends('Site::layout.home')
 
-@section('scripts')
-    <script>
-        $("#select2_search").select2({
-            placeholder: "Select a State",
-            allowClear: true
-        });
-    </script>
-@endsection
-
 @section('content')
     <div class="hero_home version_1">
         <div class="content">
@@ -17,20 +8,19 @@
                 Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
             </p>
 
-            <form method="post" action="list.html"/>
+            {{ Form::open(['url' => 'search', 'method' => 'get']) }}
             <div id="custom-search-input">
                 <div class="input-group">
-                    <select id="select2_search" class=" search-query">
+                    <select name="q" id="select2_search" class=" search-query">
                         <option value="" selected>Speciality..</option>
                         @foreach($tags as $tag)
-                            <option value="{!! $tag->id !!}">{!! $tag->title !!}</option>
+                            <option value="{!! $tag->tag_name !!}">{!! $tag->title !!}</option>
                         @endforeach
                     </select>
                     <input type="submit" class="btn_search" value="Search"/>
                 </div>
-            </div>
-
-            </form>
+                </div>
+            {{ Form::close() }}
         </div>
     </div>
     <!-- /Hero -->

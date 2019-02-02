@@ -77,6 +77,10 @@
             fixed: true
         });
     });
+    $("#select2_search").select2({
+        placeholder: "Select a State",
+        allowClear: true
+    });
 </script>
 
 @yield('scripts')

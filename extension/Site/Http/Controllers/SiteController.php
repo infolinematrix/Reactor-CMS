@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use Reactor\Hierarchy\Node;
+use Reactor\Hierarchy\Tags\TagRepository;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use UxWeb\SweetAlert\SweetAlert;
@@ -76,6 +77,39 @@ class SiteController extends Controller
 
         return view('search', compact('results'));
     }
+
+    /**
+     * Shows Search result page by tags
+     *
+     * @param NodeRepository $nodeRepository
+     * @param string $name
+     * @return View
+     */
+    public function SearchByTags(Request $request, TagRepository $tagRepository, NodeRepository $nodeRepository)
+    {
+
+        $name = $request->input('q');
+        $tag = $tagRepository->getTag($name);
+
+        // dd($tag->id);
+
+        /*$tag = Node::with(['tags' => function ($query) {
+            $query->join('tags', 'id', '=', 'node.id');
+        }]);
+
+        $tag = Node::with(['tags' => function ($q) {
+            $q->where('tag_id', 5)->get();
+        }]);
+
+        $tag = Node::with(['tags' => function($q) use($tag){
+            $q->where('tag_id', 5)->get();
+        }])->get();*/
+
+        $nodes = Node::WithTag($tag->id)->get();
+
+        return $this->compileView('Site::list', compact('nodes'), 'Browse');
+    }
+
 
     /**
      * Shows the tag page
