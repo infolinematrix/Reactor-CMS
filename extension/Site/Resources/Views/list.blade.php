@@ -9,7 +9,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="search_bar_list">
-                        <input type="text" class="form-control" placeholder="Ex. Specialist, Name, Doctor..."/>
+                        <select id="select2_search" class="form-control">
+                            <option value="" selected>Speciality..</option>
+                            @foreach($tags as $tag)
+                                <option value="{!! $tag->id !!}">{!! $tag->title !!}</option>
+                            @endforeach
+                        </select>
                         <input type="submit" value="Search"/>
                     </div>
                 </div>

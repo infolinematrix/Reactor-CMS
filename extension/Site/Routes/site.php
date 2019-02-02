@@ -21,6 +21,9 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     Route::post('/book/appointment', ['as' => 'book.appointment', 'uses' => 'SiteController@booking']);
 
 
+    // Search
+    Route::get('/search', ['as' => 'search', 'uses' => 'SiteController@SearchByTags']);
+
     // Page (Static)
     Route::get('/page/{slug}', ['as' => 'page', 'uses' => 'SiteController@getPage']);
 
