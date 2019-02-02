@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use Reactor\Hierarchy\Node;
+use Reactor\Hierarchy\Tags\TagRepository;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use UxWeb\SweetAlert\SweetAlert;
@@ -110,7 +111,6 @@ class SiteController extends Controller
     }
 
 
-    
     /**
      * Shows the tag page
      *

@@ -1,29 +1,8 @@
 @extends('Site::layout.home')
 
 @section('content')
-    <div id="results">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4><strong>{!! ($nodes ? count($nodes) : 0) !!} results found</strong></h4>
-                </div>
-                <div class="col-md-6">
-                    <div class="search_bar_list">
-                        <select id="select2_search" class="form-control">
-                            <option value="" selected>Speciality..</option>
-                            @foreach($tags as $tag)
-                                <option value="{!! $tag->id !!}">{!! $tag->title !!}</option>
-                            @endforeach
-                        </select>
-                        <input type="submit" value="Search"/>
-                    </div>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /results -->
+
+    @include('Site::partials.inner_result', ($nodes ? $nodes : null))
 
     <div class="filters_listing">
         <div class="container">
@@ -53,6 +32,7 @@
                     <h3>{!! $node->getTitle() !!}</h3>
                     <p>{!! str_limit($node->profile_about,150) !!}</p>
                     <ul>
+
                         <li>West Bengal</li>
                         <li>Siliguri</li>
 
