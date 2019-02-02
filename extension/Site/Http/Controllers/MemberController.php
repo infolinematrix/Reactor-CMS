@@ -19,7 +19,8 @@ use ReactorCMS\Entities\NodeMeta;
 use UxWeb\SweetAlert\SweetAlert;
 use Reactor\Hierarchy\Tags;
 use ReactorCMS\Entities\NodeTag;
-
+use ReactorCMS\Entities\Appointment;
+use Mail;
 class MemberController extends Controller
 {
     use UsesNodeForms, UsesNodeHelpers, UsesTranslations;
@@ -31,12 +32,50 @@ class MemberController extends Controller
      */
     public function index()
     {
+
         return $this->compileView('Site::member.dashboard', [], 'Dashboard');
     }
 
 
 
+    public function bookingConfirm($id){
 
+
+        $appointment = Appointment::where('id',$id)->first();
+
+        $node = Node::find($appointment->node_id);
+        $node = $node->profile_firstname.' '.$node->profile_lastname;
+        $data = [
+            'doctor' => $node,
+            'name' => $appointment->patient_name,
+            'email' => $appointment->patient_email,
+            'date' => date('d',strtotime($appointment->booking_date)).' '.date('M',strtotime($appointment->booking_date)).', '.date('Y',strtotime($appointment->booking_date)),
+            'time' => $appointment->booking_time
+        ];
+
+        \Config::set('mail', getMailconfig());
+        Mail::send('mail.confirmed', $data, function ($message) use ($data) {
+
+            $message->from(getSettings('email_from_email'), getSettings('site_title'));
+            $message->subject('Appointment Confirmed to Dr. '.$data['doctor']);
+            $message->to('help.matrixinfoline@gmail.com');
+
+        });
+
+        Appointment::where('id',$id)->update(['confirmed' => 'yes']);
+
+        SweetAlert::message('Confirmed')->autoclose(4000);
+        return redirect()->back();
+    }
+
+    public function bookingCancel($id){
+
+
+        Appointment::where('id',$id)->delete();
+
+        SweetAlert::message('Rejected')->autoclose(4000);
+        return redirect()->back();
+    }
 
 
     public function getProfile()
@@ -157,11 +196,13 @@ class MemberController extends Controller
 
     public function editProfile($id, $source = null){
 
-
-
-
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
 
+        /*Education*/
+        $educations = $node->children()
+            ->sortable()
+            ->translatedIn($locale)
+            ->get();
 
 
         /*Get Location*/
@@ -246,7 +287,24 @@ class MemberController extends Controller
             'rules' => 'require'
         ]);
 
-        return $this->compileView('Site::member.profile_edit', compact('form','node','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
+        /*Education*/
+
+        $this->validateParentCanHaveChildren($node);
+
+        $educationform = $this->getCreateForm($id, $node);
+        $educationform->setUrl(route('member.profile.education',[$id]));
+        $educationform->modify('title','text',[
+            'label' => false,
+            'rules' => 'require'
+        ]);
+
+        $educationform->modify('description','textarea',[
+            'label' => false,
+            'rules' => 'require',
+            'attr' => ['rows' => 2]
+        ]);
+
+        return $this->compileView('Site::member.profile_edit', compact('form','educationform','node','educations','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
 
     }
 
@@ -289,5 +347,18 @@ class MemberController extends Controller
         SweetAlert::message('Profile Updated')->autoclose(4000);
         return redirect()->back();
 
+    }
+
+    public function updateEducation(Request $request, $id){
+
+        $request->request->set('node_name',str_slug($request->title));
+
+        $this->validateCreateForm($request);
+
+        list($node, $locale) = $this->createNode($request, $id);
+
+        SweetAlert::message('Education Updated')->autoclose(4000);
+
+        return redirect()->back();
     }
 }

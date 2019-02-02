@@ -4,6 +4,7 @@
 namespace Extension\Site\Http\Controllers;
 
 
+use extension\Site\Helpers\UseAppHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,12 @@ use Reactor\Hierarchy\Node;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use UxWeb\SweetAlert\SweetAlert;
+use ReactorCMS\Entities\Appointment;
+
 class SiteController extends Controller
 {
+
+    use UseAppHelper;
 
     /**
      * Shows the homepage
@@ -110,7 +115,56 @@ class SiteController extends Controller
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
-        return $this->compileView('Site::profile', compact('node'), 'Browse');
+        $location = $this->getProfileLocation($node->getKey());
+
+        return $this->compileView('Site::profile', compact('node','location'), 'Browse');
+    }
+
+    public function booking(Request $request){
+
+
+        $pdata = [
+            'node_id' => $request->node_id,
+            'booking_date' => $request->booking_date,
+            'booking_time' => $request->booking_time,
+            'patient_name' => $request->patient_name,
+            'patient_email' => $request->patient_email,
+            'patient_contact' => $request->patient_contact,
+            'zip_code' => $request->patient_zipcode,
+        ];
+
+        Appointment::insert($pdata);
+
+        \Config::set('mail', getMailconfig());
+
+        $node = Node::find($request->node_id);
+        $doctoName = $node->profile_firstname.' '.$node->profile_lastname;
+        $data = [
+
+            'doctor' => $doctoName,
+            'email' => $node->profile_email,
+            'booking_date' => $request->booking_date,
+            'booking_time' => $request->booking_time,
+            'patient_name' => $request->patient_name,
+            'patient_email' => $request->patient_email,
+            'patient_contact' => $request->patient_contact,
+            'patient_zipcode' => $request->patient_zipcode,
+        ];
+
+        Mail::send('mail.appointment', $data, function ($message) use ($data) {
+            $message->from(getSettings('email_from_email'), getSettings('site_title'));
+            $message->subject('Appointment to Dr. '.$data['doctor']);
+            $message->to($data['email']);
+            $message->replyTo($data['patient_email'], $data['patient_name']);
+        });
+
+        $response = array(
+            'status' => 'Success',
+            'message' => '<span class="text text-info">' . __('Appointment sent to Dr. '.$doctoName) . '</span>',
+        );
+
+        return \Response::json($response);
+
     }
 
     /**

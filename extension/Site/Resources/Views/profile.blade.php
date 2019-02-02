@@ -1,5 +1,10 @@
 @extends('Site::layout.default')
 
+@section('scripts')
+
+    @parent
+    {!! Theme::js('js/appointment.js') !!}
+@endsection
 @section('content')
     <div id="breadcrumb">
         <div class="container">
@@ -44,11 +49,11 @@
                                     <ul class="contacts">
                                         <li>
                                             <h6>Address</h6>
-                                            2726 Shinn Street, New York -
+                                            {!! $node->profile_address !!}, {!! $location !!} - {!! $node->profile_zipcode !!}
                                         </li>
                                         <li>
-                                            <h6>Phone</h6> <a href="tel://000434323342">+00043 4323342</a> - <a
-                                                    href="tel://000434323342">+00043 4323342</a></li>
+                                            <h6>Phone</h6> <a href="tel://{!! $node->profile_phone !!}">{!! $node->profile_phone !!}</a> - <a
+                                                    href="tel://{!! $node->profile_landline !!}">{!! $node->profile_landline !!}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -271,21 +276,22 @@
             <!-- /col -->
             <aside class="col-xl-4 col-lg-4" id="sidebar">
                 <div class="box_general_3 booking">
-                    <form>
+                    {!! Form::open(['url' => route('book.appointment'),'id' => 'bookAppointment']) !!}
+                    {!! Form::hidden('node_id',$node->getKey(),['id' => 'node_id']) !!}
                         <div class="title">
                             <h3>Book a Visit</h3>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" id="booking_date" data-lang="en"
+                                    <input class="form-control" type="text" name="booking_date" id="booking_date" data-lang="en"
                                            data-min-year="2017" data-max-year="2020"
                                            data-disabled-days="10/17/2017,11/18/2017"/>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" id="booking_time" value="9:00 am"/>
+                                    <input class="form-control" type="text" name="booking_time" id="booking_time" value="9:00 am"/>
                                 </div>
                             </div>
                         </div>
@@ -293,31 +299,33 @@
 
                         <hr/>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="email" id="email" required
-                                   placeholder="Patient name"/>
+                            <input type="text" class="form-control" name="patient_name" id="patient_name" required
+                                   placeholder="Patient name" autocomplete="off"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" required
-                                   placeholder="Your email address"/>
+                            <input type="email" class="form-control" name="patient_email" id="patient_email" required
+                                   placeholder="Your email address" autocomplete="off"/>
                         </div>
 
                         <div class="row">
                             <div class="col-8">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="email" id="email" required
-                                           placeholder="Contact No"/>
+                                    <input type="text" class="form-control" name="patient_contact" id="patient_contact" required
+                                           placeholder="Contact No" autocomplete="off"/>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="email" id="email" required
-                                           placeholder="ZipCode"/>
+                                    <input type="text" class="form-control" name="patient_zipcode" id="patient_zipcode" required
+                                           placeholder="ZipCode" autocomplete="off"/>
                                 </div>
                             </div>
                         </div>
                         <!-- /row -->
-                        <a href="./login.html" class="btn_1 full-width">Book Now</a>
-                    </form>
+                        <button type="submit" id="btnbook" class="btn_1 full-width">Book Now</button>
+                        <br>
+                        <span id="bookmsz"></span>
+                    {!! Form::close() !!}
                 </div>
                 <!-- /box_general -->
             </aside>

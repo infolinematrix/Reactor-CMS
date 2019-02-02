@@ -53,7 +53,7 @@
                     </ul>
                     <!--/nav-tabs -->
                     <div class="box clearfix">
-                        {!! form_start($form) !!}
+
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="book" role="tabpanel"
                                      aria-labelledby="book-tab">
@@ -63,6 +63,7 @@
                                         <p>Mussum ipsum cacilds, vidis litro abertis.</p>
                                     </div>
 
+                                    {!! form_start($form) !!}
                                     <div>
                                         <div class="row">
                                             <div class="col-lg-6 col-xs-12">
@@ -209,121 +210,85 @@
                                           {!! form_row($form->profile_about) !!}
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="form-group">
+                                                <input class="btn_1" type="submit" value="Update"/>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {!! form_end($form,$renderRest = false)  !!}
                                     <!-- /wrapper indent -->
                                 </div>
                                 <!-- /tab_1 -->
 
                                 <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="general-tab">
-                                    <p class="lead add_bottom_30">Sed pretium, ligula sollicitudin laoreet viverra,
-                                        tortor libero sodales leo, eget blandit nunc tortor eu nibh. Lorem ipsum dolor
-                                        sit amet, consectetuer adipiscing elit.</p>
                                     <div class="indent_title_in">
                                         <i class="pe-7s-user"></i>
-                                        <h3>Professional statement</h3>
-                                        <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                                    </div>
-                                    <div class="wrapper_indent">
-                                        <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo,
-                                            eget blandit nunc tortor eu nibh. Lorem ipsum dolor sit amet, consectetuer
-                                            adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In
-                                            nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Nullam mollis.
-                                            Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque,
-                                            aliquet vel, dapi.</p>
-                                        <h6>Specializations</h6>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <ul class="bullets">
-                                                    <li>Abdominal Radiology</li>
-                                                    <li>Addiction Psychiatry</li>
-                                                    <li>Adolescent Medicine</li>
-                                                    <li>Cardiothoracic Radiology</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <ul class="bullets">
-                                                    <li>Abdominal Radiology</li>
-                                                    <li>Addiction Psychiatry</li>
-                                                    <li>Adolescent Medicine</li>
-                                                    <li>Cardiothoracic Radiology</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- /row-->
-                                    </div>
-                                    <!-- /wrapper indent -->
-
-                                    <hr/>
-
-                                    <div class="indent_title_in">
-                                        <i class="pe-7s-news-paper"></i>
                                         <h3>Education</h3>
                                         <p>Mussum ipsum cacilds, vidis litro abertis.</p>
                                     </div>
-                                    <div class="wrapper_indent">
-                                        <p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque,
-                                            aliquet vel, dapibus id, mattis vel, nisi. Nullam mollis. Phasellus
-                                            hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel,
-                                            dapi.</p>
+
+                                    {!! form_start($educationform) !!}
+                                    <div class="sr-only">
+                                    {!! form_row($educationform->locale) !!}
+                                    {!! form_row($educationform->type) !!}
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Institute</label>
+                                                 {!! form_row($educationform->title) !!}
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Degree</label>
+                                                    {!! form_row($educationform->description) !!}
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="form-group">
+                                            <input class="btn_1" type="submit" value="Update"/>
+
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    @if(count($educations) > 0)
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="form-group">
+                                    <div class="">
                                         <h6>Curriculum</h6>
                                         <ul class="list_edu">
-                                            <li><strong>New York Medical College</strong> - Doctor of Medicine</li>
-                                            <li><strong>Montefiore Medical Center</strong> - Residency in Internal
-                                                Medicine
+
+                                                @foreach($educations as $education)
+                                            <li><strong>{!! $education->getTitle() !!}</strong> - {!! $education->description !!}
+                                            <a href=""><i class="icon-trash"></i> </a>
                                             </li>
-                                            <li><strong>New York Medical College</strong> - Master Internal Medicine
-                                            </li>
+                                                @endforeach
+
                                         </ul>
 
                                     </div>
-                                    <!--  End wrapper indent -->
-
-                                    <hr/>
-
-                                    <div class="indent_title_in">
-                                        <i class="pe-7s-cash"></i>
-                                        <h3>Prices &amp; Payments</h3>
-                                        <p>Mussum ipsum cacilds, vidis litro abertis.</p>
                                     </div>
-                                    <div class="wrapper_indent">
-                                        <p>Zril causae ancillae sit ea. Dicam veritus mediocritatem sea ex, nec id agam
-                                            eius. Te pri facete latine salutandi, scripta mediocrem et sed, cum ne mundi
-                                            vulputate. Ne his sint graeco detraxit, posse exerci volutpat has in.</p>
-                                        <table class="table table-responsive table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Service - Visit</th>
-                                                <th>Price</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>New patient visit</td>
-                                                <td>$34</td>
-                                            </tr>
-                                            <tr>
-                                                <td>General consultation</td>
-                                                <td>$60</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Back Pain</td>
-                                                <td>$40</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Diabetes Consultation</td>
-                                                <td>$55</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Eating disorder</td>
-                                                <td>$60</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Foot Pain</td>
-                                                <td>$35</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
-                                    <!--  End wrapper_indent -->
+                                    </div>
+                                    @endif
+                                    {!! form_end($educationform,$renderRest = false)  !!}
+
 
                                 </div>
                                 <!-- /tab_2 -->
@@ -488,12 +453,8 @@
                             </div>
                             <!-- /tab-content -->
 
-                            <div class="tab-footer-action">
-                                <div class="form-group">
-                                    <input class="btn_1" type="submit" value="Update"/>
-                                </div>
-                            </div>
-                        {!! form_end($form,$renderRest = false)  !!}
+
+
                     </div>
                 </div>
                 <!-- /tabs_styled -->

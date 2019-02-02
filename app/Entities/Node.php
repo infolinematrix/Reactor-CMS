@@ -23,7 +23,12 @@ class Node extends \Reactor\Hierarchy\Node
         return $this->hasMany('ReactorCMS\Entities\Media', 'node_id');
     }
 
-    
+    public function appointment()
+    {
+        return $this->hasMany('ReactorCMS\Entities\Appointment', 'node_id');
+    }
+
+
 
     public function scopeWithTitle(Builder $query, $name, $locale = null)
     {

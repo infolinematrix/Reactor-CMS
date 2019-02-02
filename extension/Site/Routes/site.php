@@ -18,6 +18,8 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     // Browse by Location and Category
     Route::get('/browse/{slug}', ['as' => 'browse', 'uses' => 'SiteController@getBrowse']);
     Route::get('/profile/{slug}', ['as' => 'profile', 'uses' => 'SiteController@getProfile']);
+    Route::post('/book/appointment', ['as' => 'book.appointment', 'uses' => 'SiteController@booking']);
+
 
     // Page (Static)
     Route::get('/page/{slug}', ['as' => 'page', 'uses' => 'SiteController@getPage']);

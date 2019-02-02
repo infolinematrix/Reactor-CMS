@@ -36,39 +36,50 @@
 
                         <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
 
+                            @if(count($appointments) > 0)
+                                @foreach($appointments as $appointment)
                             <div class="list-1">
                                 <div class="indent_title_in">
                                     <i class="pe-7s-user"></i>
-                                    <h3>Mr. Subha S Das</h3>
-                                    <p>14th April, 2018 - 17:10</p>
-                                </div>
-                                <div class="wrapper_indent">
-                                    <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget
-                                        blandit nunc tortor eu nibh. Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque,
-                                        aliquet vel, dapibus id, mattis vel, nisi. Nullam mollis</p>
-                                    <a class="btn_1" href="./detail-page.html">Confirm</a>
-                                    <a class="btn_2" href="./detail-page.html">Reject</a>
-                                </div>
-                                <!-- /wrapper indent -->
-                            </div>
+                                    <h3>{!! $appointment->patient_name !!}</h3>
+                                    <p>{!! date('d',strtotime($appointment->booking_date)).' '.
+                                            date('M',strtotime($appointment->booking_date)).', '.
+                                            date('Y',strtotime($appointment->booking_date)) !!} - {!! $appointment->booking_time !!}
 
-                            <div class="list-1">
-                                <div class="indent_title_in">
-                                    <i class="pe-7s-user"></i>
-                                    <h3>Mr. Subha S Das</h3>
-                                    <p>14th April, 2018 - 17:10</p>
+
+                                    </p>
                                 </div>
                                 <div class="wrapper_indent">
-                                    <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget
-                                        blandit nunc tortor eu nibh. Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque,
-                                        aliquet vel, dapibus id, mattis vel, nisi. Nullam mollis</p>
-                                    <a class="btn_1" href="./detail-page.html">Confirm</a>
-                                    <a class="btn_2" href="./detail-page.html">Reject</a>
+                                   <p>
+                                    <ul class="contacts">
+                                        <li>
+                                            <h6>Email</h6>
+                                            {!! $appointment->patient_email !!}
+                                        </li>
+                                        <li>
+                                            <h6>Phone</h6>  {!! preg_replace('/\d{3}/', '$0-', str_replace('.', null, trim($appointment->patient_contact))) !!}</li>
+                                    </ul>
+                                   </p>
+                                    @if($appointment->confirmed == 'no')
+                                    <a class="btn_1" href="{!! route('member.profile.booking.confirm',$appointment->id) !!}">Confirm</a>
+                                    <a class="btn_2" href="{!! route('member.profile.booking.cancel',$appointment->id) !!}">Reject</a>
+                                    @else
+                                        <button class="btn_1" disabled>Confirmed</button>
+
+                                    @endif
                                 </div>
                                 <!-- /wrapper indent -->
                             </div>
+                                @endforeach
+                            @else
+                                <div class="list-1">
+                                    <div class="indent_title_in">
+                                       Sorry! You don't have any Appointments...
+                                        </div>
+                                    </div>
+                                @endif
+
+
                             <!-- /wrapper indent -->
 
                         </div>

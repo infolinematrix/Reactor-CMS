@@ -66,8 +66,14 @@ class UserController extends Controller
 
     public function dashboard(){
 
+        $user = Auth::guard('web')->user();
+        $node = $user->nodes()->withType('profile')->first();
+        if(!$node){
+            return redirect()->route('member.profile');
+        }
+        $appointments = $node->appointment()->orderBy('confirmed','yes')->get();
 
-        return $this->compileView('Site::member.dashboard', compact('node_count','isProfile'), 'USER PANEL');
+        return $this->compileView('Site::member.dashboard', compact('node_count','appointments'), 'USER PANEL');
     }
 
     public function profile(){

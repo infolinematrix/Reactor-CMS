@@ -9,13 +9,13 @@
 namespace extension\Site\Helpers;
 
 
-use Extension\Site\Entities\Promotions;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\NodeType;
-use ReactorCMS\Entities\Node;
+use Reactor\Hierarchy\Node;
 use ReactorCMS\Entities\NodeMeta;
 
 trait UseAppHelper
@@ -23,16 +23,18 @@ trait UseAppHelper
 
     use FormBuilderTrait;
 
-    public function getBusinessLocation($node)
+    public function getProfileLocation($node_id)
     {
 
-        $locations = $node->meta()->where('key', 'location')->orderBy('value', 'DESC')->get();
+       $node = Node::find($node_id);
+        $locations = $node->getMeta('location');
 
+        rsort($locations);
         if (count($locations) > 0) {
             $loca = '';
             foreach ($locations as $location) {
 
-                $loca .= Node::withType('locations')->where('id', $location->value)->first()->getTitle() . ', ';
+                $loca .= Node::withType('locations')->where('id', $location)->first()->getTitle() . ', ';
             }
 
             $length = strlen(trim($loca));

@@ -14,19 +14,11 @@ Route::group(['prefix' => 'member', 'middleware' => ['setTheme:' . config('theme
     Route::get('profile/{id}/edit/{source?}', ['as' => 'member.profile.edit', 'uses' => 'MemberController@editProfile']);
     Route::put('profile/{id}/edit/{source?}', ['as' => 'member.profile.update', 'uses' => 'MemberController@updateProfile']);
 
-    Route::post('tags/search', [
-        'uses' => 'TagsController@searchJson',
-        'as' => 'member.tags.search.json']);
+    Route::post('/profile/education/{id}', ['as' => 'member.profile.education', 'uses' => 'MemberController@updateEducation']);
 
-    Route::post('{id}/tags', [
-        'uses' => 'TagsController@storeTag',
-        'as' => 'member.nodes.tags.store']);
 
-    Route::post('{id}/tags/attach', [
-        'uses' => 'TagsController@attachTag',
-        'as' => 'member.nodes.tags.attach']);
+    Route::get('profile/booking/confirm/{id}', ['as' => 'member.profile.booking.confirm', 'uses' => 'MemberController@bookingConfirm']);
+    Route::get('profile/booking/cancel/{id}', ['as' => 'member.profile.booking.cancel', 'uses' => 'MemberController@bookingCancel']);
 
-    Route::post('{id}/tags/detach', [
-        'uses' => 'TagsController@detachTag',
-        'as' => 'member.nodes.tags.detach']);
+
 });
