@@ -81,8 +81,6 @@
                                             </div>
                                         </div>
 
-
-
                                         <div class="row">
                                             <div class="col-lg-6 col-xs-12">
                                                 <div class="form-group">
@@ -145,9 +143,20 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+
                                         <div class="form-group">
+
+
                                             <label>Search Keywords</label>
-                                            <input type="text" class="form-control" placeholder="Keywords"/>
+                                            <select multiple="" class="form-control select-checkbox" size="5">
+                                                <option>Dog</option>
+                                                <option>Cat</option>
+                                                <option>Hippo</option>
+                                                <option>Dinosaur</option>
+                                                <option>Another Dog</option>
+                                            </select>
+
                                         </div>
                                     </div>
 

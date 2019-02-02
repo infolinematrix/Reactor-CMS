@@ -4,11 +4,12 @@
 namespace Extension\Site\Http\Controllers;
 
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
-use ReactorCMS\Entities\Node;
+use Reactor\Hierarchy\Node;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use UxWeb\SweetAlert\SweetAlert;
@@ -93,25 +94,12 @@ class SiteController extends Controller
     public function getBrowse($name, NodeRepository $nodeRepository)
     {
         // get Node
-        //$node = $nodeRepository->getNodeAndSetLocale($name);
-        //dd($node);
-        //Get Node Type
-        //$node_type = $node->getNodeType();
+        $node = $nodeRepository->getNodeAndSetLocale($name);
+        $val = $node->getKey();
 
-        //--Temp
-        //$node->setMeta('location', ['a', 'b', 'c']);
-        //$node->setMeta('category', 6);
-        //$node = $node->fresh();
+        $nodes = Node::whereMeta('location', 'like', "%{$val}%")->get();;
 
-        $node = $nodeRepository->getNode($name);
-
-        $lo = $node->getMeta('location');
-        dd($lo);
-        //dd($node->getKey());
-        //$models = $node->whereMeta('category', 6)->get();
-        //$models = $node->whereHasMeta('location', ['x  '])->first();
-        //dd($models->getKey());
-        //dd($node_type->getKey());
+        return $this->compileView('Site::list', compact('nodes'), 'Browse');
     }
 
     /**

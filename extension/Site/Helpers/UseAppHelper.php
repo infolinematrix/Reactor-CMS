@@ -395,24 +395,5 @@ trait UseAppHelper
         return $node;
     }
 
-    protected function promotions($user)
-    {
-        $f = $user->nodes()->with('promotions')->withType('producttype')->get();
-
-        //dd($f[0]->promotions);
-        foreach ($f as $n) {
-
-            if($n) {
-                if ($n->promotions) {
-                    $nodes[] = $n;
-                }
-            }
-
-        }
-
-        if (!$nodes) return null;
-
-        return $nodes;
-    }
 
 }
