@@ -4,10 +4,11 @@
             <div class="preview"><span>Change Photo</span></div>
         </a>
     </figure>
+    @if($isProfile)
     <div class="wrapper">
-        <small>Psicologist</small>
-        <h3>Dr. Sudhyasom</h3>
+        <h3>Dr. {!! $isProfile !!}</h3>
     </div>
+    @endif
 
 
     <div class="navigation">

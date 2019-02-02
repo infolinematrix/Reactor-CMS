@@ -85,6 +85,7 @@ class MemberController extends Controller
 
         /*Check Profile*/
 
+        $isProfile = null;
         $user = Auth::guard('web')->user();
         $node = $user->nodes()->withType('profile')->first();
         if($node){
@@ -146,7 +147,8 @@ class MemberController extends Controller
         ]);
 
 
-        return $this->compileView('Site::member.profile', compact('form','locations','tags','specialities'), 'Profile');
+
+        return $this->compileView('Site::member.profile', compact('isProfile','form','locations','tags','specialities'), 'Profile');
     }
 
 
@@ -197,6 +199,8 @@ class MemberController extends Controller
     public function editProfile($id, $source = null){
 
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
+
+        $isProfile = $node->profile_firstname.' '.$node->profile_lastname;
 
         /*Education*/
         $educations = $node->children()
@@ -287,6 +291,7 @@ class MemberController extends Controller
             'rules' => 'require'
         ]);
 
+
         /*Education*/
 
         $this->validateParentCanHaveChildren($node);
@@ -304,7 +309,8 @@ class MemberController extends Controller
             'attr' => ['rows' => 2]
         ]);
 
-        return $this->compileView('Site::member.profile_edit', compact('form','educationform','node','educations','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
+
+        return $this->compileView('Site::member.profile_edit', compact('isProfile','form','educationform','node','educations','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
 
     }
 
