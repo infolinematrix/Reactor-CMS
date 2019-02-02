@@ -162,9 +162,9 @@ class SiteExtensionServiceProvider extends ServiceProvider
     public function register_view_composer()
     {
         // Using class based composers...
-        //view()->composer('*', 'Extension\Site\Http\Composer\SiteComposer');
+        view()->composer('*', 'Extension\Site\Http\Composer\SiteComposer');
 
         //--Admin Side Menu Composer
-        view()->composer('backend.partials.sidebar', 'Extension\Site\Http\Composer\AdminMenuComposer');
+        //view()->composer('backend.partials.sidebar', 'Extension\Site\Http\Composer\AdminMenuComposer');
     }
 }

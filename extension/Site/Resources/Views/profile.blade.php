@@ -296,8 +296,8 @@
                             </div>
                         </div>
                         <!-- /row -->
-
                         <hr/>
+
                         <div class="form-group">
                             <input type="text" class="form-control" name="patient_name" id="patient_name" required
                                    placeholder="Patient name" autocomplete="off"/>
@@ -306,7 +306,6 @@
                             <input type="email" class="form-control" name="patient_email" id="patient_email" required
                                    placeholder="Your email address" autocomplete="off"/>
                         </div>
-
                         <div class="row">
                             <div class="col-8">
                                 <div class="form-group">
