@@ -91,20 +91,6 @@ class SiteController extends Controller
         $name = $request->input('q');
         $tag = $tagRepository->getTag($name);
 
-        // dd($tag->id);
-
-        /*$tag = Node::with(['tags' => function ($query) {
-            $query->join('tags', 'id', '=', 'node.id');
-        }]);
-
-        $tag = Node::with(['tags' => function ($q) {
-            $q->where('tag_id', 5)->get();
-        }]);
-
-        $tag = Node::with(['tags' => function($q) use($tag){
-            $q->where('tag_id', 5)->get();
-        }])->get();*/
-
         $nodes = Node::WithTag($tag->id)->get();
 
         return $this->compileView('Site::list', compact('nodes'), 'Browse');
@@ -144,12 +130,22 @@ class SiteController extends Controller
     /**
      * PROFILE
      */
-    public function getProfile($name, NodeRepository $nodeRepository)
+    public function getProfile($name, NodeRepository $nodeRepository, TagRepository $tagRepository)
     {
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
         $location = getProfileLocation($node->getKey());
+
+        $tags = [];
+
+        foreach ($node->tags()->get() as $tag) {
+            $tag = Tag::findOrFail($tag);
+            
+            dd($tag);
+        }
+
+        dd($tags);
 
         /*Education*/
         $educations = $node->children()

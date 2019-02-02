@@ -23,8 +23,6 @@ trait UseAppHelper
 
     use FormBuilderTrait;
 
-   
-
 
     public function getNodesResults($mode = '',$node, $type, $entities, $searchKey = '',$nodeRepository){
 
@@ -372,5 +370,5 @@ trait UseAppHelper
         return $node;
     }
 
-
+    
 }

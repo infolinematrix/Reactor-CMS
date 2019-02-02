@@ -28,13 +28,17 @@
                         <a href="./detail-page.html"><img src="{!! theme_url('img/doctor_listing_1.jpg') !!}"
                                                           alt=""/></a>
                     </figure>
-                    <small>Pediatrician</small>
+
+                    @foreach(getSpeciality($node->getKey()) as $speciality => $value)
+                        <small>{!! $value !!}</small>
+                    @endforeach
+
                     <h3>{!! $node->getTitle() !!}</h3>
                     <p>{!! str_limit($node->profile_about,150) !!}</p>
                     <ul>
-
-                        <li>West Bengal</li>
-                        <li>Siliguri</li>
+                        @foreach(location_array($node->getKey()) as $location => $value)
+                            <li>{!! $value !!}</li>
+                        @endforeach
 
                         <li><a href="{!! route('profile',$node->getName()) !!}">View Profile</a></li>
                     </ul>

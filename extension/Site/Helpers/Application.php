@@ -35,5 +35,33 @@ if (!function_exists('getProfileLocation')) {
 
         }
     }
+
+    function location_array($node_id)
+    {
+
+        $node = Node::find($node_id);
+        $locations = $node->getMeta('location');
+        $loca = [];
+        foreach ($locations as $location) {
+
+            $loca[] = Node::withType('locations')->where('id', $location)->first()->getTitle();
+        }
+
+        return $loca;
+    }
+
+    function getSpeciality($node_id)
+    {
+        $node = Node::find($node_id);
+        $speciality[] = $node->getMeta('category');
+
+        $result = [];
+        foreach ($speciality as $row) {
+
+            $result[] = Node::withType('categories')->where('id', $row)->first()->getTitle();
+        }
+
+        return $result;
+    }
 }
 
