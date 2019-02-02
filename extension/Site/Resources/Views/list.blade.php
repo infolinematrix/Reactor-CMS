@@ -26,27 +26,6 @@
                 <li>
                     <h4 class="align-middle mt-3">Gastroenterologist</h4>
                 </li>
-                <li>
-                    <h6>Layout</h6>
-                    <div class="layout_view">
-                        <a href="./grid-list.html"><i class="icon-th"></i></a>
-                        <a href="#0" class="active"><i class="icon-th-list"></i></a>
-                        <a href="./list-map.html"><i class="icon-map-1"></i></a>
-                    </div>
-                </li>
-                <li>
-                    <h6>Sort by</h6>
-                    <select name="orderby" class="selectbox">
-                        <option value="Closest"/>
-                        Closest
-                        <option value="Best rated"/>
-                        Best rated
-                        <option value="Men"/>
-                        Men
-                        <option value="Women"/>
-                        Women
-                    </select>
-                </li>
             </ul>
         </div>
         <!-- /container -->
@@ -67,36 +46,17 @@
                     </figure>
                     <small>Pediatrician</small>
                     <h3>{!! $node->getTitle() !!}</h3>
-                    <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
-                    <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-                    <a href="./badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level"
-                       class="badge_list_1"><img src="./img/badges/badge_1.svg" width="15" height="15" alt=""/></a>
+                    <p>{!! str_limit($node->profile_about,150) !!}</p>
                     <ul>
-                        <li>Cardiologist</li>
+                        <li>West Bengal</li>
                         <li>Siliguri</li>
 
-                        <li><a href="./detail-page.html">View Profile</a></li>
+                        <li><a href="{!! route('profile',$node->getName()) !!}">View Profile</a></li>
                     </ul>
                 </div>
                 <!-- /strip_list -->
                 @endforeach
 
-
-                <nav aria-label="" class="add_top_20">
-                    <ul class="pagination pagination-sm">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /pagination -->
             </div>
             <!-- /col -->
             <aside class="col-lg-4" id="sidebar">

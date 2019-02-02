@@ -103,6 +103,17 @@ class SiteController extends Controller
     }
 
     /**
+     * PROFILE
+     */
+    public function getProfile($name, NodeRepository $nodeRepository)
+    {
+        // get Node
+        $node = $nodeRepository->getNodeAndSetLocale($name);
+
+        return $this->compileView('Site::profile', compact('node'), 'Browse');
+    }
+
+    /**
      * Site Contact
      */
     public function getContact()
