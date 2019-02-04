@@ -1,10 +1,22 @@
 <div class="box_list wow fadeIn">
-    <figure>
-        <a href="#"><img src="{!! theme_url('img/doctor_listing_4.jpg') !!}" class="img-fluid" alt=""/>
-            <div class="preview"><span>Change Photo</span></div>
-        </a>
-    </figure>
     @if($isProfile)
+    <figure>
+        <div class="gallery">
+            <div class="picture">
+                {!! Form::open(['url' => route('member.profile.upload.picture'),'files' => true]) !!}
+                <input class="image-up" id="photo"
+                       name="image"  type="file" title="Click to Change">
+                <div class="actions">
+                    <span class="">
+                    <label for="photo"> <button type="submit" class="btn btn-danger btn-sm pull-right"> Save</button></label>
+                    </span>
+                </div>
+                {!! Form::close() !!}
+
+            </div>
+            </div>
+    </figure>
+
     <div class="wrapper">
         <h3>Dr. {!! $isProfile !!}</h3>
     </div>

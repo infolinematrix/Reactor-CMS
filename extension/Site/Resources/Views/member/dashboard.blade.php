@@ -1,5 +1,41 @@
 @extends('Site::layout.default')
+@section('scripts')
+    @parent
+    {!! Theme::js('dropzone/jquery.ezdz.min.js') !!}
+    <script type="text/javascript">
+        @if($profileImage)
+        $('.image-up').ezdz({
+            text: '<img src="{!! asset('uploads/'.$profileImage->path) !!}" class="img-fluid" alt=""/>',
+        });
+        @else
+        $('.image-up').ezdz({
+            text: 'Click to upload picture',
+        });
+        @endif
+    </script>
+@endsection
+@section('styles')
+    {!! Theme::css('dropzone/jquery.ezdz.css') !!}
+    {!! Theme::css('dropzone/focus.css') !!}
 
+    <style>
+        .ezdz-dropzone {
+            position: relative;
+            border-radius: 3px;
+            font: bold 14px arial;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            border: 1px dashed lightgray;
+            color: lightgray;
+            overflow: hidden;
+            max-height: 155px;
+            min-height: 255px;
+            line-height: 140px;
+        }
+    </style>
+@endsection
 @section('content')
     <div id="breadcrumb">
         <div class="container">

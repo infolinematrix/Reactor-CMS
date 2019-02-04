@@ -6,7 +6,7 @@
  * Time: 12:42 PM
  */
 use Reactor\Hierarchy\Node;
-
+use Reactor\Documents\Media\Media;
 if (!function_exists('getProfileLocation')) {
 
     function getProfileLocation($node_id)
@@ -63,5 +63,22 @@ if (!function_exists('getProfileLocation')) {
 
         return $result;
     }
-}
 
+
+}
+if (!function_exists('getProfileimage')) {
+
+    function getProfileimage($node_id)
+    {
+        $image = Media::where('node_id', $node_id)->where('type', 'image')->first();
+        if ($image) {
+
+            $image = $image->path;
+        } else {
+
+            $image = null;
+        }
+
+        return $image;
+    }
+}

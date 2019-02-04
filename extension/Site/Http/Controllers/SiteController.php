@@ -8,6 +8,7 @@ use extension\Site\Helpers\UseAppHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+use Reactor\Documents\Media\Media;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use Reactor\Hierarchy\Node;
@@ -33,9 +34,30 @@ class SiteController extends Controller
 
         $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->take(10)->get();
         $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->take(10)->get();
+        $doctorsAll = Node::withType('profile')->published()->get();
+
+        if(count($doctorsAll) > 0){
+
+            foreach ($doctorsAll as $doctor){
+
+                $doc[] = [
+
+                    'slug' => $doctor->getName(),
+                    'title' => $doctor->getTitle(),
+                    'specialist' => Node::find($doctor->getMeta('category'))->getTitle(),
+                    'image' => Media::where('node_id',$doctor->getKey())->where('type','image')->first()
+                ];
+            }
+
+            $doctors = $doc;
+        }else{
+
+            $doctors = null;
+        }
 
 
-        return $this->compileView('Site::welcome', compact('categories','locations'), 'Home Page');
+
+        return $this->compileView('Site::welcome', compact('categories','locations','doctors'), 'Home Page');
     }
 
     public function browse()
@@ -124,6 +146,7 @@ class SiteController extends Controller
 
         $nodes = Node::whereMeta('location', 'like', "%{$val}%")->get();;
 
+       
         return $this->compileView('Site::list', compact('nodes'), 'Browse');
     }
 

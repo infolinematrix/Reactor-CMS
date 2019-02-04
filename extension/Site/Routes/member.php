@@ -17,6 +17,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['setTheme:' . config('theme
     Route::post('/profile/education/{id}', ['as' => 'member.profile.education', 'uses' => 'MemberController@updateEducation']);
     Route::get('/profile/education/delete/{id}', ['as' => 'member.profile.delete.education', 'uses' => 'MemberController@deleteEducation']);
 
+    Route::post('/profile/upload/picture', ['as' => 'member.profile.upload.picture', 'uses' => 'MemberController@uploadPicture']);
 
     Route::get('profile/booking/confirm/{id}', ['as' => 'member.profile.booking.confirm', 'uses' => 'MemberController@bookingConfirm']);
     Route::get('profile/booking/cancel/{id}', ['as' => 'member.profile.booking.cancel', 'uses' => 'MemberController@bookingCancel']);

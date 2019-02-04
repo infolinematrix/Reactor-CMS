@@ -21,6 +21,9 @@ use Reactor\Hierarchy\Tags;
 use ReactorCMS\Entities\NodeTag;
 use ReactorCMS\Entities\Appointment;
 use Mail;
+use Reactor\Documents\Media\Media;
+use Intervention\Image\Facades\Image as ImageFacade;
+use Illuminate\Support\Facades\File;
 class MemberController extends Controller
 {
     use UsesNodeForms, UsesNodeHelpers, UsesTranslations;
@@ -201,7 +204,7 @@ class MemberController extends Controller
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
 
         $isProfile = $node->profile_firstname.' '.$node->profile_lastname;
-
+        $profileImage = Media::where('node_id',$node->getKey())->where('type','image')->first();
         /*Education*/
         $educations = $node->children()
             ->sortable()
@@ -310,7 +313,7 @@ class MemberController extends Controller
         ]);
 
 
-        return $this->compileView('Site::member.profile_edit', compact('isProfile','form','educationform','node','educations','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
+        return $this->compileView('Site::member.profile_edit', compact('isProfile','profileImage','form','educationform','node','educations','source','tags','tagsMeta','locations','specialities','category_meta','location_meta'), 'Profile');
 
     }
 
@@ -368,6 +371,51 @@ class MemberController extends Controller
         return redirect()->back();
     }
 
+
+    public function uploadPicture(Request $request){
+
+        $user = Auth::guard('web')->user();
+        $node = $user->nodes()->withType('profile')->first();
+
+        if(!$node){
+            return redirect()->route('member.profile');
+        }
+
+        /*Profile Image*/
+        $profile_image = $request->file('image');
+
+
+        if($profile_image != ''){
+            $filename = str_random(6). '_' . $profile_image->getClientOriginalName();
+            $arr = explode(".", $filename, 2);
+
+            //--Save Large Image in Directory--//
+            $destination_path = public_path('uploads/' . $filename);
+            ImageFacade::make($profile_image->getRealPath())
+                ->resize(565, 565)->save($destination_path);
+
+            $media = Media::where('node_id', $node->getKey())->where('type','image')->first();
+            if ($media) {
+                File::delete(upload_path($media->path));
+                Media::where('node_id', $node->getKey())->where('type', 'image')->delete();
+            }
+            //-- Save Image in Database--//
+            $media = new Media();
+            $media->node_id = $node->getKey();
+            $media->path = $filename;
+            $media->name = 'profile';
+            $media->extension = $arr[1];
+            $media->mimetype = $profile_image->getClientMimeType();
+            $media->size = 0;
+            $media->user_id = Auth::user()->id;
+            $media->save();
+        }
+
+        SweetAlert::message('Image Uploaded')->autoclose(4000);
+
+        return redirect()->back();
+
+    }
     public function deleteEducation($id){
 
 
