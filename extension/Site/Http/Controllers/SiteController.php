@@ -174,20 +174,33 @@ class SiteController extends Controller
             ->translatedIn(locale())
             ->get();
 
+        $reviews = $node->reviews()->get();
+        $rattings = getReviewrating($node);
 
-        //-- Test post review
-        //$user = Auth::guard('web').user();
-        /*
-        $review = $node->createReview([
-            'title' => 'Some title',
-            'body' => 'Some body',
-            'rating' => 5,
-        ], $node);
-        */
 
-        return $this->compileView('Site::profile', compact('node','image','educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
+
+        return $this->compileView('Site::profile', compact('node','image','educations', 'location', 'keywords', 'viewed', 'lastviewed','reviews','rattings'), 'Browse');
     }
 
+
+    public function postReview( NodeRepository $nodeRepository, Request $request){
+
+        $node = $nodeRepository->getNodeAndSetLocale($request->node_name);
+        $node->createReview([
+            'name' => $request->rev_name,
+            'email' => $request->rev_email,
+            'body' => $request->rev_content,
+            'rating' => $request->ratting,
+        ], $node);
+
+        $response = array(
+            'status' => 'Success',
+            'message' => '<span class="text text-info">' . __('Waiting for approval....') . '</span>',
+        );
+
+        return \Response::json($response);
+
+    }
     public function booking(Request $request){
 
 

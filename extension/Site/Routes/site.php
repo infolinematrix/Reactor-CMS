@@ -19,6 +19,7 @@ Route::group(['middleware' => ['track', 'setTheme:' . config('themes.active')]],
     Route::get('/browse/{slug}', ['as' => 'browse', 'uses' => 'SiteController@getBrowse']);
     Route::get('/profile/{slug}', ['as' => 'profile', 'uses' => 'SiteController@getProfile']);
     Route::post('/book/appointment', ['as' => 'book.appointment', 'uses' => 'SiteController@booking']);
+    Route::post('/profile/review', ['as' => 'profile.review', 'uses' => 'SiteController@postReview']);
 
 
     // Search

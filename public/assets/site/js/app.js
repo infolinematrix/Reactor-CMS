@@ -125,11 +125,12 @@ function slugify(text) {
         .replace(/-+$/, '');            // Trim - from end of text
 }
 
+var base_url = $('body').data('baseurl');
 
 $(document).ready(function () {
 
 
-  var base_url = $('body').data('baseurl');
+
 
     $('.cat').livequery('change', function () {
 
@@ -168,6 +169,42 @@ $(document).ready(function () {
     }
 
 
+
+
+});
+
+$("#PostReview").on('submit', function () {
+
+
+    var img = base_url + "/spinner.gif";
+
+    $('#rmsz').html('<img class="im" src="' + img + '"  />');
+
+    $.post($(this).prop('action'), {
+
+            "_token": $(this).find('input[name=_token]').val(),
+            "node_name": $('#node_name').val(),
+            "ratting": $("input[type='radio'][name='ratting']:checked").val(),
+            "rev_name": $('#rev_name').val(),
+            "rev_email": $('#rev_email').val(),
+            "rev_content": $('#rev_content').val(),
+        },
+
+        function (data) {
+
+            //response after the process.
+            var status = data.status;
+
+            if (status == 'Fail') {
+                $('#rmsz').html('');
+                $("#rmsz").html(data.message).fadeIn('slow');
+            } else {
+                $('#rmsz').html('');
+                $("#rmsz").html(data.message).fadeIn('slow');
+                $('#btnRev').attr('disabled', 'disabled');
+            }
+        }, 'json');
+    return false
 });
 
 /*Form POST*/

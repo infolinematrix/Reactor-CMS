@@ -7,6 +7,7 @@
  */
 use Reactor\Hierarchy\Node;
 use Reactor\Documents\Media\Media;
+
 if (!function_exists('getProfileLocation')) {
 
     function getProfileLocation($node_id)
@@ -80,5 +81,70 @@ if (!function_exists('getProfileimage')) {
         }
 
         return $image;
+    }
+}
+
+if (!function_exists('getReviewrating')) {
+
+    function getReviewrating($node)
+    {
+
+        $star_1 = $node->reviews()->where('rating', '1')->first();
+        if ($star_1) {
+
+            $star_1 = $node->reviews()->where('rating', '1')->count();
+
+        }
+        $star_2 = $node->reviews()->where('rating', '2')->first();
+        if($star_2){
+
+            $star_2 = $node->reviews()->where('rating', '2')->count();
+        }
+        $star_3 = $node->reviews()->where('rating', '3')->first();
+        if($star_3){
+
+            $star_3 = $node->reviews()->where('rating', '3')->count();
+        }
+
+        $star_4 = $node->reviews()->where('rating', '4')->first();
+        if($star_4){
+
+            $star_4 =$node->reviews()->where('rating', '4')->count();
+        }
+
+        $star_5 = $node->reviews()->where('rating', '5')->first();
+        if($star_5){
+
+            $star_5 = $node->reviews()->where('rating', '5')->count();
+        }
+        $count = $star_1 + $star_2 + $star_3 + $star_4 + $star_5;
+
+
+
+        if ($count != 0) {
+            $ratting = ($star_1 + $star_2 * 2 + $star_3 * 3 + $star_4 * 4 + $star_5 * 5) / $count;
+
+
+
+        } else {
+            $ratting = ($star_1 + $star_2 * 2 + $star_3 * 3 + $star_4 * 4 + $star_5 * 5) / 1;
+        }
+
+        return $ratting;
+
+    }
+}
+
+if (!function_exists('getReviewratingCount')) {
+
+    function getReviewratingCount($node,$rating=0)
+    {
+
+
+       $rating = $node->reviews()->where('rating', $rating)->count();
+
+
+        return $rating;
+
     }
 }
