@@ -32,8 +32,16 @@ class MemberController extends Controller
      */
     public function index()
     {
+        $user = Auth::guard('web')->user();
+        $node = $user->nodes()->withType('profile')->first();
 
-        return $this->compileView('Site::member.dashboard', [], 'Dashboard');
+        if (!$node) {
+            return redirect()->route('member.profile');
+        }
+        $isProfile = $node->profile_firstname . ' ' . $node->profile_lastname;
+        $appointments = $node->appointment()->orderBy('confirmed', 'yes')->get();
+
+        return $this->compileView('Site::member.dashboard', compact('isProfile', 'appointments'), 'Dashboard');
     }
 
 

@@ -10,13 +10,13 @@
             </div>
             <nav class="col-lg-9 col-6">
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0"><span>Menu mobile</span></a>
-                @if(!Auth::user())
+                @if(!Auth::guard('web')->user())
                     <ul id="top_access" class="main-menu">
                         <li><a href="{!! route('login') !!}"><i class="pe-7s-add-user"></i></a></li>
                     </ul>
                 @else
                     <ul id="top_access" class="main-menu">
-                        <li><a href=""><i class="pe-7s-add-user"></i></a></li>
+                        <li><a href="{!! route('member') !!}"><i class="pe-7s-add-user"></i></a></li>
                     </ul>
                 @endif
                 <div class="main-menu">
@@ -26,20 +26,6 @@
                             <ul>
                                 <li><a href="index.html">English</a></li>
                                 <li><a href="./index-2.html">Turkish</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#0" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
-                            <ul>
-                                <li><a href="{!! route('site.browse') !!}">Browse (All)</a></li>
-                                <li><a href="{!! route('site.single') !!}">Single</a></li>
-                                <li><a href="{!! route('site.contact') !!}">Contact</a></li>
-                                <li><a href="{!! route('register') !!}">Register</a></li>
-                                <li><a href="{!! route('login') !!}">Login</a></li>
-
-                                <li><a href="{!! route('member') !!}">Dashboard</a></li>
-                                <li><a href="{!! route('member.profile') !!}">Profile</a></li>
                             </ul>
                         </li>
 

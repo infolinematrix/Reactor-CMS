@@ -8,12 +8,14 @@ use extension\Site\Helpers\UseAppHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use Reactor\Hierarchy\Node;
 use Reactor\Hierarchy\Tags\TagRepository;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
+use ReactorCMS\Statistics\NodeStatisticsCompiler;
 use UxWeb\SweetAlert\SweetAlert;
 use ReactorCMS\Entities\Appointment;
 
@@ -130,22 +132,22 @@ class SiteController extends Controller
     /**
      * PROFILE
      */
-    public function getProfile($name, NodeRepository $nodeRepository, TagRepository $tagRepository)
+    public function getProfile($name, NodeRepository $nodeRepository, NodeStatisticsCompiler $compiler, TagRepository $tagRepository)
     {
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
         $location = getProfileLocation($node->getKey());
 
-        $tags = [];
+        // Keywords
+        $keywords = $node->tags()->get();
 
-        foreach ($node->tags()->get() as $tag) {
-            $tag = Tag::findOrFail($tag);
-            
-            dd($tag);
-        }
-
-        dd($tags);
+        // Views
+        $statistics = $compiler->compileStatistics($node);
+        $viewed = $statistics['total_visits'];
+        $lastviewed = $statistics['last_visited'];
+        //$views = $node->trackerViews();
+        //dd($statistics);
 
         /*Education*/
         $educations = $node->children()
@@ -154,7 +156,17 @@ class SiteController extends Controller
             ->get();
 
 
-        return $this->compileView('Site::profile', compact('node','educations','location'), 'Browse');
+        //-- Test post review
+        //$user = Auth::guard('web').user();
+
+        /*$review = $node->createReview([
+            'title' => 'Some title',
+            'body' => 'Some body',
+            'rating' => 5,
+        ], $user);*/
+
+
+        return $this->compileView('Site::profile', compact('node', 'educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
     }
 
     public function booking(Request $request){

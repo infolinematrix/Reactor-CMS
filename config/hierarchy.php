@@ -55,6 +55,7 @@ return [
 	*/
     'nodetype_model' => 'Reactor\Hierarchy\NodeType',
     'nodefield_model' => 'Reactor\Hierarchy\NodeField',
+    'review' => 'Reactor\Hierarchy\Review',
 
     /*
 	|--------------------------------------------------------------------------
@@ -65,6 +66,5 @@ return [
     | a foreign key is needed for the node relations to work.
 	|
 	*/
-    'nodesources_table' => 'node_sources'
-
+    'nodesources_table' => 'node_sources',
 ];

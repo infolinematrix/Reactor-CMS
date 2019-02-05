@@ -9,9 +9,13 @@
     <div id="breadcrumb">
         <div class="container">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Category</a></li>
-                <li>Page active</li>
+                <li><a href="{!! route('site.home') !!}">Home</a></li>
+                <li><a href="#">
+                        @foreach(getSpeciality($node->getKey()) as $speciality => $value)
+                            <span>{!! $value !!}</span>
+                        @endforeach
+                    </a></li>
+                <li>{!! $node->getTitle() !!}</li>
             </ul>
         </div>
     </div>
@@ -46,7 +50,7 @@
                                     <h1>{!! $node->getTitle() !!}</h1>
 
                                     <ul class="statistic">
-                                        <li>854 Views</li>
+                                        <li>{!! $viewed !!} Views</li>
                                     </ul>
                                     <ul class="contacts">
                                         <li>
@@ -72,24 +76,17 @@
                         <div class="wrapper_indent">
                             <p>{!! $node->profile_about !!}</p>
                             <h6>Specializations</h6>
+
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <ul class="bullets">
-                                        <li>Abdominal Radiology</li>
-                                        <li>Addiction Psychiatry</li>
-                                        <li>Adolescent Medicine</li>
-                                        <li>Cardiothoracic Radiology</li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6">
-                                    <ul class="bullets">
-                                        <li>Abdominal Radiology</li>
-                                        <li>Addiction Psychiatry</li>
-                                        <li>Adolescent Medicine</li>
-                                        <li>Cardiothoracic Radiology</li>
-                                    </ul>
-                                </div>
+                                @foreach($keywords as $tag)
+                                    <div class="col-lg-6">
+                                        <span class=" bullets">
+                                        {!! $tag->title !!}
+                                    </span>
+                                    </div>
+                                @endforeach
                             </div>
+
                             <!-- /row-->
                         </div>
                         <!-- /wrapper indent -->
