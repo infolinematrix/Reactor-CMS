@@ -25,7 +25,7 @@
                 <div class="strip_list wow fadeIn">
                     <a href="#0" class="wish_bt"></a>
                     <figure>
-                        <a href="./detail-page.html"><img src="{!! theme_url('img/doctor_listing_1.jpg') !!}"
+                        <a href="{!! route('profile',$node->getName()) !!}"><img src="{!! asset('uploads/'.getProfileimage($node->getKey())) !!}"
                                                           alt=""/></a>
                     </figure>
 

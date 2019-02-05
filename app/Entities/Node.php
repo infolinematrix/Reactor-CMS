@@ -26,7 +26,7 @@ class Node extends \Reactor\Hierarchy\Node
 
     public function appointment()
     {
-        return $this->hasMany('ReactorCMS\Entities\Appointment', 'node_id');
+        return $this->hasMany('ReactorCMS\Site\Entities\Appointment', 'node_id');
     }
 
 

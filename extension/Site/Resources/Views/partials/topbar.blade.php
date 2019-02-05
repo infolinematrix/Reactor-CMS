@@ -22,10 +22,18 @@
                 <div class="main-menu">
                     <ul>
                         <li class="submenu">
-                            <a href="#0" class="show-submenu">Language<i class="icon-down-open-mini"></i></a>
+                            <a href="#0" class="show-submenu">{!! trans('general.'.locale()) !!}<i class="icon-down-open-mini"></i></a>
                             <ul>
-                                <li><a href="index.html">English</a></li>
-                                <li><a href="./index-2.html">Turkish</a></li>
+                              @if(count(locales()) > 1 )
+                                  @foreach(locales() as $value => $key)
+
+                                     <li>
+                                       <a href="{!! route('locale.set',$key) !!}">
+                                       {!! trans('general.'.$key) !!}
+                                       </a>
+                                      </li>
+                                  @endforeach
+                                @endif
                             </ul>
                         </li>
 

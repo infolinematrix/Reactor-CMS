@@ -8,16 +8,15 @@ use extension\Site\Helpers\UseAppHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
+use Reactor\Documents\Media\Media;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
 use Reactor\Hierarchy\Node;
 use Reactor\Hierarchy\Tags\TagRepository;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
-use ReactorCMS\Statistics\NodeStatisticsCompiler;
 use UxWeb\SweetAlert\SweetAlert;
-use ReactorCMS\Entities\Appointment;
+use ReactorCMS\Site\Entities\Appointment;
 
 class SiteController extends Controller
 {
@@ -33,11 +32,33 @@ class SiteController extends Controller
     public function getHome()
     {
 
+        
         $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->take(10)->get();
         $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->take(10)->get();
+        $doctorsAll = Node::withType('profile')->published()->get();
+
+        if(count($doctorsAll) > 0){
+
+            foreach ($doctorsAll as $doctor){
+
+                $doc[] = [
+
+                    'slug' => $doctor->getName(),
+                    'title' => $doctor->getTitle(),
+                    'specialist' => Node::find($doctor->getMeta('category'))->getTitle(),
+                    'image' => Media::where('node_id',$doctor->getKey())->where('type','image')->first()
+                ];
+            }
+
+            $doctors = $doc;
+        }else{
+
+            $doctors = null;
+        }
 
 
-        return $this->compileView('Site::welcome', compact('categories','locations'), 'Home Page');
+
+        return $this->compileView('Site::welcome', compact('categories','locations','doctors'), 'Home Page');
     }
 
     public function browse()
@@ -126,28 +147,29 @@ class SiteController extends Controller
 
         $nodes = Node::whereMeta('location', 'like', "%{$val}%")->get();;
 
+       
         return $this->compileView('Site::list', compact('nodes'), 'Browse');
     }
 
     /**
      * PROFILE
      */
-    public function getProfile($name, NodeRepository $nodeRepository, NodeStatisticsCompiler $compiler, TagRepository $tagRepository)
+    public function getProfile($name, NodeRepository $nodeRepository, TagRepository $tagRepository)
     {
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
         $location = getProfileLocation($node->getKey());
 
-        // Keywords
-        $keywords = $node->tags()->get();
+        $tags = [];
 
-        // Views
-        $statistics = $compiler->compileStatistics($node);
-        $viewed = $statistics['total_visits'];
-        $lastviewed = $statistics['last_visited'];
-        //$views = $node->trackerViews();
-        //dd($statistics);
+        foreach ($node->tags()->get() as $tag) {
+            $tag = Tag::findOrFail($tag);
+            
+            dd($tag);
+        }
+
+        dd($tags);
 
         /*Education*/
         $educations = $node->children()
@@ -156,17 +178,7 @@ class SiteController extends Controller
             ->get();
 
 
-        //-- Test post review
-        //$user = Auth::guard('web').user();
-
-        /*$review = $node->createReview([
-            'title' => 'Some title',
-            'body' => 'Some body',
-            'rating' => 5,
-        ], $user);*/
-
-
-        return $this->compileView('Site::profile', compact('node', 'educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
+        return $this->compileView('Site::profile', compact('node','educations','location'), 'Browse');
     }
 
     public function booking(Request $request){
