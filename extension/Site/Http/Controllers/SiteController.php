@@ -16,7 +16,7 @@ use Reactor\Hierarchy\Tags\TagRepository;
 use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use UxWeb\SweetAlert\SweetAlert;
-use ReactorCMS\Entities\Appointment;
+use ReactorCMS\Site\Entities\Appointment;
 
 class SiteController extends Controller
 {
@@ -32,6 +32,7 @@ class SiteController extends Controller
     public function getHome()
     {
 
+        
         $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->take(10)->get();
         $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->take(10)->get();
         $doctorsAll = Node::withType('profile')->published()->get();

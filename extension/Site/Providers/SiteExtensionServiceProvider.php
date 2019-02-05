@@ -32,6 +32,7 @@ class SiteExtensionServiceProvider extends ServiceProvider
         $this->blade_directive();
         $this->register_view_path();
         $this->register_helpers();
+        $this->register_entities();
         $this->register_view_composer();
 
         $this->mergeConfigFrom(dirname(__DIR__) . '/Config/extension.php', 'site');
@@ -155,6 +156,13 @@ class SiteExtensionServiceProvider extends ServiceProvider
     public function register_helpers()
     {
         foreach (glob(dirname(__DIR__) . '/Helpers/*.php') as $filename) {
+            require_once($filename);
+        }
+    }
+
+    public function register_entities()
+    {
+        foreach (glob(dirname(__DIR__) . '/Entities/*.php') as $filename) {
             require_once($filename);
         }
     }

@@ -19,7 +19,7 @@ use ReactorCMS\Entities\NodeMeta;
 use UxWeb\SweetAlert\SweetAlert;
 use Reactor\Hierarchy\Tags;
 use ReactorCMS\Entities\NodeTag;
-use ReactorCMS\Entities\Appointment;
+use ReactorCMS\Site\Entities\Appointment;
 use Mail;
 use Reactor\Documents\Media\Media;
 use Intervention\Image\Facades\Image as ImageFacade;

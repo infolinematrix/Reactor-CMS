@@ -73,9 +73,11 @@ class UserController extends Controller
             return redirect()->route('member.profile');
         }
 
+
         $isProfile = $node->profile_firstname.' '.$node->profile_lastname;
         $profileImage = $node->media()->where('type','image')->first();
 
+        
         $appointments = $node->appointment()->orderBy('confirmed','yes')->get();
 
         return $this->compileView('Site::member.dashboard', compact('isProfile','profileImage','node_count','appointments'), 'USER PANEL');
