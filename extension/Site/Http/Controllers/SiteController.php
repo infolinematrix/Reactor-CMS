@@ -18,7 +18,7 @@ use Mail;
 use ReactorCMS\Statistics\NodeStatisticsCompiler;
 use UxWeb\SweetAlert\SweetAlert;
 use ReactorCMS\Site\Entities\Appointment;
-
+use Reactor\Documents\Media\Media;
 class SiteController extends Controller
 {
 
@@ -33,11 +33,32 @@ class SiteController extends Controller
     public function getHome()
     {
 
-        $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->take(10)->get();
-        $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->take(10)->get();
+        $categories = Node::WhereExtensionAttribute('categories', 'popular', 1)->translatedIn(locale())->take(10)->get();
+        $locations = Node::WhereExtensionAttribute('locations', 'popular', 1)->translatedIn(locale())->take(10)->get();
+
+        $doctorsAll = Node::withType('profile')->published()->get();
+
+        if(count($doctorsAll) > 0){
+
+            foreach ($doctorsAll as $doctor){
+
+                $doc[] = [
+
+                    'slug' => $doctor->getName(),
+                    'title' => $doctor->getTitle(),
+                    'specialist' => Node::find($doctor->getMeta('category'))->getTitle(),
+                    'image' => Media::where('node_id',$doctor->getKey())->where('type','image')->first()
+                ];
+            }
+
+            $doctors = $doc;
+        }else{
+
+            $doctors = null;
+        }
 
 
-        return $this->compileView('Site::welcome', compact('categories', 'locations'), 'Home Page');
+        return $this->compileView('Site::welcome', compact('categories', 'locations','doctors'), 'Home Page');
     }
 
     public function browse()
@@ -137,6 +158,8 @@ class SiteController extends Controller
         // get Node
         $node = $nodeRepository->getNodeAndSetLocale($name);
 
+        $image = Media::where('node_id',$node->getKey())->where('type','image')->first();
+
         $location = getProfileLocation($node->getKey());
 
         // Keywords
@@ -166,7 +189,7 @@ class SiteController extends Controller
         ], $node);
 
 
-        return $this->compileView('Site::profile', compact('node', 'educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
+        return $this->compileView('Site::profile', compact('node','image','educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
     }
 
     public function booking(Request $request){

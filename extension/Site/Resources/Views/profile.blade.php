@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col-lg-5 col-md-4">
                                     <figure>
-                                        <img src="{!! theme_url('img/doctor_listing_1.jpg') !!}" alt=""
+                                        <img src="{!! $image ? asset('uploads/'.$image->path) : '' !!}" alt="{!! $node->getTitle() !!}"
                                              class="img-fluid"/>
                                     </figure>
                                 </div>
