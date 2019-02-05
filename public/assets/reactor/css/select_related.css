@@ -1,8 +1,5 @@
 
-.form-group__relation li {
-    padding-right: .5em;
-    padding-left: 0
-}
+.form-group__relation li{padding-right: .5em; padding-left: 0}
 
 .related-items {
     background-color: #fff;
@@ -63,13 +60,12 @@
 .related-search__results {
     position: absolute;
     top: 2.5em;
-    left: 0;
-    padding-left: 1em;
+    left: 0; padding-left: 1em;
     width: 100%;
     background-color: #fff;
     box-shadow: 0 .0625em .25em 0 rgba(0, 0, 0, .25);
     z-index: 100;
-    font-weight: bold
+    font-weight:bold
 }
 
 .related-search__results--hidden {

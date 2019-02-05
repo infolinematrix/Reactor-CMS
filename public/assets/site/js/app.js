@@ -34,7 +34,7 @@ if ($('#slider-range')[0]) {
         slider.noUiSlider.set([this.value, null]);
     });
 
-    slider.noUiSlider.on('update', function (values, handle) {
+    slider.noUiSlider.on('update', function( values, handle ) {
         propertyPriceRangeValues[handle].innerHTML = values[handle];
     });
 
@@ -68,7 +68,7 @@ if ($('#slider-days')[0]) {
         if (handle === 0) {
             inputDays.value = values[handle];
 
-            strDays = inputDays.value.replace(' Days', '');
+            strDays = inputDays.value.replace(' Days','');
             var sum = 0;
             sum += Number(inputLog.value);
             sum *= Number(strDays);
@@ -98,12 +98,13 @@ if ($('#slider-days')[0]) {
         dayslider.noUiSlider.set([this.value, null]);
     });
 
-    dayslider.noUiSlider.on('update', function (values, handle) {
+    dayslider.noUiSlider.on('update', function( values, handle ) {
         RangeValues[handle].innerHTML = values[handle];
     });
 
 
 }
+
 
 
 $("#title").keyup(function () {
@@ -128,7 +129,7 @@ function slugify(text) {
 $(document).ready(function () {
 
 
-    var base_url = $('body').data('baseurl');
+  var base_url = $('body').data('baseurl');
 
     $('.cat').livequery('change', function () {
 

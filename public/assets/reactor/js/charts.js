@@ -4100,8 +4100,8 @@
                     var s = 0;
                     o.each(n, function (e) {
                         void 0 !== e && null !== e && o.isArray(e) !== !0 ? s = o.measureText(t, a, r, s, e) : o.isArray(e) && o.each(e, function (e) {
-                            void 0 === e || null === e || o.isArray(e) || (s = o.measureText(t, a, r, s, e))
-                        })
+                                void 0 === e || null === e || o.isArray(e) || (s = o.measureText(t, a, r, s, e))
+                            })
                     });
                     var l = r.length / 2;
                     if (l > n.length) {

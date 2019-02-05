@@ -25,48 +25,43 @@
 
     // Default settings
     var defaults = {
-        className: '',
-        text: 'Drop a file',
-        previewImage: true,
-        value: null,
+        className:     '',
+        text:          'Drop a file',
+        previewImage:  true,
+        value:         null,
         classes: {
-            main: 'ezdz1-dropzone1',
-            enter: 'ezdz-enter',
-            reject: 'ezdz-reject',
-            accept: 'ezdz-accept',
-            focus: 'ezdz-focus'
+            main:      'ezdz1-dropzone1',
+            enter:     'ezdz-enter',
+            reject:    'ezdz-reject',
+            accept:    'ezdz-accept',
+            focus:     'ezdz-focus'
         },
         validators: {
-            maxSize: null,
-            width: null,
-            maxWidth: null,
-            minWidth: null,
-            height: null,
+            maxSize:   null,
+            width:     null,
+            maxWidth:  null,
+            minWidth:  null,
+            height:    null,
             maxHeight: null,
             minHeight: null
         },
-        init: function () {
-        },
-        enter: function () {
-        },
-        leave: function () {
-        },
-        reject: function () {
-        },
-        accept: function () {
-        },
-        format: function (filename) {
+        init:   function() {},
+        enter:  function() {},
+        leave:  function() {},
+        reject: function() {},
+        accept: function() {},
+        format: function(filename) {
             return filename;
         }
     };
 
     // Main plugin
-    $.ezdz = function (element, options) {
+    $.ezdz = function(element, options) {
         this.settings = $.extend(true, {}, defaults, $.ezdz.defaults, options);
-        this.$input = $(element);
-        var self = this,
-            settings = self.settings,
-            $input = self.$input;
+        this.$input   = $(element);
+        var self      = this,
+            settings  = self.settings,
+            $input    = self.$input;
 
         if (!$input.is('input[type="file"]')) {
             return;
@@ -78,13 +73,13 @@
         }
 
         // private: Init the plugin
-        var init = function () {
+        var init = function() {
             var $ezdz, $container, value;
 
             // Build the container
             $container = $('<div class="' + settings.classes.main + '" />')
 
-                .on('dragover.ezdz', function () {
+                .on('dragover.ezdz', function() {
                     $(this).addClass(settings.classes.enter);
 
                     if ($.isFunction(settings.enter)) {
@@ -92,7 +87,7 @@
                     }
                 })
 
-                .on('dragleave.ezdz', function () {
+                .on('dragleave.ezdz', function() {
                     $(this).removeClass(settings.classes.enter);
 
                     if ($.isFunction(settings.leaved)) {
@@ -118,21 +113,21 @@
 
             // Trigger the init callback
             if ($.isFunction(settings.init)) {
-                settings.init.apply($input, [value]);
+                settings.init.apply($input, [ value ]);
             }
 
             // Events on the input
             $input
 
-                .on('focus.ezdz', function () {
+                .on('focus.ezdz', function() {
                     $ezdz.addClass(settings.classes.focus);
                 })
 
-                .on('blur.ezdz', function () {
+                .on('blur.ezdz', function() {
                     $ezdz.removeClass(settings.classes.focus);
                 })
 
-                .on('change.ezdz', function () {
+                .on('change.ezdz', function() {
                     var file = this.files[0];
 
                     // No file, so user has cancelled
@@ -141,23 +136,23 @@
                     }
 
                     // Info about the dropped or selected file
-                    var basename = file.name.replace(/\\/g, '/').replace(/.*\//, ''),
+                    var basename  = file.name.replace(/\\/g,'/').replace( /.*\//, ''),
                         extension = file.name.split('.').pop(),
                         formatted = settings.format(basename);
 
                     file.extension = extension;
 
                     // Mime-Types
-                    var allowed = $input.attr('accept'),
+                    var allowed  = $input.attr('accept'),
                         accepted = false,
-                        valid = true,
-                        errors = {
-                            'mimeType': false,
-                            'maxSize': false,
-                            'width': false,
-                            'minWidth': false,
-                            'maxWidth': false,
-                            'height': false,
+                        valid    = true,
+                        errors   = {
+                            'mimeType':  false,
+                            'maxSize':   false,
+                            'width':     false,
+                            'minWidth':  false,
+                            'maxWidth':  false,
+                            'height':    false,
                             'minHeight': false,
                             'maxHeight': false
                         };
@@ -166,7 +161,7 @@
                     if (allowed) {
                         var types = allowed.split(/[,|]/);
 
-                        $.each(types, function (i, type) {
+                        $.each(types, function(i, type) {
                             type = $.trim(type);
 
                             if ('.' + extension === type) {
@@ -209,7 +204,7 @@
 
                         // Trigger the reject callback
                         if ($.isFunction(settings.reject)) {
-                            settings.reject.apply($input, [file, errors]);
+                            settings.reject.apply($input, [ file, errors ]);
                         }
                         return false;
                     }
@@ -219,14 +214,14 @@
 
                     reader.readAsDataURL(file);
 
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         var img = new Image(),
                             isImage;
 
                         file.data = e.target.result;
-                        img.src = file.data;
+                        img.src   = file.data;
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             isImage = (img.width && img.height);
 
                             // Validator
@@ -236,7 +231,7 @@
                             }
 
                             if (isImage) {
-                                file.width = img.width;
+                                file.width  = img.width;
                                 file.height = img.height;
 
                                 if (settings.validators.width && img.width !== settings.validators.width) {
@@ -284,7 +279,7 @@
 
                                 // Trigger the accept callback
                                 if ($.isFunction(settings.accept)) {
-                                    settings.accept.apply($input, [file]);
+                                    settings.accept.apply($input, [ file ]);
                                 }
                                 // The file is invalidated, so rejected
                             } else {
@@ -294,7 +289,7 @@
 
                                 // Trigger the reject callback
                                 if ($.isFunction(settings.reject)) {
-                                    settings.reject.apply($input, [file, errors]);
+                                    settings.reject.apply($input, [ file, errors ]);
                                 }
                             }
                         }, 250);
@@ -306,11 +301,11 @@
     };
 
     // Inject a file or image in the preview
-    $.ezdz.prototype.preview = function (path, callback) {
-        var settings = this.settings,
-            $input = this.$input,
-            $ezdz = $input.parent('.' + settings.classes.main),
-            basename = (path || '').replace(/\\/g, '/').replace(/.*\//, ''),
+    $.ezdz.prototype.preview = function(path, callback) {
+        var settings  = this.settings,
+            $input    = this.$input,
+            $ezdz     = $input.parent('.' + settings.classes.main),
+            basename  = (path || '').replace(/\\/g,'/').replace( /.*\//, ''),
             formatted = settings.format(basename);
 
         if (!path) {
@@ -330,7 +325,7 @@
         img.src = path;
 
         // Is an image
-        img.onload = function () {
+        img.onload = function() {
             $ezdz.find('div').html($(img).fadeIn());
 
             if ($.isFunction(callback)) {
@@ -339,7 +334,7 @@
         };
 
         // Is not an image
-        img.onerror = function () {
+        img.onerror = function() {
             $ezdz.find('div').html('<span>' + formatted + '</span>');
 
             if ($.isFunction(callback)) {
@@ -351,9 +346,9 @@
     };
 
     // Destroy ezdz
-    $.ezdz.prototype.destroy = function () {
+    $.ezdz.prototype.destroy = function() {
         var settings = this.settings,
-            $input = this.$input;
+            $input   = this.$input;
 
         $input.parent('.' + settings.classes.main).replaceWith($input);
         $input.off('*.ezdz');
@@ -361,7 +356,7 @@
     };
 
     // Extend settings
-    $.ezdz.prototype.options = function (options) {
+    $.ezdz.prototype.options = function(options) {
         var settings = this.settings;
 
         if (!options) {
@@ -372,15 +367,15 @@
     };
 
     // Get input container
-    $.ezdz.prototype.container = function () {
+    $.ezdz.prototype.container = function() {
         var settings = this.settings,
-            $input = this.$input;
+            $input   = this.$input;
 
         return $input.parent('.' + settings.classes.main);
     };
 
     // Is browser compatible
-    $.ezdz.isBrowserCompatible = function () {
+    $.ezdz.isBrowserCompatible = function() {
         return !!(window.File && window.FileList && window.FileReader);
     };
 
@@ -388,7 +383,7 @@
     $.ezdz.defaults = defaults;
 
     // jQuery plugin
-    $.fn.ezdz = function (options) {
+    $.fn.ezdz = function(options) {
         var args = arguments,
             plugin;
 
@@ -397,11 +392,10 @@
 
             if (!plugin) {
                 return $(this).data('ezdz', new $.ezdz(this, options));
-            }
-            if (plugin[options]) {
+            } if (plugin[options]) {
                 return plugin[options].apply(plugin, Array.prototype.slice.call(args, 1));
             } else {
-                $.error('Ezdz error - Method ' + options + ' does not exist.');
+                $.error('Ezdz error - Method ' +  options + ' does not exist.');
             }
         });
     };

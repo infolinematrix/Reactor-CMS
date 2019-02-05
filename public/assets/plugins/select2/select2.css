@@ -90,7 +90,7 @@ html[dir="rtl"] .select2-container .select2-choice {
     float: none;
     width: auto;
     margin-top: 11px;
-    font-size: 1.4em;
+    font-size : 1.4em;
 }
 
 html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {

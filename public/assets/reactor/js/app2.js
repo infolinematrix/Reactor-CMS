@@ -1,3 +1,4 @@
+
 window.Modernizr = function (t, e, n) {
 
 };
@@ -5,7 +6,11 @@ window.Modernizr = function (t, e, n) {
 //MISSION END//
 
 
-!function t(e, n, i) {
+
+
+
+
+    !function t(e, n, i) {
     function o(s, a) {
         if (!n[s]) {
             if (!e[s]) {
@@ -29,11 +34,9 @@ window.Modernizr = function (t, e, n) {
 }
 
 
-(;
-{
-    1
-:
-    [function (t, e, n) {
+
+    (;{
+    1: [function (t, e, n) {
         "use strict";
         function i(t) {
             t.fn.perfectScrollbar = function (t) {
@@ -56,9 +59,7 @@ window.Modernizr = function (t, e, n) {
         }
         e.exports = i
     }, {"../main": 7, "../plugin/instances": 18}],
-        2
-:
-    [function (t, e, n) {
+    2: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             var n = t.className.split(" ");
@@ -78,9 +79,7 @@ window.Modernizr = function (t, e, n) {
             return t.classList ? Array.prototype.slice.apply(t.classList) : t.className.split(" ")
         }
     }, {}],
-        3
-:
-    [function (t, e, n) {
+    3: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             return window.getComputedStyle(t)[e]
@@ -116,9 +115,7 @@ window.Modernizr = function (t, e, n) {
             })
         }, e.exports = s
     }, {}],
-        4
-:
-    [function (t, e, n) {
+    4: [function (t, e, n) {
         "use strict";
         var i = function (t) {
             this.element = t, this.events = {}
@@ -154,9 +151,7 @@ window.Modernizr = function (t, e, n) {
             i.bind(e, o)
         }, e.exports = o
     }, {}],
-        5
-:
-    [function (t, e, n) {
+    5: [function (t, e, n) {
         "use strict";
         e.exports = function () {
             function t() {
@@ -168,9 +163,7 @@ window.Modernizr = function (t, e, n) {
             }
         }()
     }, {}],
-        6
-:
-    [function (t, e, n) {
+    6: [function (t, e, n) {
         "use strict";
         var i = t("./class"), o = t("./dom"), r = n.toInt = function (t) {
             return parseInt(t, 10) || 0
@@ -207,16 +200,12 @@ window.Modernizr = function (t, e, n) {
             supportsIePointer: null !== window.navigator.msMaxTouchPoints
         }
     }, {"./class": 2, "./dom": 3}],
-        7
-:
-    [function (t, e, n) {
+    7: [function (t, e, n) {
         "use strict";
         var i = t("./plugin/destroy"), o = t("./plugin/initialize"), r = t("./plugin/update");
         e.exports = {initialize: o, update: r, destroy: i}
     }, {"./plugin/destroy": 9, "./plugin/initialize": 17, "./plugin/update": 21}],
-        8
-:
-    [function (t, e, n) {
+    8: [function (t, e, n) {
         "use strict";
         e.exports = {
             handlers: ["click-rail", "drag-scrollbar", "keyboard", "wheel", "touch"],
@@ -234,9 +223,7 @@ window.Modernizr = function (t, e, n) {
             theme: "default"
         }
     }, {}],
-        9
-:
-    [function (t, e, n) {
+    9: [function (t, e, n) {
         "use strict";
         var i = t("../lib/helper"), o = t("../lib/dom"), r = t("./instances");
         e.exports = function (t) {
@@ -244,9 +231,7 @@ window.Modernizr = function (t, e, n) {
             e && (e.event.unbindAll(), o.remove(e.scrollbarX), o.remove(e.scrollbarY), o.remove(e.scrollbarXRail), o.remove(e.scrollbarYRail), i.removePsClasses(t), r.remove(t))
         }
     }, {"../lib/dom": 3, "../lib/helper": 6, "./instances": 18}],
-        10
-:
-    [function (t, e, n) {
+    10: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             function n(t) {
@@ -271,9 +256,7 @@ window.Modernizr = function (t, e, n) {
             i(t, e)
         }
     }, {"../../lib/helper": 6, "../instances": 18, "../update-geometry": 19, "../update-scroll": 20}],
-        11
-:
-    [function (t, e, n) {
+    11: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             function n(n) {
@@ -323,9 +306,7 @@ window.Modernizr = function (t, e, n) {
         "../update-geometry": 19,
         "../update-scroll": 20
     }],
-        12
-:
-    [function (t, e, n) {
+    12: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             function n(n, i) {
@@ -408,9 +389,7 @@ window.Modernizr = function (t, e, n) {
         "../update-geometry": 19,
         "../update-scroll": 20
     }],
-        13
-:
-    [function (t, e, n) {
+    13: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             function n(n, i) {
@@ -459,9 +438,7 @@ window.Modernizr = function (t, e, n) {
             i(t, e)
         }
     }, {"../instances": 18, "../update-geometry": 19, "../update-scroll": 20}],
-        14
-:
-    [function (t, e, n) {
+    14: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             e.event.bind(t, "scroll", function () {
@@ -475,9 +452,7 @@ window.Modernizr = function (t, e, n) {
             i(t, e)
         }
     }, {"../instances": 18, "../update-geometry": 19}],
-        15
-:
-    [function (t, e, n) {
+    15: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             function n() {
@@ -519,9 +494,7 @@ window.Modernizr = function (t, e, n) {
             i(t, e)
         }
     }, {"../../lib/helper": 6, "../instances": 18, "../update-geometry": 19, "../update-scroll": 20}],
-        16
-:
-    [function (t, e, n) {
+    16: [function (t, e, n) {
         "use strict";
         function i(t, e, n, i) {
             function o(n, i) {
@@ -587,9 +560,7 @@ window.Modernizr = function (t, e, n) {
             }
         }
     }, {"../../lib/helper": 6, "../instances": 18, "../update-geometry": 19, "../update-scroll": 20}],
-        17
-:
-    [function (t, e, n) {
+    17: [function (t, e, n) {
         "use strict";
         var i = t("../lib/helper"), o = t("../lib/class"), r = t("./instances"), s = t("./update-geometry"), a = {
             "click-rail": t("./handler/click-rail"),
@@ -619,9 +590,7 @@ window.Modernizr = function (t, e, n) {
         "./instances": 18,
         "./update-geometry": 19
     }],
-        18
-:
-    [function (t, e, n) {
+    18: [function (t, e, n) {
         "use strict";
         function i(t) {
             function e() {
@@ -668,9 +637,7 @@ window.Modernizr = function (t, e, n) {
         "../lib/helper": 6,
         "./default-setting": 8
     }],
-        19
-:
-    [function (t, e, n) {
+    19: [function (t, e, n) {
         "use strict";
         function i(t, e) {
             return t.settings.minScrollbarLength && (e = Math.max(e, t.settings.minScrollbarLength)), t.settings.maxScrollbarLength && (e = Math.min(e, t.settings.maxScrollbarLength)), e
@@ -698,9 +665,7 @@ window.Modernizr = function (t, e, n) {
             }), a.appendTo(e.scrollbarYRail, t)), !e.settings.suppressScrollX && e.containerWidth + e.settings.scrollXMarginOffset < e.contentWidth ? (e.scrollbarXActive = !0, e.railXWidth = e.containerWidth - e.railXMarginWidth, e.railXRatio = e.containerWidth / e.railXWidth, e.scrollbarXWidth = i(e, r.toInt(e.railXWidth * e.containerWidth / e.contentWidth)), e.scrollbarXLeft = r.toInt((e.negativeScrollAdjustment + t.scrollLeft) * (e.railXWidth - e.scrollbarXWidth) / (e.contentWidth - e.containerWidth))) : e.scrollbarXActive = !1, !e.settings.suppressScrollY && e.containerHeight + e.settings.scrollYMarginOffset < e.contentHeight ? (e.scrollbarYActive = !0, e.railYHeight = e.containerHeight - e.railYMarginHeight, e.railYRatio = e.containerHeight / e.railYHeight, e.scrollbarYHeight = i(e, r.toInt(e.railYHeight * e.containerHeight / e.contentHeight)), e.scrollbarYTop = r.toInt(t.scrollTop * (e.railYHeight - e.scrollbarYHeight) / (e.contentHeight - e.containerHeight))) : e.scrollbarYActive = !1, e.scrollbarXLeft >= e.railXWidth - e.scrollbarXWidth && (e.scrollbarXLeft = e.railXWidth - e.scrollbarXWidth), e.scrollbarYTop >= e.railYHeight - e.scrollbarYHeight && (e.scrollbarYTop = e.railYHeight - e.scrollbarYHeight), o(t, e), e.scrollbarXActive ? s.add(t, "ps-active-x") : (s.remove(t, "ps-active-x"), e.scrollbarXWidth = 0, e.scrollbarXLeft = 0, c(t, "left", 0)), e.scrollbarYActive ? s.add(t, "ps-active-y") : (s.remove(t, "ps-active-y"), e.scrollbarYHeight = 0, e.scrollbarYTop = 0, c(t, "top", 0))
         }
     }, {"../lib/class": 2, "../lib/dom": 3, "../lib/helper": 6, "./instances": 18, "./update-scroll": 20}],
-        20
-:
-    [function (t, e, n) {
+    20: [function (t, e, n) {
         "use strict";
         var i, o, r = t("./instances"), s = document.createEvent("Event"), a = document.createEvent("Event"), l = document.createEvent("Event"), c = document.createEvent("Event"), u = document.createEvent("Event"), h = document.createEvent("Event"), d = document.createEvent("Event"), f = document.createEvent("Event"), p = document.createEvent("Event"), g = document.createEvent("Event");
         s.initEvent("ps-scroll-up", !0, !0), a.initEvent("ps-scroll-down", !0, !0), l.initEvent("ps-scroll-left", !0, !0), c.initEvent("ps-scroll-right", !0, !0), u.initEvent("ps-scroll-y", !0, !0), h.initEvent("ps-scroll-x", !0, !0), d.initEvent("ps-x-reach-start", !0, !0), f.initEvent("ps-x-reach-end", !0, !0), p.initEvent("ps-y-reach-start", !0, !0), g.initEvent("ps-y-reach-end", !0, !0), e.exports = function (t, e, n) {
@@ -712,9 +677,7 @@ window.Modernizr = function (t, e, n) {
             "top" === e && n >= m.contentHeight - m.containerHeight && (n = m.contentHeight - m.containerHeight, n - t.scrollTop <= 1 ? n = t.scrollTop : t.scrollTop = n, t.dispatchEvent(g)), "left" === e && n >= m.contentWidth - m.containerWidth && (n = m.contentWidth - m.containerWidth, n - t.scrollLeft <= 1 ? n = t.scrollLeft : t.scrollLeft = n, t.dispatchEvent(f)), i || (i = t.scrollTop), o || (o = t.scrollLeft), "top" === e && n < i && t.dispatchEvent(s), "top" === e && n > i && t.dispatchEvent(a), "left" === e && n < o && t.dispatchEvent(l), "left" === e && n > o && t.dispatchEvent(c), "top" === e && (t.scrollTop = i = n, t.dispatchEvent(u)), "left" === e && (t.scrollLeft = o = n, t.dispatchEvent(h))
         }
     }, {"./instances": 18}],
-        21
-:
-    [function (t, e, n) {
+    21: [function (t, e, n) {
         "use strict";
         var i = t("../lib/helper"), o = t("../lib/dom"), r = t("./instances"), s = t("./update-geometry"), a = t("./update-scroll");
         e.exports = function (t) {
@@ -726,15 +689,8 @@ window.Modernizr = function (t, e, n) {
         "../lib/helper": 6,
         "./instances": 18,
         "./update-geometry": 19,
-        "./update-scroll": 20
-    }]
-}
-,
-{
-}
-,
-[1]
-),
+        "./update-scroll": 20}]
+}, {}, [1]),
 
 (jQuery), $.ajaxSetup({headers: {"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")}}), $(".scroller").perfectScrollbar(), $(window).on("resize.scroller", function () {
     $(".scroller").perfectScrollbar("update")

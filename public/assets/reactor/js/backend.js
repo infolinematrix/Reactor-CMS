@@ -1,14 +1,14 @@
 /**
  * Custom Functions
  */
-$(document).ready(function () {
-    $("#title").keyup(function () {
+$(document).ready(function() {
+    $("#title").keyup(function() {
         var Text = $(this).val();
         Text = slugify(Text);
         $("#node_name").val(Text);
     });
 
-    $("#title").keyup(function () {
+    $("#title").keyup(function() {
         var Text = $(this).val();
         Text = slugify(Text);
         $("#tag_name").val(Text);

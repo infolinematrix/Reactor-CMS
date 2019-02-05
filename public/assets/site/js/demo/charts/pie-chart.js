@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).ready(function () {
+$(document).ready(function(){
     var pieData = [
         {data: 1, color: '#F44336', label: 'July'},
         {data: 2, color: '#03A9F4', label: 'June'},
@@ -11,14 +11,14 @@ $(document).ready(function () {
 
 
     /*---------------------------------
-     Pie Chart
-     ---------------------------------*/
-    if ($('#pie-chart')[0]) {
+        Pie Chart
+    ---------------------------------*/
+    if($('#pie-chart')[0]){
         $.plot('#pie-chart', pieData, {
             series: {
                 pie: {
                     show: true,
-                    stroke: {
+                    stroke: { 
                         width: 2,
                     },
                 },
@@ -45,20 +45,20 @@ $(document).ready(function () {
                 defaultTheme: false,
                 cssClass: 'flot-tooltip'
             }
-
+            
         });
     }
 
     /*---------------------------------
-     Donut Chart
-     ---------------------------------*/
-    if ($('#donut-chart')[0]) {
+        Donut Chart
+    ---------------------------------*/
+    if($('#donut-chart')[0]){
         $.plot('#donut-chart', pieData, {
             series: {
                 pie: {
                     innerRadius: 0.5,
                     show: true,
-                    stroke: {
+                    stroke: { 
                         width: 2,
                     },
                 },
@@ -84,7 +84,7 @@ $(document).ready(function () {
                 defaultTheme: false,
                 cssClass: 'flot-tooltip'
             }
-
+            
         });
     }
 });

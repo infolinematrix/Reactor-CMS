@@ -118,12 +118,17 @@ window.Modernizr = function (t, e, n) {
         };
         t.html5 = y, l(e)
     }(this, e), c._version = l, c._prefixes = g, c.testStyles = b, h.className = h.className.replace(/(^|\s)no-js(\s|$)/, "$1$2") + (u ? " js " + v.join(" ") : ""), c
-}, function (t) {
+},  function (t) {
     "function" == typeof define && define.amd ? define(["jquery"], t) : t(jQuery)
-}, !function (t) {
+},  !function (t) {
+
 
 
 }(jQuery), $.ajaxSetup({headers: {"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")}});
+
+
+
+
 
 
 $("#contentFilter").on("change", function () {

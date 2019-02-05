@@ -75,7 +75,7 @@
                     case KEY.UP:
                     case KEY.DOWN:
                         return true;
-                }
+            }
                 return false;
             },
             isControl: function (e) {
@@ -85,7 +85,7 @@
                     case KEY.CTRL:
                     case KEY.ALT:
                         return true;
-                }
+            }
 
                 if (e.metaKey) return true;
 
@@ -94,7 +94,7 @@
             isFunctionKey: function (k) {
                 k = k.which ? k.which : k;
                 return k >= 112 && k <= 123;
-            }
+        }
         },
         MEASURE_SCROLLBAR_TEMPLATE = "<div class='select2-measure-scrollbar'></div>",
 

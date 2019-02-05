@@ -1,13 +1,13 @@
 "use strict";
 /*-----------------------------------------
- NoUiSlider - Property Fields
+    NoUiSlider - Property Fields
 
- 1. Price Range
- 2. Area Size
- 3. Lot Size
- 4. Year Built
- ------------------------------------------*/
-if ($('#slider-range')[0]) {
+    1. Price Range
+    2. Area Size
+    3. Lot Size
+    4. Year Built
+------------------------------------------*/
+if ($('#slider-range')[0]){
 
     var rangeSlider = document.getElementById('slider-range');
     var propertyPriceRangeValues = [
@@ -22,15 +22,14 @@ if ($('#slider-range')[0]) {
         }
     });
 
-    rangeSlider.noUiSlider.on('update', function (values, handle) {
+    rangeSlider.noUiSlider.on('update', function( values, handle ) {
         propertyPriceRangeValues[handle].innerHTML = values[handle];
     });
-}
-;
+};
 
 
 // Days range
-if ($('#slider-days')[0]) {
+if ($('#slider-days')[0]){
 
     var rangeSlider = document.getElementById('slider-days');
     var RangeValues = [
@@ -44,17 +43,16 @@ if ($('#slider-days')[0]) {
             'max': [30]
         },
         format: wNumb({
-            decimals: 3,
-            thousand: '.',
-            suffix: ' Days'
-        })
+        decimals: 3,
+        thousand: '.',
+        suffix: ' Days'
+    })
     });
 
-    rangeSlider.noUiSlider.on('update', function (values, handle) {
+    rangeSlider.noUiSlider.on('update', function( values, handle ) {
         RangeValues[handle].innerHTML = values[handle];
     });
-}
-;
+};
 
 // 1. Price Range
 
@@ -65,7 +63,7 @@ if ($('#property-price-range')[0]) {
         document.getElementById('property-price-lower')
     ]
 
-    noUiSlider.create(propertyPriceRange, {
+    noUiSlider.create (propertyPriceRange, {
         start: [12000, 70000],
         connect: true,
         range: {
@@ -74,7 +72,7 @@ if ($('#property-price-range')[0]) {
         }
     });
 
-    propertyPriceRange.noUiSlider.on('update', function (values, handle) {
+    propertyPriceRange.noUiSlider.on('update', function( values, handle ) {
         propertyPriceRangeValues[handle].innerHTML = values[handle];
     });
 }
@@ -88,7 +86,7 @@ if ($('#property-area-range')[0]) {
         document.getElementById('property-area-lower')
     ]
 
-    noUiSlider.create(propertyAreaRange, {
+    noUiSlider.create (propertyAreaRange, {
         start: [3500, 10000],
         connect: true,
         range: {
@@ -97,7 +95,7 @@ if ($('#property-area-range')[0]) {
         }
     });
 
-    propertyAreaRange.noUiSlider.on('update', function (values, handle) {
+    propertyAreaRange.noUiSlider.on('update', function( values, handle ) {
         propertyAreaRangeValues[handle].innerHTML = values[handle];
     });
 }
@@ -111,7 +109,7 @@ if ($('#property-lot-range')[0]) {
         document.getElementById('property-lot-lower')
     ]
 
-    noUiSlider.create(propertyLotRange, {
+    noUiSlider.create (propertyLotRange, {
         start: [1000, 5000],
         connect: true,
         range: {
@@ -120,7 +118,7 @@ if ($('#property-lot-range')[0]) {
         }
     });
 
-    propertyLotRange.noUiSlider.on('update', function (values, handle) {
+    propertyLotRange.noUiSlider.on('update', function( values, handle ) {
         propertyLotRangeValues[handle].innerHTML = values[handle];
     });
 }
@@ -134,7 +132,7 @@ if ($('#property-year-built')[0]) {
         document.getElementById('property-yb-lower')
     ]
 
-    noUiSlider.create(propertyYbRange, {
+    noUiSlider.create (propertyYbRange, {
         start: [1990, 2016],
         connect: true,
         range: {
@@ -143,30 +141,31 @@ if ($('#property-year-built')[0]) {
         }
     });
 
-    propertyYbRange.noUiSlider.on('update', function (values, handle) {
+    propertyYbRange.noUiSlider.on('update', function( values, handle ) {
         propertyYbRangeValues[handle].innerHTML = Math.round(values[handle]);
     });
 }
 
 
+
 $(document).ready(function () {
     /*-----------------------------------------------------
-     Submit property steps switch
-     - used in last form tab of 'submit-property.html'
-     ------------------------------------------------------*/
+        Submit property steps switch
+        - used in last form tab of 'submit-property.html'
+    ------------------------------------------------------*/
     $('body').on('shown.bs.tab', '.submit-property__button', function () {
         var currentTab = $(this).attr('href');
 
         $('.submit-property__steps > li').removeClass('active');
-        $('.submit-property__steps > li > a[href=' + currentTab + ']').parent().addClass('active');
+        $('.submit-property__steps > li > a[href='+currentTab+']').parent().addClass('active');
     })
 
 
     /*-----------------------------------------------------
-     Calendar and Calendar Widget
-     - Used in dashboard index and calendar pages
-     ------------------------------------------------------*/
-    if ($('#calendar-widget')[0]) {
+         Calendar and Calendar Widget
+         - Used in dashboard index and calendar pages
+    ------------------------------------------------------*/
+    if($('#calendar-widget')[0]) {
         $('.calendar-widget__body').fullCalendar({
             contentHeight: 'auto',
             theme: false,
@@ -235,10 +234,10 @@ $(document).ready(function () {
 
 
     /*-----------------------------------------------------
-     Demo list delete
-     - Used in dashboaed/listings.html
-     ------------------------------------------------------*/
-    if ($('[data-demo-action="delete-listing"]')[0]) {
+        Demo list delete
+        - Used in dashboaed/listings.html
+    ------------------------------------------------------*/
+    if($('[data-demo-action="delete-listing"]')[0]) {
         $('[data-demo-action="delete-listing"]').click(function (e) {
             e.preventDefault();
 
@@ -250,7 +249,7 @@ $(document).ready(function () {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
-            }).then(function () {
+            }).then(function() {
                 swal(
                     'Deleted!',
                     'Your list has been deleted.',

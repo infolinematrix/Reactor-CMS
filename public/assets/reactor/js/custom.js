@@ -16,34 +16,34 @@
     var DataKey = 'lte.pushmenu';
 
     var Default = {
-        collapseScreenSize: 767,
-        expandOnHover: false,
+        collapseScreenSize   : 767,
+        expandOnHover        : false,
         expandTransitionDelay: 200
     };
 
     var Selector = {
-        collapsed: '.sidebar-collapse',
-        open: '.sidebar-open',
-        mainSidebar: '.main-sidebar',
+        collapsed     : '.sidebar-collapse',
+        open          : '.sidebar-open',
+        mainSidebar   : '.main-sidebar',
         contentWrapper: '.content-wrapper',
-        searchInput: '.sidebar-form .form-control',
-        button: '[data-toggle="push-menu"]',
-        mini: '.sidebar-mini',
-        expanded: '.sidebar-expanded-on-hover',
-        layoutFixed: '.fixed'
+        searchInput   : '.sidebar-form .form-control',
+        button        : '[data-toggle="push-menu"]',
+        mini          : '.sidebar-mini',
+        expanded      : '.sidebar-expanded-on-hover',
+        layoutFixed   : '.fixed'
     };
 
     var ClassName = {
-        collapsed: 'sidebar-collapse',
-        open: 'sidebar-open',
-        mini: 'sidebar-mini',
-        expanded: 'sidebar-expanded-on-hover',
+        collapsed    : 'sidebar-collapse',
+        open         : 'sidebar-open',
+        mini         : 'sidebar-mini',
+        expanded     : 'sidebar-expanded-on-hover',
         expandFeature: 'sidebar-mini-expand-feature',
-        layoutFixed: 'fixed'
+        layoutFixed  : 'fixed'
     };
 
     var Event = {
-        expanded: 'expanded.pushMenu',
+        expanded : 'expanded.pushMenu',
         collapsed: 'collapsed.pushMenu'
     };
 
@@ -76,7 +76,7 @@
 
     PushMenu.prototype.toggle = function () {
         var windowWidth = $(window).width();
-        var isOpen = !$('body').hasClass(ClassName.collapsed);
+        var isOpen      = !$('body').hasClass(ClassName.collapsed);
 
         if (windowWidth <= this.options.collapseScreenSize) {
             isOpen = $('body').hasClass(ClassName.open)
@@ -145,7 +145,7 @@
     function Plugin(option) {
         return this.each(function () {
             var $this = $(this);
-            var data = $this.data(DataKey);
+            var data  = $this.data(DataKey);
 
             if (!data) {
                 var options = $.extend({}, Default, $this.data(), typeof option == 'object' && option);
@@ -158,7 +158,7 @@
 
     var old = $.fn.pushMenu;
 
-    $.fn.pushMenu = Plugin;
+    $.fn.pushMenu             = Plugin;
     $.fn.pushMenu.Constructor = PushMenu;
 
     // No Conflict Mode
@@ -183,6 +183,8 @@
 var base_url = $('body').data('baseurl');
 
 
+
+
 $("#SendMail").on('submit', function () {
 
     var img = base_url + "/public/spinner.gif";
@@ -193,7 +195,7 @@ $("#SendMail").on('submit', function () {
 
             "_token": $(this).find('input[name=_token]').val(),
 
-            //  "emails": $('#emails').val(),
+          //  "emails": $('#emails').val(),
             "subject": $('#subject').val(),
             "message": $('#message').val(),
 
@@ -209,7 +211,7 @@ $("#SendMail").on('submit', function () {
 
                 $('#msz').html('');
                 $("#msz").html(data.message).fadeIn('slow');
-            } else {
+            } else{
 
                 $('#msz').html('');
                 $("#msz").html(data.message).fadeIn('slow');
