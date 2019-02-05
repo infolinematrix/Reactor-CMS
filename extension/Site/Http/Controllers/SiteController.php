@@ -17,7 +17,7 @@ use ReactorCMS\Http\Controllers\Controller;
 use Mail;
 use ReactorCMS\Statistics\NodeStatisticsCompiler;
 use UxWeb\SweetAlert\SweetAlert;
-use ReactorCMS\Entities\Appointment;
+use ReactorCMS\Site\Entities\Appointment;
 
 class SiteController extends Controller
 {
