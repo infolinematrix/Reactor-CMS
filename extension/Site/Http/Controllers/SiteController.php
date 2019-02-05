@@ -61,15 +61,6 @@ class SiteController extends Controller
         return $this->compileView('Site::welcome', compact('categories', 'locations','doctors'), 'Home Page');
     }
 
-    public function browse()
-    {
-        return $this->compileView('Site::list', [], 'Browse Page');
-    }
-
-    public function single()
-    {
-        return $this->compileView('Site::single', [], 'Browse Page');
-    }
     /**
      * Shows a page
      *
@@ -145,7 +136,12 @@ class SiteController extends Controller
         $node = $nodeRepository->getNodeAndSetLocale($name);
         $val = $node->getKey();
 
-        $nodes = Node::whereMeta('location', 'like', "%{$val}%")->get();;
+        if ($node->nodeType->name == 'locations') {
+            $nodes = Node::whereMeta('location', 'like', "%{$val}%")->get();;
+        }
+        if ($node->nodeType->name == 'categories') {
+            $nodes = Node::whereMeta('category', 'like', "%{$val}%")->get();;
+        }
 
         return $this->compileView('Site::list', compact('nodes'), 'Browse');
     }
@@ -181,13 +177,13 @@ class SiteController extends Controller
 
         //-- Test post review
         //$user = Auth::guard('web').user();
-
+        /*
         $review = $node->createReview([
             'title' => 'Some title',
             'body' => 'Some body',
             'rating' => 5,
         ], $node);
-
+        */
 
         return $this->compileView('Site::profile', compact('node','image','educations', 'location', 'keywords', 'viewed', 'lastviewed'), 'Browse');
     }

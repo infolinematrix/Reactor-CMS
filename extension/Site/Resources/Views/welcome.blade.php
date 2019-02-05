@@ -122,7 +122,8 @@
                     </div>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="#0">{!! $category->getTitle() !!}</a></li>
+                            <li><a href="{!! route('browse',$category->getName()) !!}">{!! $category->getTitle() !!}</a>
+                            </li>
                         @endforeach
                         <li><a href="#0">More....</a></li>
                     </ul>
