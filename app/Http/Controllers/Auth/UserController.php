@@ -102,35 +102,7 @@ class UserController extends Controller
         return $this->compileView('Site::auth.profile', compact('profile','isProfile'), 'USER PROFILE');
     }
 
-    public function updateProfile(Request $request){
 
-        $data = [
-
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-        ];
-
-        User::where('id',Auth::user()->id)->update($data);
-
-        SweetAlert::message('Profile Updated....');
-        return redirect()->back();
-    }
-
-
-
-    public function changePassword(Request $request){
-
-        $data = [
-
-            'password' => Hash::make($request->password),
-
-        ];
-
-        User::where('id',Auth::user()->id)->update($data);
-
-        SweetAlert::message('Password Changed...');
-        return redirect()->back();
-    }
     public function logout(Request $request)
     {
         $this->guard('web')->logout();
@@ -195,13 +167,14 @@ class UserController extends Controller
     public function getForgot(){
 
 
-        return $this->compileView('Site::auth.forgot', compact('profile'), 'Forgot Password');
+        return $this->compileView('Site::auth.forgotpassword', compact('profile'), 'Forgot Password');
     }
 
     public function postForgot(Request $request){
 
 
         $check_user = User::where('email', $request->email)->first();
+
         if (!$check_user) {
 
             SweetAlert::message('Invalid Email!');
@@ -213,7 +186,7 @@ class UserController extends Controller
             /*Event Running*/
             Event::fire(new ForgotPasswordEvent($email));
 
-            SweetAlert::message('Please check your mail...');
+            SweetAlert::message('Please check your mail...')->autoclose(4000);
             return redirect()->back();
 
         }
@@ -237,7 +210,7 @@ class UserController extends Controller
 
         User::where('email',$email)->update($data);
 
-        SweetAlert::message('Password Changed! Please login...');
+        SweetAlert::message('Password Changed! Please login...')->autoclose(4000);;
         return redirect()->back();
 
 

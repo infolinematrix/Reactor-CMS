@@ -27,11 +27,11 @@ Route::group([
 
 
     Route::get('forgot-password', [
-        'as' => 'auth.forgot.password',
+        'as' => 'forgot.password',
         'uses' => 'UserController@getForgot']);
 
     Route::post('forgot-password', [
-        'as' => 'auth.forgot.password',
+        'as' => 'forgot.password',
         'uses' => 'UserController@postForgot']);
 
     Route::get('reset-password/{any}', [
@@ -40,13 +40,13 @@ Route::group([
 
 
     Route::post('reset-password', [
-        'as' => 'auth.reset.password',
+        'as' => 'reset.password',
         'uses' => 'UserController@postRestepassword']);
 
 
 
     Route::get('password-reset', [
-        'as' => 'auth.password.reset',
+        'as' => 'password.reset',
         'uses' => 'SiteController@getHome']);
 
     Route::group(['middleware' => ['auth:web']], function () {

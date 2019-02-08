@@ -42,7 +42,7 @@
             <ul>
                 <li><a href="{!! route('site.home') !!}">Home</a></li>
                 <li><a href="{!! route('member') !!}">User</a></li>
-                <li>Dashboard</li>
+                <li>Reviews</li>
             </ul>
         </div>
     </div>
@@ -63,7 +63,7 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab"
-                               aria-controls="book">Appointments</a>
+                               aria-controls="book">Reviews</a>
                         </li>
                     </ul>
                     <!--/nav-tabs -->
@@ -72,51 +72,47 @@
 
                         <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
 
-                            @if(count($appointments) > 0)
-                                @foreach($appointments as $appointment)
-                            <div class="list-1">
-                                <div class="indent_title_in">
-                                    <i class="pe-7s-user"></i>
-                                    <h3>{!! $appointment->patient_name !!}</h3>
-                                    <p>{!! date('d',strtotime($appointment->booking_date)).' '.
-                                            date('M',strtotime($appointment->booking_date)).', '.
-                                            date('Y',strtotime($appointment->booking_date)) !!} - {!! $appointment->booking_time !!}
+                            <div class="">
+                                <div class="reviews-container">
+                            @if(count($reviews) > 0)
 
+                                @foreach($reviews as $review)
+                                <div class="review-box clearfix">
+                                    <figure class="rev-thumb"><img src="{!! asset('assets/user.png') !!}" alt=""/>
+                                    </figure>
+                                    <div class="rev-content">
+                                        <div class="rating">
+                                            @for($i=1; $i <= 5; $i++)
+                                                @if($i <= $review->rating)
+                                                    <i class="icon_star voted"></i>
+                                                @else
+                                                    <i class="icon_star"></i>
+                                                @endif
+                                            @endfor
 
-                                    </p>
+                                        </div>
+                                        <div class="rev-info">
+                                            {!! $review->name !!} – {!! date('M',strtotime($review->created_at)) !!} {!! date('d',strtotime($review->created_at)) !!}, {!! date('Y',strtotime($review->created_at)) !!}:
+                                        </div>
+                                        <div class="rev-text">
+                                            <p>
+                                                {!! $review->body !!}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="wrapper_indent">
-                                   <p>
-                                    <ul class="contacts">
-                                        <li>
-                                            <h6>Email</h6>
-                                            {!! $appointment->patient_email !!}
-                                        </li>
-                                        <li>
-                                            <h6>Phone</h6>  {!! preg_replace('/\d{3}/', '$0-', str_replace('.', null, trim($appointment->patient_contact))) !!}</li>
-                                    </ul>
-                                   </p>
-                                    @if($appointment->confirmed == 'no')
-                                    <a class="btn_1" href="{!! route('member.profile.booking.confirm',$appointment->id) !!}">Confirm</a>
-                                    <a class="btn_2" href="{!! route('member.profile.booking.cancel',$appointment->id) !!}">Reject</a>
-                                    @else
-                                        <button class="btn_1" disabled>Confirmed</button>
-
-                                    @endif
-                                </div>
-                                <!-- /wrapper indent -->
-                            </div>
                                 @endforeach
                             @else
                                 <div class="list-1">
                                     <div class="indent_title_in">
-                                       Sorry! You don't have any Appointments...
-                                        </div>
+                                        Sorry! You don't have any Reviews...
                                     </div>
-                                @endif
+                                </div>
+                        @endif
+                        </div>
+                                </div>
 
-
-                            <!-- /wrapper indent -->
+                        <!-- /wrapper indent -->
 
                         </div>
                         <!-- /tab_1 -->

@@ -13,11 +13,15 @@
         <div class="container">
             <ul>
                 <li><a href="{!! route('site.home') !!}">Home</a></li>
-                <li><a href="#">
-                        @foreach(getSpeciality($node->getKey()) as $speciality => $value)
+                <li>
+                    @foreach(getSpeciality($node->getKey()) as $speciality => $value)
+                    <a href="{!! route('browse',str_slug($value)) !!}">
+
                             <span>{!! $value !!}</span>
-                        @endforeach
-                    </a></li>
+
+                    </a>
+                    @endforeach
+                </li>
                 <li>{!! $node->getTitle() !!}</li>
             </ul>
         </div>
@@ -285,6 +289,7 @@
                                 <input id="btnRev" type="submit" class="btn" value="Submit Review">
                                 <span id="rmsz"></span>
                             </div>
+                            {!! Form::close() !!}
 
 
                         </div>

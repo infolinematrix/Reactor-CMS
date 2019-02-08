@@ -107,7 +107,9 @@ class SiteController extends Controller
 
         $nodes = Node::WithTag($tag->id)->get();
 
-        return $this->compileView('Site::list', compact('nodes'), 'Browse');
+        $featuredNode = Node::WhereExtensionAttribute('profile', 'featured', 1)->orderByRaw("RAND()")->first();
+
+        return $this->compileView('Site::list', compact('nodes','featuredNode'), 'Browse');
     }
 
 
@@ -143,7 +145,11 @@ class SiteController extends Controller
             $nodes = Node::whereMeta('category', 'like', "%{$val}%")->get();;
         }
 
-        return $this->compileView('Site::list', compact('nodes'), 'Browse');
+        $featuredNode = Node::WhereExtensionAttribute('profile', 'featured', 1)->orderByRaw("RAND()")->first();
+
+
+
+        return $this->compileView('Site::list', compact('nodes','featuredNode'), 'Browse');
     }
 
     /**
@@ -174,7 +180,7 @@ class SiteController extends Controller
             ->translatedIn(locale())
             ->get();
 
-        $reviews = $node->reviews()->get();
+        $reviews = $node->reviews()->where('approved',1)->get();
         $rattings = getReviewrating($node);
 
 
@@ -183,7 +189,7 @@ class SiteController extends Controller
     }
 
 
-    public function postReview( NodeRepository $nodeRepository, Request $request){
+    public function postReview(NodeRepository $nodeRepository, Request $request){
 
         $node = $nodeRepository->getNodeAndSetLocale($request->node_name);
         $node->createReview([

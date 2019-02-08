@@ -56,7 +56,7 @@
             </div>
         </div>
         <!-- /row -->
-        <p class="text-center"><a href="./list.html" class="btn_1 medium">Find Doctor</a></p>
+        <p class="text-center"><a href="{!! route('site.home') !!}" class="btn_1 medium">Find Doctor</a></p>
 
     </div>
     <!-- /container -->
@@ -108,7 +108,7 @@
                             <li><a href="{!! route('browse',$location->getName()) !!}">{!! $location->getTitle() !!}</a>
                             </li>
                         @endforeach
-                        <li><a href="#0">More...</a></li>
+                        <!--<li><a href="#0">More...</a></li>-->
                     </ul>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                             <li><a href="{!! route('browse',$category->getName()) !!}">{!! $category->getTitle() !!}</a>
                             </li>
                         @endforeach
-                        <li><a href="#0">More....</a></li>
+                       <!-- <li><a href="#0">More....</a></li>-->
                     </ul>
                 </div>
             </div>

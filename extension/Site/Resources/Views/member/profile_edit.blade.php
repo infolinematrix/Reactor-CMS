@@ -50,7 +50,7 @@
             <ul>
                 <li><a href="{!! route('site.home') !!}">Home</a></li>
                 <li><a href="{!! route('member') !!}">User</a></li>
-                <li>Profile</li>
+                <li>Profile Edit</li>
             </ul>
         </div>
     </div>
@@ -239,6 +239,15 @@
                                           {!! form_row($form->profile_about) !!}
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xs-3">
+                                            <div class="form-group">
+                                                <label>Featured</label>
+                                                {!! form_row($form->featured) !!}
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-xs-12">
                                             <div class="form-group">
@@ -282,6 +291,7 @@
                                             </div>
 
                                         </div>
+
 
 
                                     </div>

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Matrix\Categories\Http;
+namespace ReactorCMS\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Matrix\Categories\Http\Traits\UseCategory;
@@ -17,77 +17,24 @@ use ReactorCMS\Http\Controllers\Traits\UsesTranslations;
 use Illuminate\Support\Facades\File;
 
 
-class CategoriesController extends ReactorController
+class PagesController extends ReactorController
 {
 
     use UsesTranslations, UsesNodeHelpers, UsesNodeForms;
-    use UseCategory;
 
-    public $nodeType = 'categories';
+    public $nodeType = 'pages';
 
     public function __construct()
     {
         // constructor body
     }
-
-    public function index($id = null)
-    {
-
-        $nodes = $this->getCategories($id,'DESC')->paginate(25);
-
-
-        
-        return view('Categories::index', compact('nodes', 'id'));
-    }
-
-    public function Create($id = null)
+    public function index()
     {
 
 
-        $type = get_node_type($this->nodeType);
+        $nodes = Node::withType($this->nodeType)->translatedIn(locale())->paginate(20);
 
-
-        $data['parent'] = !is_null($id) ? Node::findOrFail($id) : null;
-
-        $form = $this->getCreateForm($id, $data['parent']);
-        $form->setUrl(route('reactor.category.create', $id));
-
-
-        $form->modify('type', 'hidden', [
-            'value' => $type->getKey(),
-
-        ]);
-
-
-
-        $data['form'] = $form;
-
-
-        return $this->compileView('Categories::create', $data, 'Create');
-    }
-
-
-    public function store(Request $request, $id = null)
-    {
-
-
-        //$this->authorize('EDIT_NODES');
-
-        $this->validateCreateForm($request);
-
-
-        //dd($request->all());
-
-        list($node, $locale) = $this->createNode($request, $id);
-
-        $this->notify('nodes.created');
-
-
-        return redirect()->route('reactor.category.edit', [
-            $node->getKey(),
-            $node->translate($locale)->getKey()
-        ]);
-
+        return $this->compileView('pages.index', compact('nodes'), 'Pages');
     }
 
     public function edit($id, $source = null)
@@ -97,7 +44,7 @@ class CategoriesController extends ReactorController
         list($node, $locale, $source) = $this->authorizeAndFindNode($id, $source);
 
         $form = $this->getEditForm($id, $node, $source);
-        $form->setUrl(route('reactor.category.edit', [$id, $source->getKey()]));
+        $form->setUrl(route('reactor.pages.edit', [$id, $source->getKey()]));
 
         $form->modify('meta_image','hidden',[
         ]);
@@ -105,8 +52,7 @@ class CategoriesController extends ReactorController
         $form->modify('meta_author','hidden',[
         ]);
 
-        return view('Categories::edit', compact('form', 'node', 'locale', 'source', 'id'));
-
+        return $this->compileView('pages.edit', compact('form', 'node', 'locale', 'source'), 'Pages');
     }
 
     public function update(Request $request, $id, $source)
@@ -149,9 +95,9 @@ class CategoriesController extends ReactorController
 
 
         $form = $this->getCreateTranslationForm($id, $locales);
-        $form->setUrl(route('reactor.location.translation.store', $id));
+        $form->setUrl(route('reactor.pages.translation.store', $id));
 
-        return $this->compileView('Categories::translate', compact('form', 'node', 'locale', 'source'), 'Category Translation');
+        return $this->compileView('pages.translate', compact('form', 'node', 'locale', 'source'), 'Pages Translation');
     }
 
     public function storeTranslation(Request $request, $id)
@@ -177,7 +123,7 @@ class CategoriesController extends ReactorController
 
         $this->notify('general.added_translation', 'created_node_translation', $node);
 
-        return redirect()->route('reactor.category.edit', [
+        return redirect()->route('reactor.pages.edit', [
             $node->getKey(),
             $node->translate($locale)->getKey()
         ]);
@@ -208,36 +154,6 @@ class CategoriesController extends ReactorController
 
         $this->notify('general.destroyed_translation', 'deleted_node_translation', $node);
 
-        return redirect()->route('reactor.category.edit', [$node->getKey(), $node->translateOrfirst()->getKey()]);
+        return redirect()->route('reactor.pages.edit', [$node->getKey(), $node->translateOrfirst()->getKey()]);
     }
-
-    public function getCategoryapi($parent_id){
-
-
-
-        $nodetype  = get_node_type($this->nodeType);
-
-        $categories =  $nodetype->nodes()->where('parent_id',$parent_id)->translatedIn(locale())->get();
-
-        $num_rows = count($categories);
-
-        if ($num_rows > 0) {
-            $select = "<option value=''>--Select--</option>" ;
-            $tt = "<select  class='cat form-control' name='category[]'";
-            $tt .= "<option value=''>$select</option>";
-            foreach ($categories as $cat) {
-                $id = $cat->getKey();
-                $title = $cat->getTitle();
-                $tt .= "<option value='$id'>$title</option>";
-            }
-            $tt .= "</select>
-           ";
-
-            echo $tt;
-            exit();
-        }
-
-    }
-
 }
-

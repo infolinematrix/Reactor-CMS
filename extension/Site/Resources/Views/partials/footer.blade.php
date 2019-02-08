@@ -1,10 +1,11 @@
+
 <footer>
     <div class="container margin_60_35">
         <div class="row">
             <div class="col-lg-3 col-md-12">
                 <p>
                     <a href="index.html" title="Findoctor">
-                        <img src="{!! asset('assets/logo.png') !!}" data-retina="true" alt="" width="163" height="36"
+                        <img src="{!! asset('/'.getSettings('site_logo')) !!}" data-retina="true" alt="" width="163" height="36"
                              class="img-fluid"/>
                     </a>
                 </p>
@@ -22,8 +23,6 @@
             <div class="col-lg-3 col-md-4">
                 <h5>Useful links</h5>
                 <ul class="links">
-                    <li><a href="#0">FAQ</a></li>
-                    <li><a href="#0">Blog</a></li>
                     <li><a href="{!! route('register') !!}">Join as a Doctor</a></li>
                 </ul>
             </div>

@@ -15,7 +15,7 @@
 
     $('.img').ezdz({
 
-        text: '180 X 180',
+        text: '163 X 36',
     });
     <?php }?>
 </script>

@@ -46,12 +46,24 @@
                     <i class="fa fa-map-marker"></i> <span>Categories</span>
                 </a>
             </li>
+
+            <li class="">
+                <a href="{!! route("reactor.pages") !!}">
+                    <i class="fa fa-envelope-o"></i> <span>Pages</span>
+                </a>
+            </li>
+
+            <li class="">
+                <a href="{!! route("reactor.reviews") !!}">
+                    <i class="fa fa-envelope-o"></i> <span>Reviews</span>
+                </a>
+            </li>
         </ul>
         <hr class="divider">
 
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">REACTOR MANAGEMENT</li>
-            <li class="treeview">
+           <!-- <li class="treeview">
                 <a href="#">
                     <i class="fa fa-code-fork"></i> <span>Nodes</span>
                     <span class="pull-right-container">
@@ -63,7 +75,7 @@
                     <li class="active"><a href="{!! route('reactor.nodetypes.index') !!}"><i class="fa fa-circle-o"></i>
                             Node Type</a></li>
                 </ul>
-            </li>
+            </li>-->
         </ul>
 
         <ul class="sidebar-menu" data-widget="tree">

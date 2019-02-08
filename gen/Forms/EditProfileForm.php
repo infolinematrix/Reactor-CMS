@@ -115,6 +115,15 @@ class EditProfileForm extends Form {
             
 
         ]);
+                                $this->add('featured', 'number', [
+            'label' => 'Featured',
+            'help_block' => ['text' => ''],
+
+            
+            
+            
+
+        ]);
                     }
 
 }

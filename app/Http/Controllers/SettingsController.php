@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Cache;
 use ReactorCMS\Entities\Settings;
 use ReactorCMS\Http\Controllers\Traits\UseSettingsForm;
 use Intervention\Image\Facades\Image as ImageFacade;
+use Illuminate\Support\Facades\File;
+
 class SettingsController extends ReactorController
 {
 
@@ -46,9 +48,10 @@ class SettingsController extends ReactorController
             $filename = str_random(6).'_' . $file->getClientOriginalName();
 
             //--Save Image in Directory--//
+            File::delete(upload_path(getSettings('site_logo')));
             $destination_path = public_path('/' . $filename);
             ImageFacade::make($file->getRealPath())
-                ->resize(config('site.site_logo.width'), config('site.site_logo.height'))->save($destination_path);
+                ->resize(163, 36)->save($destination_path);
 
             foreach ($values as $key => $value) {
 

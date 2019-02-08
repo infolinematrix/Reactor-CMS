@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Reactor\Hierarchy\NodeRepository;
 use Reactor\Hierarchy\Tags\Tag;
+use Reactor\Users\User;
 use ReactorCMS\Entities\Node;
 use extension\Site\Helpers\UseAppHelper;
 use ReactorCMS\Http\Controllers\Traits\UsesNodeForms;
@@ -24,6 +25,7 @@ use Mail;
 use Reactor\Documents\Media\Media;
 use Intervention\Image\Facades\Image as ImageFacade;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 class MemberController extends Controller
 {
     use UsesNodeForms, UsesNodeHelpers, UsesTranslations;
@@ -42,9 +44,10 @@ class MemberController extends Controller
             return redirect()->route('member.profile');
         }
         $isProfile = $node->profile_firstname . ' ' . $node->profile_lastname;
+        $profileImage = Media::where('node_id',$node->getKey())->where('type','image')->first();
         $appointments = $node->appointment()->orderBy('confirmed', 'yes')->get();
 
-        return $this->compileView('Site::member.dashboard', compact('isProfile', 'appointments'), 'Dashboard');
+        return $this->compileView('Site::member.dashboard', compact('isProfile','profileImage', 'appointments'), 'Dashboard');
     }
 
 
@@ -301,6 +304,10 @@ class MemberController extends Controller
             'label' => false,
             'rules' => 'require'
         ]);
+        $form->modify('featured','select',[
+            'label' => false,
+            'choices' => ['0' => 'No','1' => 'Yes']
+        ]);
 
 
         /*Education*/
@@ -434,6 +441,54 @@ class MemberController extends Controller
         $node->delete();
         SweetAlert::message('Deleted')->autoclose(4000);
 
+        return redirect()->back();
+    }
+
+    public function getReview(NodeRepository $nodeRepository){
+
+        $user = Auth::guard('web')->user();
+        $node = $user->nodes()->withType('profile')->first();
+        if (!$node) {
+            return redirect()->route('member.profile');
+        }
+        $node = $nodeRepository->getNodeAndSetLocale($node->getName());
+        $reviews = $node->reviews()->get();
+
+        $isProfile = $node->profile_firstname . ' ' . $node->profile_lastname;
+        $profileImage = Media::where('node_id',$node->getKey())->where('type','image')->first();
+
+        return $this->compileView('Site::member.review', compact('isProfile','profileImage', 'reviews'), 'Review');
+    }
+
+    public function password(){
+
+        $user = Auth::guard('web')->user();
+        $node = $user->nodes()->withType('profile')->first();
+        if ($node) {
+            $isProfile = $node->profile_firstname . ' ' . $node->profile_lastname;
+            $profileImage = Media::where('node_id',$node->getKey())->where('type','image')->first();
+        }else{
+            $isProfile = null;
+            $profileImage = null;
+
+        }
+
+
+
+        return $this->compileView('Site::auth.password', compact('isProfile','profileImage'), 'Change Password');
+    }
+
+    public function changePassword(Request $request){
+
+        $data = [
+
+            'password' => Hash::make($request->password),
+
+        ];
+
+        User::where('id',Auth::user()->id)->update($data);
+
+        SweetAlert::message('Password Changed...')->autoclose(4000);
         return redirect()->back();
     }
 }

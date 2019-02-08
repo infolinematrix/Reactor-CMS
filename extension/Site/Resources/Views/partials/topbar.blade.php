@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <div id="logo">
-                    <a href="{!! route('site.home') !!}" title="Findoctor"><img src="{!! asset('assets/logo.png') !!}"
+                    <a href="{!! route('site.home') !!}" title="Findoctor"><img src="{!! asset('/'.getSettings('site_logo')) !!}"
                                                                                 data-retina="true" alt="" width="163"
                                                                                 height="36"></a>
                 </div>

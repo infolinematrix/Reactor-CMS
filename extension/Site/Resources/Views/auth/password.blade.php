@@ -42,7 +42,7 @@
             <ul>
                 <li><a href="{!! route('site.home') !!}">Home</a></li>
                 <li><a href="{!! route('member') !!}">User</a></li>
-                <li>Dashboard</li>
+                <li>Change Password</li>
             </ul>
         </div>
     </div>
@@ -63,7 +63,7 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab"
-                               aria-controls="book">Appointments</a>
+                               aria-controls="book">Change Password</a>
                         </li>
                     </ul>
                     <!--/nav-tabs -->
@@ -72,49 +72,32 @@
 
                         <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
 
-                            @if(count($appointments) > 0)
-                                @foreach($appointments as $appointment)
-                            <div class="list-1">
-                                <div class="indent_title_in">
-                                    <i class="pe-7s-user"></i>
-                                    <h3>{!! $appointment->patient_name !!}</h3>
-                                    <p>{!! date('d',strtotime($appointment->booking_date)).' '.
-                                            date('M',strtotime($appointment->booking_date)).', '.
-                                            date('Y',strtotime($appointment->booking_date)) !!} - {!! $appointment->booking_time !!}
-
-
-                                    </p>
-                                </div>
-                                <div class="wrapper_indent">
-                                   <p>
-                                    <ul class="contacts">
-                                        <li>
-                                            <h6>Email</h6>
-                                            {!! $appointment->patient_email !!}
-                                        </li>
-                                        <li>
-                                            <h6>Phone</h6>  {!! preg_replace('/\d{3}/', '$0-', str_replace('.', null, trim($appointment->patient_contact))) !!}</li>
-                                    </ul>
-                                   </p>
-                                    @if($appointment->confirmed == 'no')
-                                    <a class="btn_1" href="{!! route('member.profile.booking.confirm',$appointment->id) !!}">Confirm</a>
-                                    <a class="btn_2" href="{!! route('member.profile.booking.cancel',$appointment->id) !!}">Reject</a>
-                                    @else
-                                        <button class="btn_1" disabled>Confirmed</button>
-
-                                    @endif
-                                </div>
-                                <!-- /wrapper indent -->
-                            </div>
-                                @endforeach
-                            @else
-                                <div class="list-1">
-                                    <div class="indent_title_in">
-                                       Sorry! You don't have any Appointments...
-                                        </div>
+                            {!! Form::open(['url' => route('member.change.password')]) !!}
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Your password"
+                                               required onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
+                                        />
                                     </div>
-                                @endif
-
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input type="password" class="form-control" name="password_two" id="password_two"
+                                               placeholder="Confirm password"
+                                               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-footer-action">
+                                <div class="form-group">
+                                    <input class="btn_1" type="submit" value="Save"/>
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
 
                             <!-- /wrapper indent -->
 

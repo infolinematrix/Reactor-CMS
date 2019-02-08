@@ -33,14 +33,14 @@
         </div>
 
         <div class="menu-item">
-            <a href="#">
+            <a href="{!! route('member.profile.review') !!}">
                 <h6>Reviews</h6>
                 <span>Public Reviews</span>
             </a>
         </div>
 
         <div class="menu-item">
-            <a href="#">
+            <a href="{!! route('member.change.password') !!}">
                 <h6>Change Password</h6>
                 <span>Change your password?</span>
             </a>

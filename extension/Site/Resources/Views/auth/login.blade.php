@@ -8,9 +8,7 @@
                 {!! Form::open(['url' => route('login')]) !!}
                 <div class="box_form clearfix">
                     <div class="box_login">
-                        <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                        <a href="#0" class="social_bt google">Login with Google</a>
-
+                        Te pri adhuc simul. No eros errem mea. Diam mandamus has ad. Invenire senserit ad has, has ei quis iudico, ad mei nonumes periculis.
                     </div>
                     <div class="box_login last">
                         <div class="form-group">
@@ -18,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" id="password" required class="form-control" placeholder="Your password"/>
-                            <a href="#0" class="forgot">
+                            <a href="{!! route('forgot.password') !!}" class="forgot">
                                 <small>Forgot password?</small>
                             </a>
                         </div>

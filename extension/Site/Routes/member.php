@@ -23,4 +23,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['setTheme:' . config('theme
     Route::get('profile/booking/cancel/{id}', ['as' => 'member.profile.booking.cancel', 'uses' => 'MemberController@bookingCancel']);
 
 
+    Route::get('change/password',['as' => 'member.change.password','uses' => 'MemberController@password']);
+    Route::post('change/password',['as' => 'member.change.password','uses' => 'MemberController@changePassword']);
+    
+    Route::get('profile/review',['as' => 'member.profile.review','uses' => 'MemberController@getReview']);
+
 });
