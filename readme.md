@@ -20,13 +20,14 @@ Reactor is a polymorphic and multilingual content management system powered by [
 * Multilingual site and content based page view statistics tracking
 
 ## Installation
-The V3 has a pretty installer which is initialized at the first run. So, to install Reactor just download the latest release and extract the zip in your server, then navigate in your browser to where Reactor is hosted. Installer will guide you through some easy steps to setup Reactor.
+Comming Soon or Mail us.
 
 ## Documentation
-Reactor documentation is still being worked on. It will be published as soon as the first full release of version 3 is dispatched.
+Comming Soon.
 
 ## Help & Assistance
 For any help or assistance feel free to connect me (infolinematrix at gmail dot com)
+You can ping me on WhatsApp +91 9832893116
 
 ## License
 Reactor is released under [MIT License](https://github.com/infolinematrix/reactor/blob/master/License.txt)..
