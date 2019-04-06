@@ -67,4 +67,10 @@ return [
 	|
 	*/
     'nodesources_table' => 'node_sources',
+	
+	/*
+     * Meta Model
+     */
+    'meta_model' => \Reactor\Hierarchy\MetaTable::class,
+    'meta_table'=> 'meta',
 ];
