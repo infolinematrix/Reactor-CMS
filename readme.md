@@ -1,9 +1,10 @@
-# Reactor CMS for Laravel Developer
-Polymorphic and multilingual content management system.
+# Reactor Data Management System
+Polymorphic and multilingual Data Management System in Laravel Framework.
+Developer can use at their own risk.
 
 ![Reactor Dashboard](https://github.com/infolinematrix/Reactor-CMS/blob/master/reactor.png)
 
-Reactor is a polymorphic and multilingual content management system powered by [Laravel](https://laravel.com).  
+Reactor is a polymorphic and multilingual Data Management System powered by [Laravel](https://laravel.com).  
 **Important:** Reactor is still in alpha versions of the V3 family and is still being developed, use it at your own risk!
 
 ## Features (very briefly)
